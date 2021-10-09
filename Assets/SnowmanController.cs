@@ -23,13 +23,13 @@ public class SnowmanController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (range >= Vector3.Distance(transform.position, "ENTER PLAYER OBJETCS/TAG HERE".transform.position) {
-            Stop();
-		}
-
-        if (agent.isStopped && range < Vector3.Distance(transform.position, "ENTER PLAYER OBJETCS/TAG HERE".transform.position) {
-            Move();
-		}
+        //if (range >= Vector3.Distance(transform.position, "ENTER PLAYER OBJETCS/TAG HERE".transform.position) {
+        //    Stop();
+		//}
+        //
+        //if (agent.isStopped && range < Vector3.Distance(transform.position, "ENTER PLAYER OBJETCS/TAG HERE".transform.position) {
+        //    Move();
+		//}
     }
     
     private void Move() {
