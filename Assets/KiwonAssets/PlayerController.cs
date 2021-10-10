@@ -7,7 +7,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float playerSpeed = 2.0f;
+    public float playerDefaultSpeed = 2.0f;
+    [SerializeField]
+    public float playerSpeed = 2.0f;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
