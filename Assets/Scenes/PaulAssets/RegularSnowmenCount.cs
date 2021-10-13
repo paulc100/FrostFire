@@ -6,9 +6,15 @@ public class RegularSnowmenCount : MonoBehaviour
 {
     static int _count;
 
-    void OnEnable() { _count++; }
+    void OnEnable() {
+        _count++;
+    }
 
-    void OnDestroy() { _count--; }
+    void OnDestroy() {
+        _count--;
+    }
 
-    public int GetActiveCount() { return _count; }
+    public int GetActiveCount() {
+        return _count;
+    }
 }
