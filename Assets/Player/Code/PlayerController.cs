@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float gravityValue = -9.81f;
     [SerializeField]
-    private float rotationSpeed = 5f;
+    private float rotationSpeed = 1000f;
 
     private CharacterController controller;
     private PlayerInput playerInput;
