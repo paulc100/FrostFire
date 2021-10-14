@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2533042879045676241}
   - component: {fileID: 2533042879045676250}
   - component: {fileID: 2533042879045676253}
+  - component: {fileID: -6322919525632863193}
   m_Layer: 8
   m_Name: Snowman
   m_TagString: Untagged
@@ -134,3 +135,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2533042879045676250}
+  range: 1
+--- !u!114 &-6322919525632863193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533042879045676240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57bc3f0773555349aa144fd02097659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UniqueID: 0
