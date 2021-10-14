@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -191,7 +191,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3253424, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3253424, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -465,8 +465,67 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &805982904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 805982907}
+  - component: {fileID: 805982906}
+  - component: {fileID: 805982905}
+  m_Layer: 0
+  m_Name: PowerupController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &805982905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805982904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df8119dde48a4f6a802bcca0f8296c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 907203476}
+--- !u!114 &805982906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805982904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38059643fef4c4d64881eecefc97a90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerupPrefab: {fileID: 363686428853432585, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+  powerups: []
+--- !u!4 &805982907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 805982904}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.7389736, y: 2.182457, z: -8.706459}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817069066
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +573,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3253424, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -539,7 +598,7 @@ Transform:
   - {fileID: 217243039}
   - {fileID: 1033601634}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 37, y: 0, z: 0}
 --- !u!114 &817069069
 MonoBehaviour:
@@ -673,7 +732,7 @@ Transform:
   m_Children:
   - {fileID: 68337474}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &907203475
 CharacterController:
@@ -705,6 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06792e93175d90a49b7c01196ae5fe8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDefaultSpeed: 2
   playerSpeed: 10
   jumpHeight: 1
   gravityValue: -9.81
@@ -1319,7 +1379,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3253424, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1328,6 +1388,131 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1678738659}
+--- !u!1001 &1595995639
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 363686428853432585, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_Name
+      value: Powerup
+      objectReference: {fileID: 0}
+    - target: {fileID: 423362100603404264, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 423362100603404264, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.16116142
+      objectReference: {fileID: 0}
+    - target: {fileID: 423362100603404264, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 423362100603404264, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.5344524
+      objectReference: {fileID: 0}
+    - target: {fileID: 423362100603404264, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 423362100603404264, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423362100603404264, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423362100603404264, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423362100603404264, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423362100603404264, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 423362100603404264, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 805982906}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.name
+      value: HighSpeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.duration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.endAction.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.startAction.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.endAction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.endAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 805982905}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.startAction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.startAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 805982905}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.endAction.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.endAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HighSpeedEndAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.startAction.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.startAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HighSpeedStartAction
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.endAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PowerupActions, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.startAction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PowerupActions, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.endAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 600151478602545994, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
+      propertyPath: powerup.startAction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 94b32765dfa0a40c388e1f43f4e8b23a, type: 3}
 --- !u!1 &1678738658
 GameObject:
   m_ObjectHideFlags: 3
@@ -1548,7 +1733,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1743724789
 GameObject:
@@ -1644,5 +1829,5 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
