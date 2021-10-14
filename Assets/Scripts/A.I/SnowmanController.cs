@@ -50,13 +50,3 @@ public class SnowmanController : MonoBehaviour
         Move(); 
     }
 }
-
-
-
-
-//if (range >= Vector3.Distance(transform.position, GameObject.Find("Player").transform.position)) {
-//    Stop();
-//}
-//if (agent.isStopped && range < Vector3.Distance(transform.position, GameObject.Find("Player").transform.position)) {
-//    Move();
-//}
