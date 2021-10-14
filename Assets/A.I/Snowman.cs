@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Snowman : MonoBehaviour
 {
-    public int UniqueID { get; set; }
+    public int uniqueID { get; set; }
     private int health;
 
     Snowman(int id)
     {
-        UniqueID = id;
+        uniqueID = id;
     }
     private void Awake()
     {
