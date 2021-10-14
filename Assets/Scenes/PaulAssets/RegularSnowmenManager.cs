@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RegularSnowmenCount : MonoBehaviour
+public class RegularSnowmenManager : MonoBehaviour
 {
     static int _count;
+    public int UniqueID;
 
     void OnEnable() {
         _count++;

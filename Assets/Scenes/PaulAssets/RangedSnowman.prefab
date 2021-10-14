@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1420672261640449530}
   - component: {fileID: 1794339493469849351}
   - component: {fileID: 1786746667472144894}
-  - component: {fileID: 8943890403042704539}
+  - component: {fileID: -2710431953346913561}
   m_Layer: 0
-  m_Name: Snowman
+  m_Name: RangedSnowman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8943890403042704539
+--- !u!114 &-2710431953346913561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4264358541880671042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c57bc3f0773555349aa144fd02097659, type: 3}
+  m_Script: {fileID: 11500000, guid: d8993c215470aff49a621a89a6d9300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   UniqueID: 0

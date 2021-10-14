@@ -461,8 +461,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   regularSnowman: {fileID: 8943890403042704539, guid: 563e6a0213e6b124f821e64cab572ab7, type: 3}
-  waveSnowmanCount: 6
-  waveRate: 20
+  rangedSnowman: {fileID: -2710431953346913561, guid: d2d26608f2005e44dbf643e57ad1036a, type: 3}
+  waves:
+  - regularCount: 1
+    rangedCount: 1
+  - regularCount: 2
+    rangedCount: 2
+  - regularCount: 4
+    rangedCount: 2
+  spawnRate: 5
 --- !u!4 &1333728076
 Transform:
   m_ObjectHideFlags: 0
