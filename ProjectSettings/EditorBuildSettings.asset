@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Prototyping Scenes/KiwonScene.unity
     guid: d6386f68b724da64d8f500b2deb93752
   - enabled: 1
-    path: Assets/Scenes/Core Scenes/UI/MainMenu.unity
-    guid: 8c6e8c65227cede4cb4e9117968c351b
-  - enabled: 1
-    path: Assets/Scenes/Core Scenes/Backyard.unity
-    guid: 7afe42d7a8d19fd4f9c403059948cbae
-  - enabled: 1
-    path: Assets/Scenes/Prototyping Scenes/JakeScene.unity
-    guid: 911295bc447627b449d05aa296574807
+    path: Assets/Scenes/Prototyping Scenes/NetworkingScene.unity
+    guid: 07c4099d09748614eb9c61ab2dc8e478
   m_configObjects: {}
