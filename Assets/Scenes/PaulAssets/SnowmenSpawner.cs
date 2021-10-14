@@ -81,7 +81,7 @@ public class SnowmenSpawner : MonoBehaviour
     {
         Vector3 spawnPositionVec = spawnPosition.position;
 
-        if (spawnPosition.rotation.y == 0 || spawnPosition.rotation.y == 180)
+        if (spawnPosition.rotation.y == 0)
         {
             float x = spawnPosition.position.x + Random.Range(-4f, 4f);
             spawnPositionVec[0] = x;
