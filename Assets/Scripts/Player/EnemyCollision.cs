@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour
 {
-    public List<GameObject> snowmen;
+    public List<GameObject> snowmen { get; set; }
     private void Awake()
     {
         snowmen = new List<GameObject>();
@@ -14,11 +14,15 @@ public class EnemyCollision : MonoBehaviour
         if(other.gameObject.name == "Snowman")
         {
             Debug.Log("Snowman Detected");
-            //snowmen.Add(other.gameObject);
+            snowmen.Add(other.gameObject);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        
+        if(other.gameObject.name == "Snowman")
+        {
+            Debug.Log("Snowmen Left");
+            snowmen.Remove(other.gameObject);
+        }
     }
 }

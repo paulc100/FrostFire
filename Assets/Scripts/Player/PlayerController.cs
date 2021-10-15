@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private float gravityValue = -9.81f;
     [SerializeField]
     private float rotationSpeed = 1000f;
+    [SerializeField]
+    private int attackPower = 1;
 
     private CharacterController controller;
     private PlayerInput playerInput;
@@ -59,9 +61,13 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
-        if (attackAction.triggered)
+        if (attackAction.triggered && enemyCollision.snowmen.Count > 0)
         {
-
+            enemyCollision.snowmen[0].GetComponent<Snowman>().damage(attackPower);
+            if (enemyCollision.snowmen[0] == null)
+            {
+                enemyCollision.snowmen.RemoveAt(0);
+            }
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;

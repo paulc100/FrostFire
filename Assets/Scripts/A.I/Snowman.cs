@@ -17,13 +17,14 @@ public class Snowman : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
+        
     }
     public void damage(int damageValue)
     {
         health -= damageValue;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
