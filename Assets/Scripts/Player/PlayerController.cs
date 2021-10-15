@@ -61,10 +61,12 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
+        //Debug.Log(enemyCollision.snowmen.Count > 0);
+        // Attack triggered
         if (attackAction.triggered && enemyCollision.snowmen.Count > 0)
         {
-            enemyCollision.snowmen[0].GetComponent<Snowman>().damage(attackPower);
-            if (enemyCollision.snowmen[0] == null)
+            Debug.Log(enemyCollision.snowmen[0]);
+            if (enemyCollision.snowmen[0].GetComponent<Snowman>().damage(attackPower))
             {
                 enemyCollision.snowmen.RemoveAt(0);
             }
