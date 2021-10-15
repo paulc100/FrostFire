@@ -11,7 +11,8 @@ public class EnemyCollision : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Snowman")
+        Debug.Log(other.gameObject.tag);
+        if(other.gameObject.tag == "Snowman")
         {
             Debug.Log("Snowman Detected");
             snowmen.Add(other.gameObject);
@@ -19,7 +20,7 @@ public class EnemyCollision : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.name == "Snowman")
+        if(other.gameObject.tag == "Snowman")
         {
             Debug.Log("Snowmen Left");
             snowmen.Remove(other.gameObject);

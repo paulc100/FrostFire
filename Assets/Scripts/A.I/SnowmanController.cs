@@ -46,7 +46,7 @@ public class SnowmanController : MonoBehaviour
                 return;
             }
         }
-        Debug.Log("moving");
+        //Debug.Log("moving");
         Move(); 
     }
 }
