@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class SnowmanController : MonoBehaviour
 {
@@ -9,27 +10,22 @@ public class SnowmanController : MonoBehaviour
     // The target location for snowmen.
     private Transform target;
 
-    // default range
-    public int range = 1;
+    // range that snowman will stop from player.
+    public int range;
 
     // Start is called before the first frame update.
     void Start()
     {
+        range = 2;
         // Setting target location as campfire.
         target = GameObject.Find("Campfire").transform;
         Move();
     }   
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //if (range >= Vector3.Distance(transform.position, "ENTER PLAYER OBJETCS/TAG HERE".transform.position) {
-        //    Stop();
-		//}
-        //
-        //if (agent.isStopped && range < Vector3.Distance(transform.position, "ENTER PLAYER OBJETCS/TAG HERE".transform.position) {
-        //    Move();
-		//}
+        checkForPlayers(transform.position);
     }
     
     private void Move() {
@@ -42,7 +38,15 @@ public class SnowmanController : MonoBehaviour
         agent.ResetPath();
     }   
 
-    private void checkForPlayer() {
-            
-	}
+    private void checkForPlayers(Vector3 center) {
+        Collider[] hitColliders = Physics.OverlapSphere(center, range);
+        foreach (var hitCollider in hitColliders)  {
+            if (hitCollider.tag == "Player") {
+                Stop();
+                return;
+            }
+        }
+        Debug.Log("moving");
+        Move(); 
+    }
 }
