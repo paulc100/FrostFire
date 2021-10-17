@@ -4,26 +4,19 @@ using UnityEngine;
 
 public class Snowman : MonoBehaviour
 {
-    public int uniqueID { get; set; }
     private int health;
-
-    Snowman(int id)
-    {
-        uniqueID = id;
-    }
     private void Awake()
     {
         health = 2;
     }
-    private void FixedUpdate()
+    public bool damage(int damageValue)
     {
+        health -= damageValue;
         if (health <= 0)
         {
             Destroy(gameObject);
+            return true;
         }
-    }
-    public void damage(int damageValue)
-    {
-        health -= damageValue;
+        return false;
     }
 }

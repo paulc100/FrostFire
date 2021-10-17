@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 2533042879045676250}
   - component: {fileID: 2533042879045676253}
   - component: {fileID: 1179752097035188921}
+  - component: {fileID: 5075356112059699371}
   m_Layer: 8
   m_Name: RangedSnowman
-  m_TagString: Untagged
+  m_TagString: Snowman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2533042879045676250}
-  range: 1
+  fightRadius: 2
 --- !u!114 &1179752097035188921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,3 +150,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UniqueID: 0
+--- !u!114 &5075356112059699371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533042879045676240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4d9cd114bcae64fa9e2a68c83d97d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
