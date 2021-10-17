@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PowerupController : MonoBehaviour
 {
-
     public GameObject powerupPrefab;
 
     public List<Powerup> powerups;
