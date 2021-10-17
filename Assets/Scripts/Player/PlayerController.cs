@@ -40,6 +40,22 @@ public class PlayerController : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         attackAction = playerInput.actions["Attack"];
     }
+    private void OnEnable()
+    {
+        if(moveAction != null && jumpAction != null && attackAction != null)
+        {
+            moveAction.Enable();
+            jumpAction.Enable();
+            attackAction.Enable();
+        }
+
+    }
+    private void OnDisable()
+    {
+        moveAction.Disable();
+        jumpAction.Disable();
+        attackAction.Disable();
+    }
 
     void Update()
     {
@@ -66,6 +82,10 @@ public class PlayerController : MonoBehaviour
         if (attackAction.triggered && enemyCollision.snowmen.Count > 0)
         {
             Debug.Log(enemyCollision.snowmen[0]);
+            if(enemyCollision.snowmen[0] == null)
+            {
+                enemyCollision.snowmen.RemoveAt(0);
+            }
             if (enemyCollision.snowmen[0].GetComponent<Snowman>().damage(attackPower))
             {
                 enemyCollision.snowmen.RemoveAt(0);
