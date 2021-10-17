@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 1000f;
     [SerializeField]
-    private int attackPower = 1;
+    public int attackPower = 1;
 
     private CharacterController controller;
     private PlayerInput playerInput;
