@@ -57,4 +57,7 @@ public class SnowmanController : MonoBehaviour
         //isLockedOnPlayer = false;
         Move(campfire);
     }
+
+    // *To move this functionality to game master class after Alpha*
+    
 }
