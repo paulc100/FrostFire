@@ -56,6 +56,24 @@ public class PlayerController : MonoBehaviour
         jumpAction.Disable();
         attackAction.Disable();
     }
+    public void OnAttack(InputValue val)
+    {
+        //Debug.Log(enemyCollision.snowmen.Count > 0);
+        // Attack triggered
+        if (enemyCollision.snowmen.Count > 0)
+        {
+            Debug.Log(enemyCollision.snowmen.Count);
+            Debug.Log(enemyCollision.snowmen[0]);
+            if (enemyCollision.snowmen[0] == null)
+            {
+                enemyCollision.snowmen.RemoveAt(0);
+            }
+            if (enemyCollision.snowmen[0] != null && enemyCollision.snowmen[0].GetComponent<Snowman>().damage(attackPower))
+            {
+                enemyCollision.snowmen.RemoveAt(0);
+            }
+        }
+    }
 
     void Update()
     {
@@ -77,20 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
-        //Debug.Log(enemyCollision.snowmen.Count > 0);
-        // Attack triggered
-        if (attackAction.triggered && enemyCollision.snowmen.Count > 0)
-        {
-            Debug.Log(enemyCollision.snowmen[0]);
-            if(enemyCollision.snowmen[0] == null)
-            {
-                enemyCollision.snowmen.RemoveAt(0);
-            }
-            if (enemyCollision.snowmen[0].GetComponent<Snowman>().damage(attackPower))
-            {
-                enemyCollision.snowmen.RemoveAt(0);
-            }
-        }
+        
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
