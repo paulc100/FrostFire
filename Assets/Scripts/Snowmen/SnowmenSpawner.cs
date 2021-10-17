@@ -19,9 +19,10 @@ public class SnowmenSpawner : MonoBehaviour
     }
 
     public Wave[] waves;
-    private int waveNumber;
+    public int waveNumber;
 
     public int spawnRate;
+    public int waveCooldown;
 
     private int spawnPosCount;
 
@@ -38,17 +39,22 @@ public class SnowmenSpawner : MonoBehaviour
 
     void Update()
     {
-        if (!waveInProgress)
+        if (waveNumber == waves.Length)
+        {
+            //Debug.Log("VICTORY");
+        }
+        else if (!waveInProgress)
         {
             StartCoroutine(spawnWave(waves[waveNumber], spawnRate));
         } 
-        else if (regularSnowman.GetActiveCount() + rangedSnowman.GetActiveCount() == 0)
+        else if (regularSnowman.GetActiveCount() + rangedSnowman.GetActiveCount() == 0 &&
+            regularIndex + rangedIndex == waves[waveNumber].regularCount + waves[waveNumber].rangedCount)
         {
+            Debug.Log("Wave complete");
             regularIndex = 0;
             rangedIndex = 0;
             waveNumber += 1;
-            waveInProgress = false;
-            Debug.Log("Wave complete");
+            StartCoroutine(startWaveCooldown());
         }
     }
 
@@ -59,6 +65,7 @@ public class SnowmenSpawner : MonoBehaviour
     IEnumerator spawnWave(Wave wave, int rate)
     {
         waveInProgress = true;
+        Debug.Log("Wave in progress");
         while (regularIndex + rangedIndex < wave.regularCount + wave.rangedCount)
         {
             for (int i = 0; i < spawnPosCount; i++)
@@ -74,7 +81,12 @@ public class SnowmenSpawner : MonoBehaviour
                 yield return new WaitForSeconds(rate);
             }
         }
-        Debug.Log("Wave in progress");
+    }
+
+    IEnumerator startWaveCooldown()
+    {
+        yield return new WaitForSeconds(waveCooldown);
+        waveInProgress = false;
     }
 
     void spawnSnowman(string snowmanType, Transform spawnPosition, Wave wave)
