@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField]
+    [Tooltip("Required to pause/unpause the player controller while navigating menus")]
+    private PlayerController playerController;
+    [SerializeField]
+    [Tooltip("Required to disable/enable the player camera while navigating menus")]
+    private CinemachineVirtualCamera playerCamera;
+    [Space]
     [SerializeField]
     private GameObject pauseMenu;
     [SerializeField]
@@ -26,21 +34,32 @@ public class MenuManager : MonoBehaviour
     public void ShowPauseMenu() {
         pauseMenu.SetActive(true);
         isPauseMenuUp = true;
+        DisableControllerAndCamera();
     }
 
     public void ClearPauseMenu() {
         pauseMenu.SetActive(false);
         isPauseMenuUp = false;
+        EnableControllerAndCamera();
     }
 
-    // These are currently displayed on the pause menu for testing purposes until more game logic is created 
     public void ShowGameOverMenu() {
         gameOverMenu.SetActive(true);
-        ClearPauseMenu();
+        DisableControllerAndCamera();
     }
 
     public void ShowVictoryMenu() {
         victoryMenu.SetActive(true);
-        ClearPauseMenu();
+        DisableControllerAndCamera();
+    }
+
+    private void DisableControllerAndCamera() {
+        playerController.OnDisable();
+        playerCamera.enabled = false;
+    }
+
+    private void EnableControllerAndCamera() {
+        playerController.OnEnable();
+        playerCamera.enabled = true;
     }
 }

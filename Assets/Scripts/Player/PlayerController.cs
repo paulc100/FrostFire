@@ -40,7 +40,8 @@ public class PlayerController : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         attackAction = playerInput.actions["Attack"];
     }
-    private void OnEnable()
+
+    public void OnEnable()
     {
         if(moveAction != null && jumpAction != null && attackAction != null)
         {
@@ -48,14 +49,15 @@ public class PlayerController : MonoBehaviour
             jumpAction.Enable();
             attackAction.Enable();
         }
-
     }
-    private void OnDisable()
+
+    public void OnDisable()
     {
         moveAction.Disable();
         jumpAction.Disable();
         attackAction.Disable();
     }
+
     public void OnAttack(InputValue val)
     {
         //Debug.Log(enemyCollision.snowmen.Count > 0);
