@@ -30,6 +30,7 @@ public class GameEventManager : MonoBehaviour
     }
 
     void GameOver() {
+        snowmenSpawner.enabled = false;
         isGameOver?.Invoke();
     }
 
