@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Core Scenes/Backyard.unity
     guid: a5c48f506f74fc3449ce6e0159c0f658
+  - enabled: 1
+    path: Assets/Scenes/Core Scenes/BackyardSplitScreen.unity
+    guid: 31b59de615d779c4698b10833da24f2f
   m_configObjects: {}
