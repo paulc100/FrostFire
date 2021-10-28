@@ -3,7 +3,7 @@ using UnityEngine;
 public class LobbyMenu : MonoBehaviour
 {
     [SerializeField]
-    private NetworkManagerLobby networkManager = null;
+    private NetworkManagerFrostFire networkManager = null;
 
     [Header("UI")]
     [SerializeField]

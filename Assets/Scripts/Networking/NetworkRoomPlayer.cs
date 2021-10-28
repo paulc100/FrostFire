@@ -6,7 +6,7 @@ public class NetworkRoomPlayer : NetworkBehaviour
 {
     [Header("UI")]
     [SerializeField]
-    private GameObject lobbyUI = null;
+    private GameObject roomUI = null;
     [SerializeField]
     private Text[] playerNameTexts = new Text[4]; 
     [SerializeField]
@@ -32,15 +32,15 @@ public class NetworkRoomPlayer : NetworkBehaviour
         }
     }
 
-    private NetworkManagerLobby lobby;
-    private NetworkManagerLobby Lobby
+    private NetworkManagerFrostFire room;
+    private NetworkManagerFrostFire Room 
     {
         get
         {
-            if (lobby != null)
-                return lobby;
+            if (room != null)
+                return room;
 
-            return lobby = NetworkManager.singleton as NetworkManagerLobby;
+            return room = NetworkManager.singleton as NetworkManagerFrostFire;
         }
     }
 
@@ -48,36 +48,36 @@ public class NetworkRoomPlayer : NetworkBehaviour
     {
         CmdSetPlayerName(PlayerNameInput.PlayerName);
 
-        lobbyUI.SetActive(true);
+        roomUI.SetActive(true);
     }
 
     public override void OnStartClient()
     {
-        Lobby.RoomPlayers.Add(this);
+        Room.RoomPlayers.Add(this);
 
-        UpdateLobbyDisplay();
+        UpdateRoomDisplay();
     }
 
     public override void OnStopClient()
     {
-        Lobby.RoomPlayers.Remove(this);
+        Room.RoomPlayers.Remove(this);
 
-        UpdateLobbyDisplay();
+        UpdateRoomDisplay();
     }
 
-    public void OnReadyStatusChanged(bool oldValue, bool newValue) => UpdateLobbyDisplay();
-    public void OnDisplayNameChanged(string oldValue, string newValue) => UpdateLobbyDisplay();
+    public void OnReadyStatusChanged(bool oldValue, bool newValue) => UpdateRoomDisplay();
+    public void OnDisplayNameChanged(string oldValue, string newValue) => UpdateRoomDisplay();
 
-    private void UpdateLobbyDisplay()
+    private void UpdateRoomDisplay()
     {
         if (!hasAuthority)
         {
             // If networked player triggered update, find local player UI
-            foreach (var player in Lobby.RoomPlayers) 
+            foreach (var player in Room.RoomPlayers) 
             {
                 if (player.hasAuthority)
                 {
-                    player.UpdateLobbyDisplay();
+                    player.UpdateRoomDisplay();
                     break;
                 }
             }
@@ -91,10 +91,10 @@ public class NetworkRoomPlayer : NetworkBehaviour
             playerNameTexts[i].text = string.Empty;
         }
 
-        for (int i = 0; i < Lobby.RoomPlayers.Count; i++)
+        for (int i = 0; i < Room.RoomPlayers.Count; i++)
         {
-            playerNameTexts[i].text = Lobby.RoomPlayers[i].PlayerName;
-            playerReadyTexts[i].text = Lobby.RoomPlayers[i].IsReady ?
+            playerNameTexts[i].text = Room.RoomPlayers[i].PlayerName;
+            playerReadyTexts[i].text = Room.RoomPlayers[i].IsReady ?
                 "<color=green>Ready</color>" :
                 "<color=red>Not Ready</color>";
         }
@@ -120,13 +120,15 @@ public class NetworkRoomPlayer : NetworkBehaviour
     {
         IsReady = !IsReady;
 
-        Lobby.NotifyPlayersOfReadyState();
+        Room.NotifyPlayersOfReadyState();
     }
 
     [Command]
     public void CmdStartGame()
     {
-        if (Lobby.RoomPlayers[0].connectionToClient != connectionToClient)
+        if (Room.RoomPlayers[0].connectionToClient != connectionToClient)
             return;
+
+        Room.StartGame();
     }
 }

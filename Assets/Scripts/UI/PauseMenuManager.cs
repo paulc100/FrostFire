@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-public class MenuManager : MonoBehaviour
+public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Required to pause/unpause the player controller while navigating menus")]
@@ -19,7 +19,7 @@ public class MenuManager : MonoBehaviour
 
     public static bool isPauseMenuUp = false;
 
-    void Update() 
+    private void Update() 
     {
         if (Input.GetButtonDown("Pause")) 
         {

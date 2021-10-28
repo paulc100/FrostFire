@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class JoinLobbyMenu : MonoBehaviour
 {
     [SerializeField]
-    private NetworkManagerLobby networkManager = null;
+    private NetworkManagerFrostFire networkManager = null;
 
     [Header("UI")]
     [SerializeField]
@@ -16,14 +16,14 @@ public class JoinLobbyMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        NetworkManagerLobby.OnClientConnected += HandleClientConnected;
-        NetworkManagerLobby.OnClientDisconnected += HandleClientDisconnected;
+        NetworkManagerFrostFire.OnClientConnected += HandleClientConnected;
+        NetworkManagerFrostFire.OnClientDisconnected += HandleClientDisconnected;
     }
 
     private void OnDisable()
     {
-        NetworkManagerLobby.OnClientConnected -= HandleClientConnected;
-        NetworkManagerLobby.OnClientDisconnected -= HandleClientDisconnected;
+        NetworkManagerFrostFire.OnClientConnected -= HandleClientConnected;
+        NetworkManagerFrostFire.OnClientDisconnected -= HandleClientDisconnected;
     }
 
     public void JoinLobby()

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7287112895100262831}
   - component: {fileID: 3393422094694986183}
   m_Layer: 0
-  m_Name: NetworkRoomPlayerUI
+  m_Name: NetworkRoomPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  lobbyUI: {fileID: 5729765362679903686}
+  roomUI: {fileID: 5729765362679903686}
   playerNameTexts:
   - {fileID: 1527619073157445657}
   - {fileID: 1926766363933384566}

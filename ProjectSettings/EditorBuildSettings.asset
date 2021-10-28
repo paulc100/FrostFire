@@ -11,10 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Core Scenes/UI/LobbyMenu.unity
     guid: f062ecf986e4aea49ada8a0981884593
-  - enabled: 0
-    path: Assets/Scenes/Core Scenes/Backyard.unity
-    guid: a5c48f506f74fc3449ce6e0159c0f658
-  - enabled: 0
-    path: Assets/Scenes/Prototyping Scenes/JakeScene.unity
-    guid: 31b59de615d779c4698b10833da24f2f
+  - enabled: 1
+    path: Assets/Scenes/Core Scenes/NetworkedBackyard.unity
+    guid: 3dd12bc84c1c1f041ab94e10e0d8e6ca
   m_configObjects: {}

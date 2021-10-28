@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 387777531}
   - component: {fileID: 387777530}
   m_Layer: 0
-  m_Name: NetworkManagerLobby
+  m_Name: NetworkManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -374,6 +374,8 @@ MonoBehaviour:
   minPlayers: 2
   menuScene: Assets/Scenes/Core Scenes/UI/LobbyMenu.unity
   roomPlayerPrefab: {fileID: 3393422094694986183, guid: 9dc9780613a837d4584f26fc0cd6fe6f, type: 3}
+  gamePlayerPrefab: {fileID: 886380245446355225, guid: 96568d95478b10e4ead5172348c4e21d, type: 3}
+  playerSpawnManager: {fileID: 7927962717721427009, guid: b78c67c681bbbac45b38afd64143b366, type: 3}
 --- !u!4 &387777532
 Transform:
   m_ObjectHideFlags: 0
