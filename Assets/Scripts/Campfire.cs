@@ -9,6 +9,7 @@ public class Campfire : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         campfireRenderer = GetComponent<Renderer>();
     }
 
