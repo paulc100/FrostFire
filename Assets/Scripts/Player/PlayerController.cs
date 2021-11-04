@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         enemyCollision = GetComponent<EnemyCollision>();
@@ -65,19 +64,7 @@ public class PlayerController : MonoBehaviour
         {
             //disable attack once called
             attackAvailable = false;
-            if (enemyCollision.snowmen.Count > 0)
-            {
-                Debug.Log(enemyCollision.snowmen.Count);
-                Debug.Log(enemyCollision.snowmen[0]);
-                if (enemyCollision.snowmen[0] == null)
-                {
-                    enemyCollision.snowmen.RemoveAt(0);
-                }
-                if (enemyCollision.snowmen[0] != null && enemyCollision.snowmen[0].GetComponent<Snowman>().damage(attackPower))
-                {
-                    enemyCollision.snowmen.RemoveAt(0);
-                }
-            }
+            enemyCollision.killSnowman(attackPower);
             //enable attack after one second
             StartCoroutine(attackCoroutine());
         }
