@@ -1,14 +1,12 @@
+using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
 public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Required to pause/unpause the player controller while navigating menus")]
-    private PlayerController playerController;
-    [SerializeField]
-    [Tooltip("Required to disable/enable the player camera while navigating menus")]
-    private CinemachineVirtualCamera playerCamera;
+    [Tooltip("Required to disable/enable the game camera while navigating menus")]
+    private CinemachineTargetGroup targetGroup;
     [Space]
     [SerializeField]
     private GameObject pauseMenu;
@@ -17,6 +15,8 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField]
     private GameObject victoryMenu;
 
+    [Tooltip("Required to pause/unpause the player controller while navigating menus")]
+    public List<SplitScreenPlayerController> playerControllers;
     public static bool isPauseMenuUp = false;
 
     private void Update() 
@@ -62,13 +62,21 @@ public class PauseMenuManager : MonoBehaviour
 
     private void DisableControllerAndCamera() 
     {
-        playerController.OnDisable();
-        playerCamera.enabled = false;
+        foreach(SplitScreenPlayerController playerController in playerControllers) 
+        {
+            playerController.OnDisable();
+        }
+
+        targetGroup.enabled = false;
     }
 
     private void EnableControllerAndCamera() 
     {
-        playerController.OnEnable();
-        playerCamera.enabled = true;
+        foreach(SplitScreenPlayerController playerController in playerControllers) 
+        {
+            playerController.OnEnable();
+        }
+
+        targetGroup.enabled = true;
     }
 }
