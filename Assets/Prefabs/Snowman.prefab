@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2533042879045676255}
   - component: {fileID: 2533042879045676254}
   - component: {fileID: 2533042879045676241}
+  - component: {fileID: 5567355685372186740}
   - component: {fileID: 2533042879045676250}
   - component: {fileID: 2533042879045676253}
   - component: {fileID: -6322919525632863193}
@@ -101,6 +102,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!136 &5567355685372186740
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533042879045676240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!195 &2533042879045676250
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -136,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2533042879045676250}
-  fightRadius: 1
+  fightRadius: 2
 --- !u!114 &-6322919525632863193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57bc3f0773555349aa144fd02097659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UniqueID: 1
+  UniqueID: 2
 --- !u!114 &2791688041010300487
 MonoBehaviour:
   m_ObjectHideFlags: 0
