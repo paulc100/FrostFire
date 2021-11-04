@@ -2,7 +2,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MultiplayerLoading : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Required to disable and enable player controllers when the game is paused")]
