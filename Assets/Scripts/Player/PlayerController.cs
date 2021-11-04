@@ -7,17 +7,17 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    public float playerDefaultSpeed = 2.0f;
-    [SerializeField]
-    public float playerSpeed = 2.0f;
+    private float playerDefaultSpeed = 2.0f;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
     private float gravityValue = -9.81f;
     [SerializeField]
     private float rotationSpeed = 1000f;
-    [SerializeField]
+
     public int attackPower = 1;
+    public float playerSpeed = 2.0f;
+    private bool attackAvailable = true;
 
     private CharacterController controller;
     private PlayerInput playerInput;
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         enemyCollision = GetComponent<EnemyCollision>();
@@ -60,21 +61,33 @@ public class PlayerController : MonoBehaviour
 
     public void OnAttack(InputValue val)
     {
-        //Debug.Log(enemyCollision.snowmen.Count > 0);
-        // Attack triggered
-        if (enemyCollision.snowmen.Count > 0)
+        if (attackAvailable)
         {
-            Debug.Log(enemyCollision.snowmen.Count);
-            Debug.Log(enemyCollision.snowmen[0]);
-            if (enemyCollision.snowmen[0] == null)
+            //disable attack once called
+            attackAvailable = false;
+            if (enemyCollision.snowmen.Count > 0)
             {
-                enemyCollision.snowmen.RemoveAt(0);
+                Debug.Log(enemyCollision.snowmen.Count);
+                Debug.Log(enemyCollision.snowmen[0]);
+                if (enemyCollision.snowmen[0] == null)
+                {
+                    enemyCollision.snowmen.RemoveAt(0);
+                }
+                if (enemyCollision.snowmen[0] != null && enemyCollision.snowmen[0].GetComponent<Snowman>().damage(attackPower))
+                {
+                    enemyCollision.snowmen.RemoveAt(0);
+                }
             }
-            if (enemyCollision.snowmen[0] != null && enemyCollision.snowmen[0].GetComponent<Snowman>().damage(attackPower))
-            {
-                enemyCollision.snowmen.RemoveAt(0);
-            }
+            //enable attack after one second
+            StartCoroutine(attackCoroutine());
         }
+    }
+    IEnumerator attackCoroutine()
+    {
+        Debug.Log("Attack cooldown started at timestamp: " + Time.time);
+        yield return new WaitForSeconds(1);
+        Debug.Log("Attack available at: " + Time.time);
+        attackAvailable = true;
     }
 
     void Update()
