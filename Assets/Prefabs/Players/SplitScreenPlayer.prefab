@@ -228,7 +228,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -325,7 +325,6 @@ MonoBehaviour:
   warmth: 10
   warmthLostRate: 1
   warmthLostFrequency: 5
-  nearCampfire: 0
 --- !u!1 &3728668798206145306
 GameObject:
   m_ObjectHideFlags: 0

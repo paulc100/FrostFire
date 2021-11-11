@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerSpawnPoint : MonoBehaviour
 {
-    private void Awake() => PlayerSpawnManager.AddSpawnPoint(transform);
+    private void Awake() => PlayerManager.AddSpawnPoint(transform);
 
-    private void OnDestroy() => PlayerSpawnManager.RemoveSpawnPoint(transform);
+    private void OnDestroy() => PlayerManager.RemoveSpawnPoint(transform);
 
     private void OnDrawGizmos()
     {
