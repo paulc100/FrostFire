@@ -1447,11 +1447,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dcbecb050e1a2d48ae7d320d1e150e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  playerCamera: {fileID: 0}
+  targetGroup: {fileID: 0}
   pauseMenu: {fileID: 8680421798470222776}
   gameOverMenu: {fileID: 6454098682492790965}
   victoryMenu: {fileID: 4745650169175484068}
+  playerControllers: []
 --- !u!1 &8680421799329066604
 GameObject:
   m_ObjectHideFlags: 0
