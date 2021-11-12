@@ -15,7 +15,7 @@ public class GameEventManager : MonoBehaviour
     private SnowmenSpawner snowmenSpawner;
 
     void Update() 
-    {
+    {   
         if (currentSnowmanCollisions >= collisionsToEndGame) 
         {
             GameOver();

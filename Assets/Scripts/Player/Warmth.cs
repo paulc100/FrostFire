@@ -5,7 +5,7 @@ using UnityEngine;
 public class Warmth : MonoBehaviour
 {
     [SerializeField]
-    private int warmth = 10;
+    public int warmth = 10;
     [SerializeField]
     private int warmthLostRate = 1;
     [SerializeField]
@@ -35,7 +35,7 @@ public class Warmth : MonoBehaviour
         }
     }
 
-    private void removeWarmth(int damage)
+    public void removeWarmth(int damage)
     {
         warmth -= damage;
     }

@@ -325,7 +325,6 @@ MonoBehaviour:
   warmth: 10
   warmthLostRate: 1
   warmthLostFrequency: 5
-  nearCampfire: 0
 --- !u!1 &3728668798206145306
 GameObject:
   m_ObjectHideFlags: 0

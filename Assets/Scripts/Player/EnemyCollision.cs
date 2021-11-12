@@ -14,7 +14,7 @@ public class EnemyCollision : MonoBehaviour
     {
         if(other.gameObject.tag == "Snowman")
         {
-            Debug.Log("Snowman Detected");
+            //Debug.Log("Snowman Detected");
             snowmen.Add(other.gameObject);
         }
     }
@@ -29,7 +29,7 @@ public class EnemyCollision : MonoBehaviour
                     snowmen.RemoveAt(i);
                 }
             }
-            Debug.Log("Snowmen Left");
+            //Debug.Log("Snowmen Left");
             
         }
     }

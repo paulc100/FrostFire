@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 2533042879045676250}
   fightRadius: 2
+  attack: 2
 --- !u!114 &1179752097035188921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8993c215470aff49a621a89a6d9300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UniqueID: 0
+  UniqueID: 4
 --- !u!114 &5075356112059699371
 MonoBehaviour:
   m_ObjectHideFlags: 0
