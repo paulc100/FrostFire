@@ -16,6 +16,8 @@ public class SplitScreenPlayerController : MonoBehaviour
     private float gravityValue = -9.81f;
     [SerializeField]
     private float rotationSpeed = 1000f;
+    [SerializeField]
+    private float playerDetectionRadius = 5f;
 
     public int attackPower = 1;
     public float playerSpeed = 10.0f;
@@ -26,6 +28,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private EnemyCollision enemyCollision;
     private Warmth warmth;
+    private List<GameObject> players = new List<GameObject>();
 
     public Transform cameraTransform;
     private Vector3 playerVelocity;
@@ -36,6 +39,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     private InputAction moveAction;
     private InputAction jumpAction;
     private InputAction attackAction;
+    private InputAction shareAction;
 
     private void Awake() {
         controller = GetComponent<CharacterController>();
@@ -49,12 +53,33 @@ public class SplitScreenPlayerController : MonoBehaviour
         moveAction = playerInput.actions["Movement"];
         jumpAction = playerInput.actions["Jump"];
         attackAction = playerInput.actions["Attack"];
+        shareAction = playerInput.actions["ShareHP"];
     }
 
     void Update() {
         move();
+        if(shareAction.ReadValue<float>() == 1 && !downed)
+        {
+            shareWarmth();
+        }
+    }
 
-        
+    private void shareWarmth()
+    {
+        players.Clear();
+        Collider[] hits = Physics.OverlapSphere(transform.position, playerDetectionRadius);
+        foreach (Collider hit in hits)
+        {
+            if (hit.tag == "Player" && gameObject.GetInstanceID() != hit.transform.gameObject.GetInstanceID())
+            {
+                hit.transform.gameObject.GetComponent<Warmth>().isNearPlayer();
+                players.Add(hit.transform.gameObject);
+            }
+        }
+        if (players.Count > 0)
+        {
+            warmth.shareWarmth(players);
+        }
     }
 
     //Player movement

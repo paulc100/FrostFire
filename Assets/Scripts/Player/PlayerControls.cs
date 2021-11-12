@@ -51,12 +51,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Revive"",
+                    ""name"": ""ShareHP"",
                     ""type"": ""Button"",
                     ""id"": ""4557e49a-8cbd-4959-8469-e0ed2dba91da"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Hold""
                 }
             ],
             ""bindings"": [
@@ -120,7 +120,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""id"": ""dc66b5cf-c7f1-4c7f-b16e-8d4942462861"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": ""Clamp(min=-1,max=1)"",
+                    ""processors"": ""Clamp(min=-1,max=1),Scale(factor=0.1)"",
                     ""groups"": ""Controller;Both"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
@@ -199,7 +199,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard;Both"",
-                    ""action"": ""Revive"",
+                    ""action"": ""ShareHP"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -210,7 +210,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller;Both"",
-                    ""action"": ""Revive"",
+                    ""action"": ""ShareHP"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -258,7 +258,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
-        m_Player_Revive = m_Player.FindAction("Revive", throwIfNotFound: true);
+        m_Player_ShareHP = m_Player.FindAction("ShareHP", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -312,7 +312,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Attack;
-    private readonly InputAction m_Player_Revive;
+    private readonly InputAction m_Player_ShareHP;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -321,7 +321,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
-        public InputAction @Revive => m_Wrapper.m_Player_Revive;
+        public InputAction @ShareHP => m_Wrapper.m_Player_ShareHP;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -343,9 +343,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
-                @Revive.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRevive;
-                @Revive.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRevive;
-                @Revive.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRevive;
+                @ShareHP.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShareHP;
+                @ShareHP.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShareHP;
+                @ShareHP.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShareHP;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -362,9 +362,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
-                @Revive.started += instance.OnRevive;
-                @Revive.performed += instance.OnRevive;
-                @Revive.canceled += instance.OnRevive;
+                @ShareHP.started += instance.OnShareHP;
+                @ShareHP.performed += instance.OnShareHP;
+                @ShareHP.canceled += instance.OnShareHP;
             }
         }
     }
@@ -402,6 +402,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnRevive(InputAction.CallbackContext context);
+        void OnShareHP(InputAction.CallbackContext context);
     }
 }

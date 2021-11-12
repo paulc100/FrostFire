@@ -228,7 +228,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: Both
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -245,8 +245,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 1
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
@@ -296,6 +296,7 @@ MonoBehaviour:
   jumpHeight: 1
   gravityValue: -9.81
   rotationSpeed: 3
+  playerDetectionRadius: 5
   attackPower: 1
   playerSpeed: 10
   cameraTransform: {fileID: 4194517867518082122}
@@ -330,6 +331,8 @@ MonoBehaviour:
   warmthLostFrequency: 2
   campfireRecoveryFrequency: 1
   invulnerableCD: 2
+  revivePercentage: 0.25
+  warmthSharedperFrame: 0.1
 --- !u!1 &3728668798206145306
 GameObject:
   m_ObjectHideFlags: 0

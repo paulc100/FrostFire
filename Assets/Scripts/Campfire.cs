@@ -3,14 +3,12 @@ using UnityEngine;
 
 public class Campfire : MonoBehaviour
 {
-    public LayerMask uncheckedLayer;
     [SerializeField]
     private GameEventManager gameState;
 
     private Renderer campfireRenderer;
 
     private float campfireRadius = 10f;
-    private float currentHitDistance;
 
     private void Awake()
     {

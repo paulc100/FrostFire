@@ -5,9 +5,9 @@ using UnityEngine;
 public class Warmth : MonoBehaviour
 {
     [SerializeField]
-    private int warmth = 10;
+    private float warmth = 10f;
     [SerializeField]
-    private int defaultWarmth = 10;
+    private float defaultWarmth = 10f;
     [SerializeField]
     private int warmthLostRate = 1;
     [SerializeField]
@@ -17,15 +17,23 @@ public class Warmth : MonoBehaviour
     [SerializeField]
     private int campfireRecoveryFrequency = 1;
     [SerializeField]
+    private int shareWarmthFrequency = 1;
+    [SerializeField]
     private int invulnerableCD = 2;
+    [SerializeField]
+    private float revivePercentage = 0.25f;
+    [SerializeField]
+    private float warmthSharedperSecond= 0.1f;
 
     private bool nearCampfire = false;
-    private bool nearOtherPlayer = false;
+    private bool nearPlayer = false;
     private bool invulnerable = false;
     private bool isRunning_AwayCampfire = false;
     private bool isRunning_Campfire = false;
     private bool isDowned = false;
     private bool campfireTimer = false;
+    private bool playerTimer = false;
+    private bool warmthShareable = true;
 
     private Coroutine lastCampfireCoroutine;
 
@@ -54,13 +62,51 @@ public class Warmth : MonoBehaviour
         }
     }
 
+    public void isNearPlayer()
+    {
+        if (!nearPlayer)
+        {
+            if (playerTimer)
+            {
+                StopCoroutine(noPlayer());
+            }
+            nearPlayer = true;
+            playerTimer = true;
+            StartCoroutine(noPlayer());
+        }
+    }
+
+    public void shareWarmth(List<GameObject> players)
+    {
+        if (warmthShareable)
+        {
+            warmthShareable = false;
+            if (!isDowned && warmth > 0)
+            {
+                float shareValue = warmthSharedperSecond;
+                if (warmth - shareValue < 0)
+                {
+                    shareValue = warmth;
+
+                }
+
+                foreach (GameObject player in players)
+                {
+                    player.GetComponent<Warmth>().addWarmth(shareValue / players.Count);
+                }
+                removeWarmth(shareValue, false);
+            }
+            StartCoroutine(shareWarmthCoolDown());
+        }
+    }
+
     /*
      * function to remove warmth from player
      * damage: how much warmth is lost
      * snowmanDamage: is it a snowman that damaged the player
      * the player is stated as invulnerable for 2 seconds once damaged by a snowman
      */
-    private void removeWarmth(int damage, bool snowmanDamage)
+    private void removeWarmth(float damage, bool snowmanDamage)
     {
         if (snowmanDamage)
         {
@@ -74,13 +120,13 @@ public class Warmth : MonoBehaviour
         {
             warmthSubtraction(damage);
         }
-        Debug.Log(warmth);
+        Debug.Log(player.name + ": " + warmth);
     }
 
     /*
      * calculation for warmth subtraction
      */
-    private void warmthSubtraction(int damage)
+    private void warmthSubtraction(float damage)
     {
         if (warmth - damage <= 0)
         {
@@ -98,18 +144,22 @@ public class Warmth : MonoBehaviour
      * function to add warmth to player
      * givenWarmth: how much warmth is added
      */
-    private void addWarmth(int givenWarmth)
+    public void addWarmth(float givenWarmth)
     {
         if (warmth + givenWarmth > defaultWarmth)
         {
             warmth = defaultWarmth;
             isDowned = false;
             player.isDowned(false);
+        } else if (warmth + givenWarmth >= revivePercentage * defaultWarmth) {
+            warmth += givenWarmth;
+            isDowned = false;
+            player.isDowned(false);
         } else
         {
             warmth += givenWarmth;
         }
-        Debug.Log(warmth);
+        Debug.Log(player.name + ": " + warmth);
     }
 
     // Update is called once per frame
@@ -161,6 +211,16 @@ public class Warmth : MonoBehaviour
         campfireTimer = false;
     }
 
+    //it runs 1 second after the players confirms proximity
+    IEnumerator noPlayer()
+    {
+        yield return new WaitForSeconds(1);
+        nearPlayer = false;
+        //Debug.Log("Away from campfire");
+
+        playerTimer = false;
+    }
+
     /*
      * function that subtracts warmth while player is away from campfire proximity
      * also checks if near other player when it runs
@@ -168,7 +228,7 @@ public class Warmth : MonoBehaviour
     IEnumerator awayFromWarmth()
     {
         yield return new WaitForSeconds(warmthLostFrequency);
-        if (nearOtherPlayer)
+        if (nearPlayer)
         {
             removeWarmth(warmthLostRate / 2, false);
         }
@@ -194,5 +254,10 @@ public class Warmth : MonoBehaviour
     {
         yield return new WaitForSeconds(invulnerableCD);
         invulnerable = false;
+    }
+    IEnumerator shareWarmthCoolDown()
+    {
+        yield return new WaitForSeconds(shareWarmthFrequency);
+        warmthShareable = true; ;
     }
 }
