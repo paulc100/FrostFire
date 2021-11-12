@@ -7,7 +7,9 @@ using UnityEngine.InputSystem;
 public class SplitScreenPlayerController : MonoBehaviour
 {
     [SerializeField]
-    public float playerDefaultSpeed = 2.0f;
+    public float playerDefaultSpeed = 10.0f;
+    [SerializeField]
+    public int playerDefaultAttack = 1;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
@@ -16,12 +18,15 @@ public class SplitScreenPlayerController : MonoBehaviour
     private float rotationSpeed = 1000f;
 
     public int attackPower = 1;
-    public float playerSpeed = 2.0f;
+    public float playerSpeed = 10.0f;
     private bool attackAvailable = true;
+    private bool downed = false;
 
     private CharacterController controller;
     private PlayerInput playerInput;
     private EnemyCollision enemyCollision;
+    private Warmth warmth;
+
     public Transform cameraTransform;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -36,6 +41,7 @@ public class SplitScreenPlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
         enemyCollision = GetComponent<EnemyCollision>();
+        warmth = GetComponent<Warmth>();
 
         // Get random player color
         GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);  
@@ -46,20 +52,30 @@ public class SplitScreenPlayerController : MonoBehaviour
     }
 
     void Update() {
+        move();
+
+        
+    }
+
+    //Player movement
+    private void move()
+    {
         groundedPlayer = controller.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0) {
+        if (groundedPlayer && playerVelocity.y < 0)
+        {
             playerVelocity.y = 0f;
         }
 
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 direction = new Vector3(input.x, 0, input.y).normalized;
 
-        if (direction.magnitude >= 0.1f) {
-            float rotationAngle = cameraTransform == null ? 0f : cameraTransform.eulerAngles.y; 
+        if (direction.magnitude >= 0.1f)
+        {
+            float rotationAngle = cameraTransform == null ? 0f : cameraTransform.eulerAngles.y;
 
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + rotationAngle;
             float smoothAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            
+
             // Rotate player in direction of camera
             transform.rotation = Quaternion.Euler(0f, smoothAngle, 0f);
 
@@ -67,15 +83,19 @@ public class SplitScreenPlayerController : MonoBehaviour
             controller.Move(moveDirection.normalized * Time.deltaTime * playerSpeed);
         }
 
-        // Changes the height position of the player..
-        if (jumpAction.triggered && groundedPlayer) {
+        // Changes the height position of the player../ Jump
+        if (jumpAction.triggered && groundedPlayer && !downed)
+        {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
+        //gravity
         playerVelocity.y += gravityValue * Time.deltaTime;
+        //controller
         controller.Move(playerVelocity * Time.deltaTime);
     }
 
+    //when player controllers are reenabled
     public void OnEnable() {
         if(moveAction != null && jumpAction != null && attackAction != null) {
             moveAction.Enable();
@@ -83,13 +103,14 @@ public class SplitScreenPlayerController : MonoBehaviour
             attackAction.Enable();
         }
     }
-
+    //when player controllers are disabled
     public void OnDisable() {
         moveAction.Disable();
         jumpAction.Disable();
         attackAction.Disable();
     }
 
+    //listen to attack call
     public void OnAttack(InputValue val)
     {
         if (attackAvailable)
@@ -102,11 +123,29 @@ public class SplitScreenPlayerController : MonoBehaviour
         }
     }
 
+    //when warmth is zero, player is downed, function is called
+    //when player is revived, function is called
+    public void isDowned(bool status)
+    {
+        downed = status;
+        if (downed)
+        {
+            playerSpeed = 2f;
+            attackAvailable = false;
+        } else
+        {
+            //Debug.Log("isDowned() ran");
+            playerSpeed = playerDefaultSpeed;
+            attackAvailable = true;
+        }
+    }
+
+    //cooldown for each attack
     IEnumerator attackCoroutine()
     {
-        Debug.Log("Attack cooldown started at timestamp: " + Time.time);
+        //Debug.Log("Attack cooldown started at timestamp: " + Time.time);
         yield return new WaitForSeconds(1);
-        Debug.Log("Attack available at: " + Time.time);
+        //Debug.Log("Attack available at: " + Time.time);
         attackAvailable = true;
     }
 }

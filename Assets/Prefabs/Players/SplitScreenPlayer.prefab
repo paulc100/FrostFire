@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2444572102551931671}
   - component: {fileID: 2444572102551931670}
   - component: {fileID: 2444572102551931665}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1924956310339365970}
   - component: {fileID: 2444572102853945285}
   - component: {fileID: 7219426306911159608}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player Pill
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -291,7 +291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28de95c7cc2f52341af134efc1f9e581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDefaultSpeed: 2
+  playerDefaultSpeed: 10
+  playerDefaultAttack: 1
   jumpHeight: 1
   gravityValue: -9.81
   rotationSpeed: 3
@@ -323,9 +324,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warmth: 10
+  defaultWarmth: 10
   warmthLostRate: 1
-  warmthLostFrequency: 5
-  nearCampfire: 0
+  warmthRecoveryRate: 1
+  warmthLostFrequency: 2
+  campfireRecoveryFrequency: 1
+  invulnerableCD: 2
 --- !u!1 &3728668798206145306
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +341,7 @@ GameObject:
   - component: {fileID: 4194517867518082122}
   - component: {fileID: 3292130385535334824}
   - component: {fileID: 799149744725936518}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SplitScreenCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +431,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3591307643929650035}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SplitScreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
