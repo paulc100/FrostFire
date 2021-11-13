@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3261127483787235371}
   - component: {fileID: 3261127483787235372}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MiddleRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3261127483787235370}
-  m_LocalRotation: {x: 0.12443153, y: 0.03550063, z: -0.0044548954, w: 0.99158293}
+  m_LocalRotation: {x: 0.12443153, y: 0.03550065, z: -0.0044548973, w: 0.99158293}
   m_LocalPosition: {x: -1.2157092, y: 3.87, z: -8.956474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 3261127484474432222}
   - component: {fileID: 3261127484474432221}
   - component: {fileID: 3261127484474432220}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3261127484881617831}
   - component: {fileID: 3261127484881617816}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BottomRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3261127484881617830}
-  m_LocalRotation: {x: 0.106428914, y: 0.033803705, z: -0.003620359, w: 0.99373895}
+  m_LocalRotation: {x: 0.106428914, y: 0.033803698, z: -0.0036203582, w: 0.99373895}
   m_LocalPosition: {x: -1.1552305, y: 3.87, z: -8.960703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -290,7 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3261127484949748863}
   - component: {fileID: 3261127484949748848}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TopRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 3261127485009535357}
   - component: {fileID: 3261127485009535356}
   - component: {fileID: 3261127485009535355}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 3261127485026474036}
   - component: {fileID: 3261127485026474035}
   - component: {fileID: 3261127485026474034}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 3261127485092324620}
   - component: {fileID: 3261127485092324619}
   - component: {fileID: 3261127485092324618}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 3261127485135821918}
   - component: {fileID: 3261127485135821917}
   - component: {fileID: 3261127485135821915}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 3261127485221265972}
   - component: {fileID: 3261127485221265971}
   - component: {fileID: 3261127485221265973}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -943,7 +943,9 @@ GameObject:
   - component: {fileID: 3261127485244427694}
   - component: {fileID: 3261127485244427695}
   - component: {fileID: 2048923409882813194}
-  m_Layer: 0
+  - component: {fileID: 2655184422693989998}
+  - component: {fileID: 7377295619077062885}
+  m_Layer: 3
   m_Name: Player Pill
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1149,9 +1151,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warmth: 10
+  defaultWarmth: 10
   warmthLostRate: 1
+  warmthRecoveryRate: 1
   warmthLostFrequency: 5
-  nearCampfire: 0
+  campfireRecoveryFrequency: 1
+  invulnerableCD: 2
+--- !u!114 &2655184422693989998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3261127485244427701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 6e1399efea975f049bd70b56198e36af
+  hasSpawned: 0
+--- !u!114 &7377295619077062885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3261127485244427701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  sendInterval: 0.05
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 0
+  bufferTimeMultiplier: 1
+  bufferSizeLimit: 64
+  catchupThreshold: 4
+  catchupMultiplier: 0.1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
 --- !u!1 &4193226260559577448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4430385403146783001}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

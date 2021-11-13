@@ -57,6 +57,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ShareHP"",
+                    ""type"": ""Button"",
+                    ""id"": ""4557e49a-8cbd-4959-8469-e0ed2dba91da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold""
                 }
             ],
             ""bindings"": [
@@ -120,7 +128,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""id"": ""dc66b5cf-c7f1-4c7f-b16e-8d4942462861"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": ""Clamp(min=-1,max=1)"",
+                    ""processors"": ""Clamp(min=-1,max=1),Scale(factor=0.1)"",
                     ""groups"": ""Controller;Both"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
@@ -205,12 +213,34 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ba589269-2397-4c3f-9128-79d237d0be53"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;Both"",
+                    ""action"": ""ShareHP"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""1392518b-abf8-4e03-83e1-0f30d37eeccc"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11235dfa-bd04-441a-ae69-9375083641c9"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller;Both"",
+                    ""action"": ""ShareHP"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -259,6 +289,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Start = m_Player.FindAction("Start", throwIfNotFound: true);
+        m_Player_ShareHP = m_Player.FindAction("ShareHP", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -313,6 +344,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Start;
+    private readonly InputAction m_Player_ShareHP;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -322,6 +354,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Start => m_Wrapper.m_Player_Start;
+        public InputAction @ShareHP => m_Wrapper.m_Player_ShareHP;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -346,6 +379,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Start.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
                 @Start.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
                 @Start.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                @ShareHP.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShareHP;
+                @ShareHP.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShareHP;
+                @ShareHP.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShareHP;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -365,6 +401,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Start.started += instance.OnStart;
                 @Start.performed += instance.OnStart;
                 @Start.canceled += instance.OnStart;
+                @ShareHP.started += instance.OnShareHP;
+                @ShareHP.performed += instance.OnShareHP;
+                @ShareHP.canceled += instance.OnShareHP;
             }
         }
     }
@@ -403,5 +442,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnStart(InputAction.CallbackContext context);
+        void OnShareHP(InputAction.CallbackContext context);
     }
 }

@@ -140,4 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6977c565a25ae6a4e9ef7943db80970e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uncheckedLayer:
+    serializedVersion: 2
+    m_Bits: 311
   gameState: {fileID: 0}

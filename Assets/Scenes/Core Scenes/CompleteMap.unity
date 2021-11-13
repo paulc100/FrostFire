@@ -18897,6 +18897,10 @@ PrefabInstance:
       propertyPath: LightsModule.intensityCurve.scalar
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 9066222715457941650, guid: 831ebb7d04fca314fb0997f4c9286ddf, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9066222715457941651, guid: 831ebb7d04fca314fb0997f4c9286ddf, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -22816,7 +22820,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 3e-45, z: 1e-45, w: 9.1835e-41}
+  m_BoundingSphereOverride: {x: NaN, y: 4, z: NaN, w: 2}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -24062,7 +24066,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.3527397, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
