@@ -9,7 +9,10 @@ public class PlayerManager : MonoBehaviour
     [Header("UI Management")]
     [SerializeField]
     [Tooltip("Required to disable and enable player controllers when the game is paused")]
-    private PauseMenuManager menuManager;
+    private PauseMenuManager menuManager = null;
+    [SerializeField]
+    [Tooltip("Required to connect player data to HUD components")]
+    private HUDManager hudManager = null; 
 
     [Header("Camera Management")]
     [SerializeField]
@@ -66,6 +69,9 @@ public class PlayerManager : MonoBehaviour
 
         // Spawn player within scene
         SpawnPlayer(spawnedPlayer);
+
+        // Setup player HUD
+        hudManager.AddPlayerReferenceToHUD(spawnedPlayer);
 
         // Add player to camera target group
         SetupPlayerCameras(spawnedPlayer);
