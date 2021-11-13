@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ShareHP",
+                    "type": "Button",
+                    "id": "4557e49a-8cbd-4959-8469-e0ed2dba91da",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold"
                 }
             ],
             "bindings": [
@@ -99,7 +107,7 @@
                     "id": "dc66b5cf-c7f1-4c7f-b16e-8d4942462861",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "Clamp(min=-1,max=1)",
+                    "processors": "Clamp(min=-1,max=1),Scale(factor=0.1)",
                     "groups": "Controller;Both",
                     "action": "Movement",
                     "isComposite": false,
@@ -168,6 +176,28 @@
                     "processors": "",
                     "groups": "Controller;Both",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba589269-2397-4c3f-9128-79d237d0be53",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard;Both",
+                    "action": "ShareHP",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "11235dfa-bd04-441a-ae69-9375083641c9",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller;Both",
+                    "action": "ShareHP",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

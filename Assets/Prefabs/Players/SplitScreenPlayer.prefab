@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2444572102551931671}
   - component: {fileID: 2444572102551931670}
   - component: {fileID: 2444572102551931665}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1924956310339365970}
   - component: {fileID: 2444572102853945285}
   - component: {fileID: 7219426306911159608}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player Pill
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: Both
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -245,8 +245,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 1
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
@@ -291,10 +291,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28de95c7cc2f52341af134efc1f9e581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDefaultSpeed: 2
+  playerDefaultSpeed: 10
+  playerDefaultAttack: 1
   jumpHeight: 1
   gravityValue: -9.81
   rotationSpeed: 3
+  playerDetectionRadius: 5
   attackPower: 1
   playerSpeed: 10
   cameraTransform: {fileID: 4194517867518082122}
@@ -323,9 +325,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warmth: 10
+  defaultWarmth: 10
   warmthLostRate: 1
-  warmthLostFrequency: 5
-  nearCampfire: 0
+  warmthRecoveryRate: 1
+  warmthLostFrequency: 2
+  campfireRecoveryFrequency: 1
+  invulnerableCD: 2
+  revivePercentage: 0.25
+  warmthSharedperFrame: 0.1
 --- !u!1 &3728668798206145306
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +344,7 @@ GameObject:
   - component: {fileID: 4194517867518082122}
   - component: {fileID: 3292130385535334824}
   - component: {fileID: 799149744725936518}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SplitScreenCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +434,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3591307643929650035}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SplitScreenPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

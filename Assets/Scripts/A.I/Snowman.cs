@@ -8,7 +8,7 @@ public class Snowman : MonoBehaviour
     private void Awake() {
         health = 2;
     }
-public bool damage(int damageValue)
+    public bool damage(int damageValue)
     {
         health -= damageValue;
         if (health == 1) {
