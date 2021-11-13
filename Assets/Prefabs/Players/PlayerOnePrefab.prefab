@@ -292,10 +292,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28de95c7cc2f52341af134efc1f9e581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDefaultSpeed: 2
+  playerDefaultSpeed: 10
+  playerDefaultAttack: 1
   jumpHeight: 1
   gravityValue: -9.81
   rotationSpeed: 3
+  playerDetectionRadius: 5
   attackPower: 1
   playerSpeed: 10
   cameraTransform: {fileID: 0}
@@ -324,8 +326,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warmth: 10
+  defaultWarmth: 10
   warmthLostRate: 1
+  warmthRecoveryRate: 1
   warmthLostFrequency: 5
+  campfireRecoveryFrequency: 1
+  shareWarmthFrequency: 1
+  invulnerableCD: 2
+  revivePercentage: 0.25
+  warmthSharedperSecond: 0.1
 --- !u!1 &2778898593373669710
 GameObject:
   m_ObjectHideFlags: 0

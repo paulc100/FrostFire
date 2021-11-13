@@ -24066,7 +24066,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3527397, y: 1}
+    m_SensorSize: {x: 1.4691781, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -34308,10 +34308,18 @@ PrefabInstance:
       propertyPath: snowmenSpawner
       value: 
       objectReference: {fileID: 55181194}
+    - target: {fileID: 7446059368597931124, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 3935110723001117442, guid: 155557f5c4bfe174eaf81e5d07f3ba15, type: 3}
     - target: {fileID: 7446059368597931127, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: targetGroup
       value: 
       objectReference: {fileID: 2138734080}
+    - target: {fileID: 7446059368597931127, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: cinemachineVirtualCamera
+      value: 
+      objectReference: {fileID: 1689711841}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
 --- !u!114 &1798160763 stripped
@@ -36147,7 +36155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df8119dde48a4f6a802bcca0f8296c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 3935110723001117442, guid: 0db6d5d98383a6548b2e94bf887676bf, type: 3}
+  playerObject: {fileID: 0}
 --- !u!114 &2037530801
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -149,12 +149,19 @@ public class Warmth : MonoBehaviour
         if (warmth + givenWarmth > defaultWarmth)
         {
             warmth = defaultWarmth;
-            isDowned = false;
-            player.isDowned(false);
+            if(isDowned)
+            {
+                isDowned = false;
+                player.isDowned(false);
+            }
+            
         } else if (warmth + givenWarmth >= revivePercentage * defaultWarmth) {
             warmth += givenWarmth;
-            isDowned = false;
-            player.isDowned(false);
+            if (isDowned)
+            {
+                isDowned = false;
+                player.isDowned(false);
+            }
         } else
         {
             warmth += givenWarmth;
