@@ -14,6 +14,8 @@ public class PowerupBehaviour : MonoBehaviour
     [SerializeField]
     private float idleBobbingHeight = 1.1f;
 
+    private SplitScreenPlayerController splitScreenPlayerController;
+
     private Transform transform_;
     // Start is called before the first frame update
     private void Awake()
@@ -37,10 +39,34 @@ public class PowerupBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        splitScreenPlayerController = other.gameObject.GetComponentInChildren<SplitScreenPlayerController>();
+
+        if (other.gameObject.tag == "Player" && splitScreenPlayerController.UniqueID == 1)
         {
             ActivatePowerup();
             gameObject.SetActive(false);
+            Debug.Log(splitScreenPlayerController.UniqueID);
+        }
+
+        if (other.gameObject.tag == "Player" && splitScreenPlayerController.UniqueID == 2)
+        {
+            ActivatePowerup();
+            gameObject.SetActive(false);
+            Debug.Log(splitScreenPlayerController.UniqueID);
+        }
+
+        if (other.gameObject.tag == "Player" && splitScreenPlayerController.UniqueID == 3)
+        {
+            ActivatePowerup();
+            gameObject.SetActive(false);
+            Debug.Log(splitScreenPlayerController.UniqueID);
+        }
+
+        if (other.gameObject.tag == "Player" && splitScreenPlayerController.UniqueID == 4)
+        {
+            ActivatePowerup();
+            gameObject.SetActive(false);
+            Debug.Log(splitScreenPlayerController.UniqueID);
         }
     }
     private void ActivatePowerup()

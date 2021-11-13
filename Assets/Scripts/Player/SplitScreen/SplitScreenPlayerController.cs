@@ -19,6 +19,8 @@ public class SplitScreenPlayerController : MonoBehaviour
     [SerializeField]
     public int attackPower = 1;
 
+    public int UniqueID = 1;
+    
     private CharacterController controller;
     private PlayerInput playerInput;
     private EnemyCollision enemyCollision;
