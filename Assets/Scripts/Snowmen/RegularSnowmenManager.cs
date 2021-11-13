@@ -13,6 +13,7 @@ public class RegularSnowmenManager : MonoBehaviour
 
     void OnDestroy() {
         _count--;
+        SnowmenSpawner.waveTotalSnowmanCount--;
     }
 
     public int GetActiveCount() {

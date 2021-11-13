@@ -38,6 +38,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "6c879324-8178-4358-9d36-ad1f9a9bd791",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "ShareHP",
                     "type": "Button",
                     "id": "4557e49a-8cbd-4959-8469-e0ed2dba91da",
@@ -181,12 +189,32 @@
                 },
                 {
                     "name": "",
+                    "id": "0454333a-9da2-48f3-a28d-448738f00f66",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "", 
                     "id": "ba589269-2397-4c3f-9128-79d237d0be53",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard;Both",
-                    "action": "ShareHP",
+                    "action": "ShareHP"
+                },
+                {
+                    "name": "",
+                    "id": "1392518b-abf8-4e03-83e1-0f30d37eeccc",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -197,9 +225,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller;Both",
-                    "action": "ShareHP",
-                    "isComposite": false,
-                    "isPartOfComposite": false
+                    "action": "ShareHP"
                 }
             ]
         }

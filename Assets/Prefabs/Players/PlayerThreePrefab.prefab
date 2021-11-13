@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2444572102551931671}
   - component: {fileID: 2444572102551931670}
   - component: {fileID: 2444572102551931665}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1924956310339365970}
   - component: {fileID: 2444572102853945285}
   - component: {fileID: 7219426306911159608}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Player Pill
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb73d30bf6229c643a27860a0505b0af, type: 2}
+  - {fileID: 2100000, guid: e83f0d9731e251f49922e4cf54d94b65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Both
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -245,8 +245,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 1
-  m_StepOffset: 0
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
@@ -291,15 +291,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28de95c7cc2f52341af134efc1f9e581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDefaultSpeed: 10
-  playerDefaultAttack: 1
+  playerDefaultSpeed: 2
   jumpHeight: 1
   gravityValue: -9.81
   rotationSpeed: 3
-  playerDetectionRadius: 5
   attackPower: 1
   playerSpeed: 10
-  cameraTransform: {fileID: 4194517867518082122}
+  cameraTransform: {fileID: 0}
 --- !u!114 &2444572102853945285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,106 +323,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warmth: 10
-  defaultWarmth: 10
   warmthLostRate: 1
-  warmthRecoveryRate: 1
-  warmthLostFrequency: 2
-  campfireRecoveryFrequency: 1
-  invulnerableCD: 2
-  revivePercentage: 0.25
-  warmthSharedperFrame: 0.1
---- !u!1 &3728668798206145306
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4194517867518082122}
-  - component: {fileID: 3292130385535334824}
-  - component: {fileID: 799149744725936518}
-  m_Layer: 3
-  m_Name: SplitScreenCamera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &4194517867518082122
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3728668798206145306}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.85, y: 4.31, z: -5.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 3591307643929650035}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &3292130385535334824
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3728668798206145306}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!114 &799149744725936518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3728668798206145306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9224fb870f3114f41a2235c42d84ad2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turnSpeed: 5
-  target: {fileID: 2444572102853945311}
-  minTurnAngle: -90
-  maxTurnAngle: 0
-  playerInput: {fileID: 2444572102853945287}
+  warmthLostFrequency: 5
 --- !u!1 &3935110723001117442
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,8 +334,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3591307643929650035}
-  m_Layer: 3
-  m_Name: SplitScreenPlayer
+  m_Layer: 0
+  m_Name: PlayerThreePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,7 +353,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2444572102853945280}
-  - {fileID: 4194517867518082122}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

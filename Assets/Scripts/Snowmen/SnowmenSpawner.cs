@@ -10,6 +10,7 @@ public class SnowmenSpawner : MonoBehaviour
 
     public RegularSnowmenManager regularSnowman;
     public RangedSnowmenManager rangedSnowman;
+    public static int waveTotalSnowmanCount = 0;
 
     [System.Serializable]
     public class Wave
@@ -66,6 +67,10 @@ public class SnowmenSpawner : MonoBehaviour
     {
         waveInProgress = true;
         Debug.Log("Wave in progress");
+
+        // Update total snowman count for the wave
+        waveTotalSnowmanCount = wave.regularCount + wave.rangedCount;
+
         while (regularIndex + rangedIndex < wave.regularCount + wave.rangedCount)
         {
             for (int i = 0; i < spawnPosCount; i++)

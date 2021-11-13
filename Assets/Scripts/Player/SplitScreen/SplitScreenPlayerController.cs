@@ -47,9 +47,6 @@ public class SplitScreenPlayerController : MonoBehaviour
         enemyCollision = GetComponent<EnemyCollision>();
         warmth = GetComponent<Warmth>();
 
-        // Get random player color
-        GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);  
-
         moveAction = playerInput.actions["Movement"];
         jumpAction = playerInput.actions["Jump"];
         attackAction = playerInput.actions["Attack"];

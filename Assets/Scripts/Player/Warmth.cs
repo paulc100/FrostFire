@@ -5,7 +5,7 @@ using UnityEngine;
 public class Warmth : MonoBehaviour
 {
     [SerializeField]
-    private float warmth = 10f;
+    public float warmth = 10f;
     [SerializeField]
     private float defaultWarmth = 10f;
     [SerializeField]
