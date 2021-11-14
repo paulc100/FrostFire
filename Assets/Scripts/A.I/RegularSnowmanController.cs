@@ -6,7 +6,7 @@ public class RegularSnowmanController : SnowmanController
 {
     
     public override void Attack(Transform target) {
-        
+
     }
 
     private void OnTriggerEnter(Collider other) {
