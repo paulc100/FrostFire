@@ -5,33 +5,30 @@ using System.Collections.Generic;
 
 public class SnowmanController : MonoBehaviour
 {
+    [Header("general")]
     // The AI object.
     public NavMeshAgent agent;
 
     // The campfire position.
-    private Transform campfire;
+    public GameObject campfire;
 
+    [Header("Attributes")]
     // range that snowman will stop from player.
-    private int sightRadius;
+    public int sightRadius = 6;
     public int fightRadius = 2;
-    public int attack = 2;
+    public int attackDamage = 2;
+
 
     private bool isLockedOnPlayer;
-    private IEnumerator attackDelay;
-
-    private Collider[] colliders;
-    private bool isAttacking;
-    private bool isHit = false;
+    protected bool isAttacking;
 
     // Start is called before the first frame update.
     void Start()
     {
         isAttacking = false;
-        sightRadius = 6;
-        fightRadius = 2;
         // Setting target location as campfire.
-        campfire = GameObject.Find("Campfire").transform;
-        Move(campfire);
+        //campfire = GameObject.Find("Campfire").transform;
+        Move(campfire.transform);
     }   
 
     // Update is called once per frame
@@ -50,52 +47,29 @@ public class SnowmanController : MonoBehaviour
         agent.ResetPath();  
     }
 
-	private void OnTriggerEnter(Collider other) {
-        if (!isAttacking && other.gameObject.tag == "Player") {
-            //Player takes damage
-            other.GetComponent<Warmth>().removeWarmth(attack);
-            Debug.Log("warmth= " + other.GetComponent<Warmth>().warmth);
-
-            float force = 1000;
-       
-            
-            // Knock back that doesn't work lol
-            /*Vector3 dir = other.gameObject.transform.position - transform.position;
-            dir = -dir.normalized;
-            other.gameObject.GetComponent<Rigidbody>().AddForce(dir * force); */
-            
-        }
-	}
-
-	public void Attack(Vector3 position) {
-        //attack start
-        isAttacking = true;
-        //animation end 
-        isAttacking = false;
-}
-
-	/*private IEnumerator ChargeAndAttack(float delayTime) {
-        yield return new WaitForSeconds(delayTime);
-        isAttacking = false;
-    }*/
+	public virtual void Attack(Transform target) {
+        //Refer to child class for code
+    }
 
     private void checkForPlayers(Vector3 center) {
         Collider[] hitColliders = Physics.OverlapSphere(center, sightRadius);
         foreach (var hitCollider in hitColliders)  {
+            // checks if collision was a player
             if (hitCollider.tag == "Player") {
+
+                //If they are close enough to atk, stop and atk. If they are not, move closer to player.
                 if (Vector3.Distance(hitCollider.transform.position, transform.position) <= fightRadius ) {
                     Stop();
-                    if (!isAttacking) {
-                        Attack(hitCollider.transform.position);
-					}
+                    isAttacking = true; //for collision class
+                    Attack(hitCollider.transform);
                 } else {
-                    //isLockedOnPlayer = true;
                     Move(hitCollider.transform);
-				}
+
+                }
                 return;
             }
         }
-        //isLockedOnPlayer = false;
-        Move(campfire);
+        isAttacking = false;
+        Move(campfire.transform);
     }
 }
