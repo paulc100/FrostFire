@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Core Scenes/UI/MainMenu.unity
     guid: 8c6e8c65227cede4cb4e9117968c351b
   - enabled: 1
-    path: Assets/Scenes/Prototyping Scenes/JakeScene.unity
-    guid: 81f77f849940d894ab0c8c3c9f73e80d
+    path: Assets/Scenes/Core Scenes/BackyardBeta.unity
+    guid: 684e061961cf058478ed6c2f165fbb97
   m_configObjects: {}

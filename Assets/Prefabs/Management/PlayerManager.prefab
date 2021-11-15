@@ -89,7 +89,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuManager: {fileID: 0}
+  hudManager: {fileID: 0}
   targetGroup: {fileID: 0}
+  cinemachineVirtualCamera: {fileID: 0}
 --- !u!114 &7841629562227660609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableCharacters:
-  - {fileID: 3935110723001117442, guid: 155557f5c4bfe174eaf81e5d07f3ba15, type: 3}
-  - {fileID: 3935110723001117442, guid: 0016d67fb554be64d94da85ae9de5fbd, type: 3}
-  - {fileID: 3935110723001117442, guid: 95d172be6e3f06845a42e8f99b95c8c5, type: 3}
-  - {fileID: 3935110723001117442, guid: d9b6ed6130dafdd4fb86a9d04dc81781, type: 3}
+  - {fileID: 3935110723001117442, guid: 627adb5bd8dedd0419b6536db5663c33, type: 3}
+  - {fileID: 3935110723001117442, guid: 07449175d1a30504baf5e6eb4d06c44b, type: 3}
+  - {fileID: 3935110723001117442, guid: eec454f6d45b29242b469346654101a5, type: 3}
+  - {fileID: 3935110723001117442, guid: 4fa55894b70ead646b2a1e0ca8f5de09, type: 3}
