@@ -166,7 +166,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b7dbfea43ea76684fa9598ea3b23ea7f, type: 2}
+  - {fileID: 2100000, guid: e83f0d9731e251f49922e4cf54d94b65, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -344,7 +344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3591307643929650035}
   m_Layer: 0
-  m_Name: PlayerFouPrefab
+  m_Name: PlayerThreePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
