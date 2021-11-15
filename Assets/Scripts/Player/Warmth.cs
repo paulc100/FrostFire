@@ -9,21 +9,10 @@ public class Warmth : MonoBehaviour
     [SerializeField]
     private float defaultWarmth = 10f;
     [SerializeField]
-    private int warmthLostRate = 1;
-    [SerializeField]
-    private int warmthRecoveryRate = 1;
-    [SerializeField]
-    private int warmthLostFrequency = 2;
-    [SerializeField]
-    private int campfireRecoveryFrequency = 1;
-    [SerializeField]
-    private int shareWarmthFrequency = 1;
-    [SerializeField]
     private int invulnerableCD = 2;
     [SerializeField]
     private float revivePercentage = 0.25f;
-    [SerializeField]
-    private float warmthSharedperSecond= 0.1f;
+    
 
     private bool nearCampfire = false;
     private bool nearPlayer = false;
@@ -34,6 +23,14 @@ public class Warmth : MonoBehaviour
     private bool campfireTimer = false;
     private bool playerTimer = false;
     private bool warmthShareable = true;
+
+    private float warmthLostRate = 0.02f;
+    private float warmthRecoveryRate = 0.1f;
+    private float warmthLostFrequency = 0.1f;
+    private float campfireRecoveryFrequency = 0.1f;
+    private float detectionFrequency = 0.1f;
+    private float shareWarmthFrequency = 0.1f;
+    private float warmthSharedperMillisecond = 0.1f;
 
     private Coroutine lastCampfireCoroutine;
 
@@ -83,7 +80,7 @@ public class Warmth : MonoBehaviour
             warmthShareable = false;
             if (!isDowned && warmth > 0)
             {
-                float shareValue = warmthSharedperSecond;
+                float shareValue = warmthSharedperMillisecond;
                 if (warmth - shareValue < 0)
                 {
                     shareValue = warmth;
@@ -211,7 +208,7 @@ public class Warmth : MonoBehaviour
     //it runs 1 second after the campfire confirms proximity
     IEnumerator noCampfire()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(detectionFrequency);
         nearCampfire = false;
         //Debug.Log("Away from campfire");
 
@@ -221,7 +218,7 @@ public class Warmth : MonoBehaviour
     //it runs 1 second after the players confirms proximity
     IEnumerator noPlayer()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(detectionFrequency);
         nearPlayer = false;
         //Debug.Log("Away from campfire");
 
