@@ -327,14 +327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warmth: 10
   defaultWarmth: 10
-  warmthLostRate: 1
-  warmthRecoveryRate: 1
-  warmthLostFrequency: 5
-  campfireRecoveryFrequency: 1
-  shareWarmthFrequency: 1
   invulnerableCD: 2
   revivePercentage: 0.25
-  warmthSharedperSecond: 0.1
 --- !u!1 &2778898593373669710
 GameObject:
   m_ObjectHideFlags: 0
