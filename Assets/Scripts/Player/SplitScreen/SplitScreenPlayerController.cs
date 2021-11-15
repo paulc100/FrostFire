@@ -41,6 +41,8 @@ public class SplitScreenPlayerController : MonoBehaviour
     private InputAction attackAction;
     private InputAction shareAction;
 
+    public Animator animator;
+
     private void Awake() {
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
@@ -103,11 +105,17 @@ public class SplitScreenPlayerController : MonoBehaviour
 
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDirection.normalized * Time.deltaTime * playerSpeed);
+
+            animator.SetBool("Moving", true);
+        } else
+        {
+            animator.SetBool("Moving", false);
         }
 
         // Changes the height position of the player../ Jump
         if (jumpAction.triggered && groundedPlayer && !downed)
         {
+            animator.SetTrigger("Jump");
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
@@ -137,6 +145,8 @@ public class SplitScreenPlayerController : MonoBehaviour
     {
         if (attackAvailable)
         {
+            animator.SetTrigger("Attack");
+
             //disable attack once called
             attackAvailable = false;
             enemyCollision.killSnowman(attackPower);
