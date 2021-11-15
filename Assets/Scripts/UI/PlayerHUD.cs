@@ -30,7 +30,7 @@ public class PlayerHUD : MonoBehaviour
 
             CalculateWarmthBarFill();
 
-            warmthPercentage = CalculateWarmthBarPercentage();
+            warmthPercentage = (int) CalculateWarmthBarPercentage();
             warmthText.text = warmthPercentage + "%";
         }
     }
