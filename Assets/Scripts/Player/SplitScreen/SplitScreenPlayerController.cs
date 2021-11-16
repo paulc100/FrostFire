@@ -72,16 +72,27 @@ public class SplitScreenPlayerController : MonoBehaviour
 
     private void shareWarmth()
     {
-        players.Clear();
         Collider[] hits = Physics.OverlapSphere(transform.position, playerDetectionRadius);
+        List<GameObject> newPlayers = new List<GameObject>();
         foreach (Collider hit in hits)
         {
-            if (hit.tag == "Player" && gameObject.GetInstanceID() != hit.transform.gameObject.GetInstanceID())
+            if (hit.tag == "Player")
             {
-                hit.transform.gameObject.GetComponent<Warmth>().isNearPlayer();
-                players.Add(hit.transform.gameObject);
+                newPlayers.Add(hit.transform.gameObject);
+                if (!players.Contains(hit.transform.gameObject))
+                {
+                    hit.transform.gameObject.GetComponent<Warmth>().isNearPlayer();
+                }
             }
         }
+        foreach (GameObject player in players)
+        {
+            if (!newPlayers.Exists(x => x.GetInstanceID() == player.GetInstanceID()))
+            {
+                player.GetComponent<Warmth>().isAwayPlayer();
+            }
+        }
+        players = newPlayers;
         if (players.Count > 0)
         {
             warmth.shareWarmth(players);
