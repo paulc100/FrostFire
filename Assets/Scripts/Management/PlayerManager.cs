@@ -67,6 +67,9 @@ public class PlayerManager : MonoBehaviour
     {
         var spawnedPlayer = playerInput.gameObject;
 
+        // Give spwaned player an id based on their spawn index [0 -> 3]
+        spawnedPlayer.GetComponent<SplitScreenPlayerController>().pid = nextSpawnIndex; 
+
         // Spawn player within scene
         SpawnPlayer(spawnedPlayer);
 

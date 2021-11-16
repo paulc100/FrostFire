@@ -8,13 +8,14 @@ public class OutlineMask : MonoBehaviour
     [SerializeField]
     private Shader Outline;
 
-    public Material outlineMaterial;
     private Camera tempCamera;
+
+    public Material outlineMaterial;
+
     private float[] kernel;
 
-    private void Start()
+    void Start()
     {
-        // Setup second camera to render outlined objects
         tempCamera = new GameObject().AddComponent<Camera>();
 
         kernel = GaussianKernel.Calculate(5, 21);
@@ -43,6 +44,7 @@ public class OutlineMask : MonoBehaviour
         renderTexture.filterMode = FilterMode.Point;
 
         Graphics.Blit(renderTexture, dest, outlineMaterial);
+
         tempCamera.targetTexture = src;
         RenderTexture.ReleaseTemporary(renderTexture);
     }
