@@ -18,7 +18,7 @@ public class SnowmanController : MonoBehaviour
     public int fightRadius = 2;
     public int attackDamage = 2;
 
-
+  
     private bool isLockedOnPlayer;
     protected bool isAttacking;
 
@@ -32,7 +32,7 @@ public class SnowmanController : MonoBehaviour
     }   
 
     // Update is called once per frame
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         checkForPlayers(transform.position);
     }
