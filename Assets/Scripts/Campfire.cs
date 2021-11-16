@@ -20,6 +20,7 @@ public class Campfire : MonoBehaviour
     {
         if (other.gameObject.tag == "Snowman")
         {
+            FindObjectOfType<AudioManager>().Play("CampfireLife");
             gameState.currentSnowmanCollisions += 1;
             Destroy(other.gameObject);
         }

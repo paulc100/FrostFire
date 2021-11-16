@@ -173,6 +173,8 @@ public class SplitScreenPlayerController : MonoBehaviour
 
             //enable attack after one second
             StartCoroutine(attackCoroutine());
+
+            FindObjectOfType<AudioManager>().Play("Swing");
         }
     }
 
@@ -197,7 +199,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     IEnumerator damageCoroutine()
     {
         //Debug.Log("Attack cooldown started at timestamp: " + Time.time);
-        yield return new WaitForSeconds(0.575f);
+        yield return new WaitForSeconds(0.5f);
         //Debug.Log("Attack available at: " + Time.time);
         damageReady = true;
     }
