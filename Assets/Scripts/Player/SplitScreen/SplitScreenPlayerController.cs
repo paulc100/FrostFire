@@ -11,7 +11,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     [SerializeField]
     public int playerDefaultAttack = 1;
     [SerializeField]
-    private float jumpHeight = 1.0f;
+    private float jumpHeight = 1f;
     [SerializeField]
     private float gravityValue = -9.81f;
     [SerializeField]
@@ -20,8 +20,9 @@ public class SplitScreenPlayerController : MonoBehaviour
     private float playerDetectionRadius = 5f;
 
     public int attackPower = 1;
-    public float playerSpeed = 10.0f;
+    public float playerSpeed = 9.0f;
     private bool attackAvailable = true;
+    private bool damageReady = false;
     private bool downed = false;
 
     private CharacterController controller;
@@ -60,6 +61,12 @@ public class SplitScreenPlayerController : MonoBehaviour
         if(shareAction.ReadValue<float>() == 1 && !downed)
         {
             shareWarmth();
+        }
+
+        if (damageReady == true)
+        {
+            enemyCollision.killSnowman(attackPower);
+            damageReady = false;
         }
     }
 
@@ -127,7 +134,7 @@ public class SplitScreenPlayerController : MonoBehaviour
         if (jumpAction.triggered && groundedPlayer && !downed)
         {
             animator.SetTrigger("Jump");
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
         }
 
         //gravity
@@ -156,13 +163,18 @@ public class SplitScreenPlayerController : MonoBehaviour
     {
         if (attackAvailable)
         {
-            animator.SetTrigger("Attack");
-
             //disable attack once called
             attackAvailable = false;
-            enemyCollision.killSnowman(attackPower);
+
+            animator.SetTrigger("Attack");
+
+            //deal damage after one second
+            StartCoroutine(damageCoroutine());
+
             //enable attack after one second
             StartCoroutine(attackCoroutine());
+
+            FindObjectOfType<AudioManager>().Play("Swing");
         }
     }
 
@@ -183,6 +195,14 @@ public class SplitScreenPlayerController : MonoBehaviour
         }
     }
 
+    //cooldown damage
+    IEnumerator damageCoroutine()
+    {
+        //Debug.Log("Attack cooldown started at timestamp: " + Time.time);
+        yield return new WaitForSeconds(0.5f);
+        //Debug.Log("Attack available at: " + Time.time);
+        damageReady = true;
+    }
     //cooldown for each attack
     IEnumerator attackCoroutine()
     {
