@@ -46,6 +46,8 @@ public class Warmth : MonoBehaviour
      */
     public void isNearCampfire()
     {
+        nearCampfire = true;
+        /*
         if (!nearCampfire)
         {
             if (campfireTimer)
@@ -56,11 +58,17 @@ public class Warmth : MonoBehaviour
             //Debug.Log("Near campfire");
             campfireTimer = true;
             StartCoroutine(noCampfire());
-        }
+        }*/
+    }
+    public void isAwayCampfire()
+    {
+        nearCampfire = false;
     }
 
     public void isNearPlayer()
     {
+        nearPlayer = true;
+        /*
         if (!nearPlayer)
         {
             if (playerTimer)
@@ -70,7 +78,11 @@ public class Warmth : MonoBehaviour
             nearPlayer = true;
             playerTimer = true;
             StartCoroutine(noPlayer());
-        }
+        }*/
+    }
+    public void isAwayPlayer()
+    {
+        nearPlayer = false;
     }
 
     public void shareWarmth(List<GameObject> players)
@@ -205,25 +217,7 @@ public class Warmth : MonoBehaviour
         }
     }
 
-    //it runs 1 second after the campfire confirms proximity
-    IEnumerator noCampfire()
-    {
-        yield return new WaitForSeconds(detectionFrequency);
-        nearCampfire = false;
-        //Debug.Log("Away from campfire");
 
-        campfireTimer = false;
-    }
-
-    //it runs 1 second after the players confirms proximity
-    IEnumerator noPlayer()
-    {
-        yield return new WaitForSeconds(detectionFrequency);
-        nearPlayer = false;
-        //Debug.Log("Away from campfire");
-
-        playerTimer = false;
-    }
 
     /*
      * function that subtracts warmth while player is away from campfire proximity
@@ -265,3 +259,24 @@ public class Warmth : MonoBehaviour
         warmthShareable = true; ;
     }
 }
+
+/*
+ *     //it runs 1 second after the campfire confirms proximity
+    IEnumerator noCampfire()
+    {
+        yield return new WaitForSeconds(detectionFrequency);
+        nearCampfire = false;
+        //Debug.Log("Away from campfire");
+
+        campfireTimer = false;
+    }
+
+    //it runs 1 second after the players confirms proximity
+    IEnumerator noPlayer()
+    {
+        yield return new WaitForSeconds(detectionFrequency);
+        nearPlayer = false;
+        //Debug.Log("Away from campfire");
+
+        playerTimer = false;
+    }*/
