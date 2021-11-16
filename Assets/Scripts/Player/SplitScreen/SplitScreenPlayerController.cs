@@ -58,25 +58,12 @@ public class SplitScreenPlayerController : MonoBehaviour
 
     void Update() {
         move();
-        if(shareAction.ReadValue<float>() == 1 && !downed)
-        {
-            shareWarmth();
-        }
 
-        if (damageReady == true)
-        {
-            enemyCollision.killSnowman(attackPower);
-            damageReady = false;
-        }
-    }
-
-    private void shareWarmth()
-    {
         Collider[] hits = Physics.OverlapSphere(transform.position, playerDetectionRadius);
         List<GameObject> newPlayers = new List<GameObject>();
         foreach (Collider hit in hits)
         {
-            if (hit.tag == "Player")
+            if (hit.tag == "Player" && hit.transform.gameObject.GetInstanceID() != gameObject.GetInstanceID())
             {
                 newPlayers.Add(hit.transform.gameObject);
                 if (!players.Contains(hit.transform.gameObject))
@@ -93,6 +80,21 @@ public class SplitScreenPlayerController : MonoBehaviour
             }
         }
         players = newPlayers;
+
+        if (shareAction.ReadValue<float>() == 1 && !downed)
+        {
+            shareWarmth();
+        }
+
+        if (damageReady == true)
+        {
+            enemyCollision.killSnowman(attackPower);
+            damageReady = false;
+        }
+    }
+
+    private void shareWarmth()
+    {
         if (players.Count > 0)
         {
             warmth.shareWarmth(players);
