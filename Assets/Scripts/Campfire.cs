@@ -5,10 +5,10 @@ public class Campfire : MonoBehaviour
 {
     [SerializeField]
     private GameEventManager gameState;
-
     private Renderer campfireRenderer;
 
     private float campfireRadius = 10f;
+    private List<GameObject> players = new List<GameObject>();
 
     private void Awake()
     {
@@ -43,13 +43,25 @@ public class Campfire : MonoBehaviour
     private void Update()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, campfireRadius);
+        List<GameObject> newPlayers = new List<GameObject>();
         foreach (Collider hit in hits)
         {
             if (hit.tag == "Player")
             {
-                //Debug.Log(hit.transform.gameObject.name);
-                hit.transform.gameObject.GetComponent<Warmth>().isNearCampfire();
+                newPlayers.Add(hit.transform.gameObject);
+                if (!players.Contains(hit.transform.gameObject))
+                {
+                    hit.transform.gameObject.GetComponent<Warmth>().isNearCampfire();
+                }
             }
         }
+        foreach (GameObject player in players)
+        {
+            if(!newPlayers.Exists(x=>x.GetInstanceID()==player.GetInstanceID()))
+            {
+                player.GetComponent<Warmth>().isAwayCampfire();
+            }
+        }
+        players = newPlayers;
     }
 }
