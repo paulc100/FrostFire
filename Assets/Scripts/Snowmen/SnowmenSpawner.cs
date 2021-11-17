@@ -126,6 +126,7 @@ public class SnowmenSpawner : MonoBehaviour
         {
             rangedIndex += 1;
             snowmanID += 1;
+            Instantiate(rangedSnowman, spawnPositionVec, rangedSnowman.transform.rotation);
             rangedSnowman.UniqueID = snowmanID;
             Debug.Log("Spawned Ranged Snowman");
         }

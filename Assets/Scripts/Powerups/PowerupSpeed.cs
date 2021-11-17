@@ -42,13 +42,13 @@ public class PowerupSpeed: MonoBehaviour
 
         Debug.Log("Powerup is picked up!");
 
-        splitScreenPlayerController.playerSpeed = Mathf.Clamp((splitScreenPlayerController.playerSpeed *= 2.0f), 10.0f, 20.0f);
+        splitScreenPlayerController.playerSpeed = Mathf.Clamp((splitScreenPlayerController.playerSpeed *= 1.5f), 10.0f, 15.0f);
 
         gameObject.SetActive(false);
 
         yield return new WaitForSeconds(10f);
 
-        splitScreenPlayerController.playerSpeed = Mathf.Clamp((splitScreenPlayerController.playerSpeed /= 2.0f), 10.0f, 20.0f);
+        splitScreenPlayerController.playerSpeed = Mathf.Clamp((splitScreenPlayerController.playerSpeed /= 1.5f), 10.0f, 15.0f);
 
         Destroy(gameObject);
     

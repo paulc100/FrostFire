@@ -199,13 +199,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "", 
+                    "name": "",
                     "id": "ba589269-2397-4c3f-9128-79d237d0be53",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard;Both",
-                    "action": "ShareHP"
+                    "action": "ShareHP",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -225,7 +227,9 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller;Both",
-                    "action": "ShareHP"
+                    "action": "ShareHP",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

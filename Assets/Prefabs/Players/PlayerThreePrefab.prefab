@@ -189,8 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warmth: 10
   defaultWarmth: 10
-  invulnerableCD: 2
-  revivePercentage: 0.25
+  invulnerableCD: 1
+  revivePercentage: 0.15
   nearCampfire: 0
   nearPlayer: 0
   isDowned: 0
