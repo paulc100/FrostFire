@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2533042879045676254}
   - component: {fileID: 2533042879045676241}
   - component: {fileID: 2533042879045676250}
-  - component: {fileID: 2533042879045676253}
   - component: {fileID: 1179752097035188921}
   - component: {fileID: 5075356112059699371}
+  - component: {fileID: -9001470923406969404}
+  - component: {fileID: 2533042879045676253}
   m_Layer: 8
   m_Name: RangedSnowman
   m_TagString: Snowman
@@ -33,7 +34,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -11.58, y: 1.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6369848440814234249}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -123,20 +125,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2533042879045676253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2533042879045676240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df1e773ff5dfd24f9b803101ae1d68a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 2533042879045676250}
-  fightRadius: 2
 --- !u!114 &1179752097035188921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8993c215470aff49a621a89a6d9300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UniqueID: 0
+  UniqueID: 4
 --- !u!114 &5075356112059699371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +150,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4d9cd114bcae64fa9e2a68c83d97d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-9001470923406969404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533042879045676240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4921b89585a0364982cec7cbc2c952b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 2533042879045676250}
+  campfire: {fileID: 78610475837391531, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+  sightRadius: 22
+  fightRadius: 20
+  attackDamage: 2
+  snowballPrefab: {fileID: 2366906609861919572, guid: 36ef1775e6a8010488eda87137def375, type: 3}
+  throwPoint: {fileID: 6369848440814234249}
+  throwRate: 0.5
+--- !u!114 &2533042879045676253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533042879045676240}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df1e773ff5dfd24f9b803101ae1d68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 2533042879045676250}
+  campfire: {fileID: 0}
+  sightRadius: 30
+  fightRadius: 25
+  attackDamage: 2
+--- !u!1 &3530833541259858287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6369848440814234249}
+  m_Layer: 0
+  m_Name: ThrowPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6369848440814234249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3530833541259858287}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.797, y: 0.654, z: -0.00000011920929}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2533042879045676252}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

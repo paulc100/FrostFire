@@ -115,7 +115,7 @@ public class Warmth : MonoBehaviour
      * snowmanDamage: is it a snowman that damaged the player
      * the player is stated as invulnerable for 2 seconds once damaged by a snowman
      */
-    private void removeWarmth(float damage, bool snowmanDamage)
+    public void removeWarmth(float damage, bool snowmanDamage)
     {
         if (snowmanDamage)
         {
@@ -129,7 +129,7 @@ public class Warmth : MonoBehaviour
         {
             warmthSubtraction(damage);
         }
-        Debug.Log(player.name + ": " + warmth);
+        //Debug.Log(player.name + ": " + warmth);
     }
 
     /*
