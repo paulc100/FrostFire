@@ -12,7 +12,6 @@ public class Warmth : MonoBehaviour
     private int invulnerableCD = 2;
     [SerializeField]
     private float revivePercentage = 0.25f;
-    
 
     private bool nearCampfire = false;
     private bool nearPlayer = false;
@@ -20,15 +19,12 @@ public class Warmth : MonoBehaviour
     private bool isRunning_AwayCampfire = false;
     private bool isRunning_Campfire = false;
     private bool isDowned = false;
-    private bool campfireTimer = false;
-    private bool playerTimer = false;
     private bool warmthShareable = true;
 
     private float warmthLostRate = 0.02f;
     private float warmthRecoveryRate = 0.1f;
     private float warmthLostFrequency = 0.1f;
     private float campfireRecoveryFrequency = 0.1f;
-    private float detectionFrequency = 0.1f;
     private float shareWarmthFrequency = 0.1f;
     private float warmthSharedperMillisecond = 0.1f;
 
