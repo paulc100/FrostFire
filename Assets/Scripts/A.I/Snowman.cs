@@ -6,9 +6,11 @@ public class Snowman : MonoBehaviour
 {
     public int health;
     public int maxHealth = 2;
+    private Powerup speedPowerup;
 
     private void Awake() {
         health = maxHealth;
+        speedPowerup = GetComponentInChildren<Powerup>();
     }
 
     public bool damage(int damageValue)
