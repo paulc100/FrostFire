@@ -13,10 +13,15 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField]
     private Image warmthBar = null; 
 
-    [Header("HUD Buttons")]
+    [Header("HUD Manipulation")]
     [SerializeField]
     private GameObject warmthButton = null; 
+    [SerializeField]
+    private GameObject plusWarmth = null;
+    [SerializeField]
+    private GameObject minusWarmth = null;
 
+    [HideInInspector]
     public Warmth playerWarmthReference = null;
 
     private float currentWarmth;
@@ -25,21 +30,22 @@ public class PlayerHUD : MonoBehaviour
 
     private void Update() 
     {
-        UpdatePlayerWarmthIndicator();
-        CheckShareWarmth();
+        if (playerWarmthReference != null)
+        {
+            UpdatePlayerWarmthIndicator();
+            CheckShareWarmth();
+            CheckWarmthStatus();
+        }
     }
 
     private void UpdatePlayerWarmthIndicator()
     {
-        if (playerWarmthReference != null)
-        {
-            currentWarmth = playerWarmthReference.warmth;
+        currentWarmth = playerWarmthReference.warmth;
 
-            CalculateWarmthBarFill();
+        CalculateWarmthBarFill();
 
-            warmthPercentage = (int) CalculateWarmthBarPercentage();
-            warmthText.text = warmthPercentage + "%";
-        }
+        warmthPercentage = (int) CalculateWarmthBarPercentage();
+        warmthText.text = warmthPercentage + "%";
     }
 
     private void CalculateWarmthBarFill() => warmthBar.fillAmount = currentWarmth / maxWarmth;
@@ -48,17 +54,25 @@ public class PlayerHUD : MonoBehaviour
 
     private void CheckShareWarmth()
     {
-        if (playerWarmthReference != null) 
+        if (playerWarmthReference.nearPlayer)
         {
-            if (playerWarmthReference.nearPlayer)
-            {
-                Debug.Log("nearPlayer -> " + playerWarmthReference.nearPlayer);
-                warmthButton.SetActive(true);
-            } 
-            else
-            {
-                warmthButton.SetActive(false);
-            }
+            warmthButton.SetActive(true);
+        } 
+        else
+        {
+            warmthButton.SetActive(false);
+        }
+    }
+
+    private void CheckWarmthStatus()
+    {
+        if (playerWarmthReference.nearCampfire)
+        {
+            plusWarmth.SetActive(true);
+        }
+        else
+        {
+            plusWarmth.SetActive(false);
         }
     }
 }
