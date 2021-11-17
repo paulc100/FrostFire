@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Core Scenes/UI/MainMenu.unity
     guid: 8c6e8c65227cede4cb4e9117968c351b
   - enabled: 1
-    path: Assets/Scenes/Core Scenes/UI/LobbyMenu.unity
-    guid: f062ecf986e4aea49ada8a0981884593
-  - enabled: 1
-    path: Assets/Scenes/Core Scenes/NetworkedBackyard.unity
-    guid: 3dd12bc84c1c1f041ab94e10e0d8e6ca
+    path: Assets/Scenes/Core Scenes/BackyardBeta.unity
+    guid: 684e061961cf058478ed6c2f165fbb97
   m_configObjects: {}

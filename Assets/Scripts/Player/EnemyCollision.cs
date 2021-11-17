@@ -37,8 +37,9 @@ public class EnemyCollision : MonoBehaviour
     {
         if (snowmen.Count > 0)
         {
-            Debug.Log(snowmen.Count);
-            Debug.Log(snowmen[0]);
+            //Debug.Log(snowmen.Count);
+            //Debug.Log(snowmen[0]);
+            FindObjectOfType<AudioManager>().Play("SnowmanHit");
             try
             {
                 if (snowmen[0] == null)
@@ -48,6 +49,8 @@ public class EnemyCollision : MonoBehaviour
                 if (snowmen[0] != null && snowmen[0].GetComponent<Snowman>().damage(attackPower))
                 {
                     snowmen.RemoveAt(0);
+                    FindObjectOfType<AudioManager>().Play("SnowmanDeath");
+                    FindObjectOfType<AudioManager>().Stop("SnowmanHit");
                 }
             } catch(Exception e)
             {

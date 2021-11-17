@@ -16,7 +16,7 @@ public class SnowmanController : MonoBehaviour
     // range that snowman will stop from player.
     public int sightRadius = 6;
     public int fightRadius = 2;
-    public int attackDamage = 2;
+    public float attackDamage = 2;
 
   
     private bool isLockedOnPlayer;

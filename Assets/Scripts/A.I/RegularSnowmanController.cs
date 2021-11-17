@@ -14,12 +14,13 @@ public class RegularSnowmanController : SnowmanController
     private Collider currentCollision;
 
     /// <summary>
-    /// NOTE TO SELF, TRIGGER KNOCK BACK INSIDE ATTACK FUNCTION ONLY WHEN ONTRIGGER HAS HIT PLAYER. CREATE BOOLEAN VALUE TO CHECK THIS IN ATTACK (ISKNOCKED or smthing) THEN TRIGGER KNOCK BACK METHOD INSIDE ATTACK
+    /// NOTE TO SELF, TRIGGER KNOCK BACK INSIDE ATTACK FUNCTION ONLY WHEN ONTRIGGER HAS HIT PLAYER. 
+    /// CREATE BOOLEAN VALUE TO CHECK THIS IN ATTACK (ISKNOCKED or smthing) THEN TRIGGER KNOCK BACK METHOD INSIDE ATTACK
     /// AND MAKE SURE ITS SIMULTANEIOUS WITH HEAT LOSS
     /// </summary>
     /// <param name="target"></param>
     public override void Attack(Transform target) {
-
+    
         if (atkCoolDown <= 0f) {
             
             //calculate direction
@@ -40,7 +41,7 @@ public class RegularSnowmanController : SnowmanController
         if (isAttacking && other.gameObject.tag == "Player") {
             //Player takes damage
             currentCollision = other;
-            currentCollision.GetComponent<Warmth>().removeWarmth(attackDamage);
+            currentCollision.GetComponent<Warmth>().removeWarmth(attackDamage, true);
             Debug.Log("warmth= " + other.GetComponent<Warmth>().warmth);
 
             GameObject target = other.gameObject;

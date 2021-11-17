@@ -1,0 +1,44 @@
+{
+    "name": "UIControls",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "97c48b0b-124a-4626-afcf-d9e46fd7497f",
+            "actions": [
+                {
+                    "name": "JoinGame",
+                    "type": "Button",
+                    "id": "ee09766f-4ffc-4bc7-a64d-31aeeb06a0c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6cdae494-0036-4fb9-8ad2-b24b291d5346",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoinGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "04c9fa05-0ba8-40d1-bbc8-ae4adedb1302",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoinGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

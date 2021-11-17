@@ -15,7 +15,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField]
     private GameObject victoryMenu;
 
-    [Tooltip("Required to pause/unpause the player controller while navigating menus")]
+    [Tooltip("Required to pause/unpause the player controller while navigating menus, controllers added upon loading the game")]
     public List<SplitScreenPlayerController> playerControllers;
     public static bool isPauseMenuUp = false;
 

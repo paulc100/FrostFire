@@ -47,7 +47,7 @@ public class Snowball : MonoBehaviour
 
         if (other.gameObject.tag == "Player") {
             //Player takes damage
-            other.GetComponent<Warmth>().removeWarmth(2/2);
+            other.GetComponent<Warmth>().removeWarmth(attackDamage, true);
             Debug.Log("warmth= " + other.GetComponent<Warmth>().warmth);
         }
     }
