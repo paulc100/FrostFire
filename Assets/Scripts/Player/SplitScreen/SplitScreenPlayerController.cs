@@ -19,6 +19,9 @@ public class SplitScreenPlayerController : MonoBehaviour
     [SerializeField]
     private float playerDetectionRadius = 5f;
 
+    [HideInInspector]
+    public int pid;
+
     public int attackPower = 1;
     public float playerSpeed = 9.0f;
     private bool attackAvailable = true;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SnowmenSpawner : MonoBehaviour
 {
@@ -125,7 +126,6 @@ public class SnowmenSpawner : MonoBehaviour
         {
             rangedIndex += 1;
             snowmanID += 1;
-            Instantiate(rangedSnowman, spawnPositionVec, rangedSnowman.transform.rotation);
             rangedSnowman.UniqueID = snowmanID;
             Debug.Log("Spawned Ranged Snowman");
         }

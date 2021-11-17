@@ -12,13 +12,16 @@ public class Warmth : MonoBehaviour
     private int invulnerableCD = 2;
     [SerializeField]
     private float revivePercentage = 0.25f;
+    
 
-    private bool nearCampfire = false;
-    private bool nearPlayer = false;
+    public bool nearCampfire = false;
+    public bool nearPlayer = false;
     private bool invulnerable = false;
     private bool isRunning_AwayCampfire = false;
     private bool isRunning_Campfire = false;
-    private bool isDowned = false;
+    public bool isDowned = false;
+    private bool campfireTimer = false;
+    private bool playerTimer = false;
     private bool warmthShareable = true;
 
     private float warmthLostRate = 0.02f;
@@ -111,7 +114,7 @@ public class Warmth : MonoBehaviour
      * snowmanDamage: is it a snowman that damaged the player
      * the player is stated as invulnerable for 2 seconds once damaged by a snowman
      */
-    private void removeWarmth(float damage, bool snowmanDamage)
+    public void removeWarmth(float damage, bool snowmanDamage)
     {
         if (snowmanDamage)
         {
@@ -125,7 +128,7 @@ public class Warmth : MonoBehaviour
         {
             warmthSubtraction(damage);
         }
-        Debug.Log(player.name + ": " + warmth);
+        //Debug.Log(player.name + ": " + warmth);
     }
 
     /*
