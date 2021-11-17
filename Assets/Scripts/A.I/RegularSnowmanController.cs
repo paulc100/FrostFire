@@ -7,7 +7,8 @@ public class RegularSnowmanController : SnowmanController
     [Header("Attributes")]
     private float atkCoolDown = 0f;
     public float atkRate = 0.7f;
-    public float atkPower = 15f;
+    public float atkPower = 5f;
+    public float knockbackDuration = 0.3f;
 
     [Header("Effects")]
     public GameObject snowParticle;
@@ -28,11 +29,10 @@ public class RegularSnowmanController : SnowmanController
             dir = -dir;
 
             //Attacking Player <ANIMATION NEEDED>
-            knockBack(target, dir, atkPower, 0.2f);
+            knockBack(target, dir, atkPower, knockbackDuration);
 
             //reset cooldown
             atkCoolDown = 1f / atkRate;
-            Debug.Log("knockback happened");
         }
         atkCoolDown -= Time.deltaTime;
     }
@@ -50,7 +50,7 @@ public class RegularSnowmanController : SnowmanController
     }
 
     private void knockBack(Transform target, Vector3 direction, float length, float overTime) {
-        //direction = direction.normalized;
+        direction = direction.normalized;
         Vector3 effectLocation = new Vector3(transform.position.x, 0, transform.position.z); 
         GameObject effectIns = (GameObject)Instantiate(snowParticle, effectLocation, transform.rotation);
         Destroy(effectIns, 2f);

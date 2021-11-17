@@ -129,7 +129,7 @@ public class Warmth : MonoBehaviour
         {
             warmthSubtraction(damage);
         }
-        Debug.Log(player.name + ": " + warmth);
+        //Debug.Log(player.name + ": " + warmth);
     }
 
     /*

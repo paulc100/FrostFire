@@ -41,15 +41,16 @@ public class Snowball : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other) {   
+        if (other.gameObject.tag == "Player") {
+            //Player takes damage
+            other.GetComponent<Warmth>().removeWarmth(attackDamage/2, true);
+            Debug.Log("warmth= " + other.GetComponent<Warmth>().warmth);
+        }
+
         if (other.gameObject.tag != "Snowman") {
             HitTarget();
         }
 
-        if (other.gameObject.tag == "Player") {
-            //Player takes damage
-            other.GetComponent<Warmth>().removeWarmth(attackDamage, true);
-            Debug.Log("warmth= " + other.GetComponent<Warmth>().warmth);
-        }
     }
 
     void HitTarget() {
