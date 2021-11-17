@@ -13,14 +13,21 @@ public class PlayerHUD : MonoBehaviour
     [SerializeField]
     private Image warmthBar = null; 
 
-    [HideInInspector]
+    [Header("HUD Buttons")]
+    [SerializeField]
+    private GameObject warmthButton = null; 
+
     public Warmth playerWarmthReference = null;
 
     private float currentWarmth;
     private float warmthPercentage;
     private float maxWarmth = 10f;
 
-    private void Update() => UpdatePlayerWarmthIndicator();
+    private void Update() 
+    {
+        UpdatePlayerWarmthIndicator();
+        CheckShareWarmth();
+    }
 
     private void UpdatePlayerWarmthIndicator()
     {
@@ -38,4 +45,20 @@ public class PlayerHUD : MonoBehaviour
     private void CalculateWarmthBarFill() => warmthBar.fillAmount = currentWarmth / maxWarmth;
 
     private float CalculateWarmthBarPercentage() => (currentWarmth / maxWarmth) * 100;
+
+    private void CheckShareWarmth()
+    {
+        if (playerWarmthReference != null) 
+        {
+            if (playerWarmthReference.nearPlayer)
+            {
+                Debug.Log("nearPlayer -> " + playerWarmthReference.nearPlayer);
+                warmthButton.SetActive(true);
+            } 
+            else
+            {
+                warmthButton.SetActive(false);
+            }
+        }
+    }
 }
