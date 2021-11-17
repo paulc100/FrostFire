@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Snowman : MonoBehaviour
 {
+    public int health;
+    public int maxHealth = 2;
     private Powerup speedPowerup;
 
-    private int health;
     private void Awake() {
+        health = maxHealth;
         speedPowerup = GetComponentInChildren<Powerup>();
-        Debug.Log(speedPowerup);
-        health = 2;
     }
+
     public bool damage(int damageValue)
     {
         health -= damageValue;

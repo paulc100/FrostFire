@@ -14,12 +14,12 @@ public class Warmth : MonoBehaviour
     private float revivePercentage = 0.25f;
     
 
-    private bool nearCampfire = false;
-    private bool nearPlayer = false;
+    public bool nearCampfire = false;
+    public bool nearPlayer = false;
     private bool invulnerable = false;
     private bool isRunning_AwayCampfire = false;
     private bool isRunning_Campfire = false;
-    private bool isDowned = false;
+    public bool isDowned = false;
     private bool campfireTimer = false;
     private bool playerTimer = false;
     private bool warmthShareable = true;
