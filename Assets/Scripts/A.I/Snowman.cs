@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Snowman : MonoBehaviour
 {
+    private Powerup speedPowerup;
+
     private int health;
     private void Awake() {
+        speedPowerup = GetComponentInChildren<Powerup>();
+        Debug.Log(speedPowerup);
         health = 2;
     }
     public bool damage(int damageValue)
