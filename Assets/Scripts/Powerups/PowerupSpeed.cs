@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine;
+using System;
 
 public class PowerupSpeed: MonoBehaviour
 {
@@ -43,12 +45,14 @@ public class PowerupSpeed: MonoBehaviour
         Debug.Log("Powerup is picked up!");
 
         splitScreenPlayerController.playerSpeed = Mathf.Clamp((splitScreenPlayerController.playerSpeed *= 1.5f), 10.0f, 15.0f);
+        player.gameObject.GetComponent<PowerupTrigger>().Trigger("speedon");
 
         gameObject.SetActive(false);
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5.0f);
 
         splitScreenPlayerController.playerSpeed = Mathf.Clamp((splitScreenPlayerController.playerSpeed /= 1.5f), 10.0f, 15.0f);
+        player.gameObject.GetComponent<PowerupTrigger>().Trigger("speedoff");
 
         Destroy(gameObject);
     
