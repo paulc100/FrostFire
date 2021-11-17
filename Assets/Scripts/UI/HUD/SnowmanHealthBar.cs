@@ -25,7 +25,6 @@ public class SnowmanHealthBar : MonoBehaviour
     private void UpdateHealthIndicator()
     {
         currentHealth = snowmanReference.health;
-        Debug.Log("currentHealth => " + currentHealth + "    == " + " maxHealth " + maxHealth);
 
         CalculateHealthBarFill();
     }

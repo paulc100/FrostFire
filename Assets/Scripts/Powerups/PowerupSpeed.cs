@@ -44,8 +44,7 @@ public class PowerupSpeed: MonoBehaviour
 
         splitScreenPlayerController.playerSpeed = Mathf.Clamp((splitScreenPlayerController.playerSpeed *= 2.0f), 10.0f, 20.0f);
 
-        GetComponent<MeshRenderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
+        gameObject.SetActive(false);
 
         yield return new WaitForSeconds(10f);
 

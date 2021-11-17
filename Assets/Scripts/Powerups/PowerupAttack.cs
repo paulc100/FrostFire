@@ -46,8 +46,7 @@ public class PowerupAttack: MonoBehaviour
 
         splitScreenPlayerController.attackPower = Mathf.Clamp((splitScreenPlayerController.attackPower *= 2), 1, 2);
 
-        GetComponent<MeshRenderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
+        gameObject.SetActive(false);
 
         yield return new WaitForSeconds(10f);
    
