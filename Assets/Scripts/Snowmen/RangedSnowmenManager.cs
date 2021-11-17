@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class RangedSnowmenManager : MonoBehaviour
 {
+    private CinemachineVirtualCamera cinemachineVirtualCamera = null;
     static int _count;
     public int UniqueID;
 
+    void Awake() => cinemachineVirtualCamera = GameObject.Find("MultiTargetCamera/CMVCam1").GetComponent<CinemachineVirtualCamera>();
+
     void OnEnable() {
         _count++;
-        //UniqueID = Random.Range(100, 200);
+        gameObject.GetComponentInChildren<RotateUIToCamera>().cinemachineVirtualCamera = cinemachineVirtualCamera;
     }
 
     void OnDestroy() {

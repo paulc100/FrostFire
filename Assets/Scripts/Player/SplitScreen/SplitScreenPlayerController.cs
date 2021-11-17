@@ -204,7 +204,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     IEnumerator damageCoroutine()
     {
         //Debug.Log("Attack cooldown started at timestamp: " + Time.time);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         //Debug.Log("Attack available at: " + Time.time);
         damageReady = true;
     }

@@ -24094,7 +24094,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -34348,6 +34348,10 @@ PrefabInstance:
       propertyPath: snowmenSpawner
       value: 
       objectReference: {fileID: 55181194}
+    - target: {fileID: 7446059366808004939, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: collisionsToEndGame
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7446059368597931127, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: hudManager
       value: 

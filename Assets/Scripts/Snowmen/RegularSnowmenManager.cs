@@ -10,10 +10,7 @@ public class RegularSnowmenManager : MonoBehaviour
     static int _count;
     public int UniqueID;
 
-    void Awake()
-    {
-        cinemachineVirtualCamera = GameObject.Find("MultiTargetCamera/CMVCam1").GetComponent<CinemachineVirtualCamera>();
-    }
+    void Awake() => cinemachineVirtualCamera = GameObject.Find("MultiTargetCamera/CMVCam1").GetComponent<CinemachineVirtualCamera>();
 
     void OnEnable() {
         _count++;

@@ -802,7 +802,7 @@ MonoBehaviour:
   warmthText: {fileID: 4010153949263793059}
   warmthBar: {fileID: 4010153948742977330}
   warmthButton: {fileID: 6113205276163566361}
-  plusWarmth: {fileID: 0}
+  plusWarmth: {fileID: 2766612625488748239}
   minusWarmth: {fileID: 0}
   playerWarmthReference: {fileID: 0}
 --- !u!1 &4010153949518637276

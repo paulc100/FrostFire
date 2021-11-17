@@ -779,8 +779,8 @@ MonoBehaviour:
   inactiveHUD: {fileID: 2694592247440278668}
   warmthText: {fileID: 4010153949263793059}
   warmthBar: {fileID: 4010153948742977330}
-  warmthButton: {fileID: 0}
-  plusWarmth: {fileID: 0}
+  warmthButton: {fileID: 766258668790588291}
+  plusWarmth: {fileID: 88981427515130125}
   minusWarmth: {fileID: 0}
   playerWarmthReference: {fileID: 0}
 --- !u!1 &4010153949518637276
