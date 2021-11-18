@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class PowerupSpawner : MonoBehaviour
 {
-    private Transform[] spawnPoints;
+    public GameObject speedPowerup;
+    public GameObject damagePowerup;
 
     public int spawnRate;
 
+    private bool spawned;
+    private bool canSpawn;
+
+    private Transform[] spawnPoints;
     private int spawnPosCount;
 
-    private bool spawned;
-
-    void Start()
+    void Awake()
     {
+        spawned = false;
+        canSpawn = true;
+
         spawnPosCount = transform.childCount;
         spawnPoints = new Transform[spawnPosCount];
 
@@ -23,22 +29,46 @@ public class PowerupSpawner : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!spawned)
+        if (!spawned && canSpawn)
         {
-            CheckSpawn();
+            Spawn();
         }
+    }
+
+    public void Collected()
+    {
+        Debug.Log("collected");
+        spawned = false;
+
+        StartCoroutine(Cooldown());
+    }
+
+    IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(spawnRate);
+
+        canSpawn = true;
     }
 
     void Spawn()
     {
+        canSpawn = false;
 
-    }
+        var randPowerup = Random.Range(1,3);
+        var randSpawn = Random.Range(0,3);
+        Vector3 spawnPositionVec = spawnPoints[randSpawn].position;
 
-    IEnumerator CheckSpawn()
-    {
-        yield return new WaitForSeconds(60f);
+        if (randPowerup == 1)
+        {
+            Instantiate(speedPowerup, spawnPositionVec, Quaternion.identity);
+        } 
+        else if (randPowerup == 2)
+        {
+            Instantiate(damagePowerup, spawnPositionVec, Quaternion.identity);
+        }
+
+        spawned = true;
     }
 }

@@ -58,6 +58,9 @@ public class PowerupSpeed: MonoBehaviour
             light.enabled = false;
         }
 
+        FindObjectOfType<AudioManager>().Play("Powerup");
+        FindObjectOfType<PowerupSpawner>().Collected();
+
         yield return new WaitForSeconds(timePowerup);
 
         splitScreenPlayerController.playerSpeed = Mathf.Clamp((splitScreenPlayerController.playerSpeed /= 1.5f), 10.0f, 15.0f);

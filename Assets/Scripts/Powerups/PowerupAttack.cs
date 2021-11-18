@@ -57,6 +57,9 @@ public class PowerupAttack: MonoBehaviour
             light.enabled = false;
         }
 
+        FindObjectOfType<AudioManager>().Play("Powerup");
+        FindObjectOfType<PowerupSpawner>().Collected();
+
         yield return new WaitForSeconds(timePowerup);
    
         splitScreenPlayerController.attackPower = Mathf.Clamp((splitScreenPlayerController.attackPower /= 2), 1, 2);
