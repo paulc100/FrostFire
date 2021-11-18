@@ -106,9 +106,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e73a02c246183745841efb408996609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stick: {fileID: 0}
-  sword: {fileID: 0}
-  particle: {fileID: 0}
+  stick: {fileID: 1348247458328292392}
+  sword: {fileID: 1485936315143056363}
+  particle: {fileID: 7902144470787915596}
 --- !u!143 &2444572102853945281
 CharacterController:
   m_ObjectHideFlags: 0
@@ -177,6 +177,7 @@ MonoBehaviour:
   pid: 0
   attackPower: 1
   playerSpeed: 10
+  downed: 0
   cameraTransform: {fileID: 0}
   animator: {fileID: 4257038414614453213}
 --- !u!114 &2444572102853945285
@@ -5356,6 +5357,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c2e1111b1f262c47895f235db2130f2, type: 3}
+--- !u!1 &1485936315143056363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c2e1111b1f262c47895f235db2130f2, type: 3}
+  m_PrefabInstance: {fileID: 1755967233852004026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2194526503762792825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5429,6 +5435,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6997ed4680c81d64a8d6a255bff68f0d, type: 3}
+--- !u!1 &1348247458328292392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6997ed4680c81d64a8d6a255bff68f0d, type: 3}
+  m_PrefabInstance: {fileID: 2194526503762792825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7673742664672077388
 PrefabInstance:
   m_ObjectHideFlags: 0
