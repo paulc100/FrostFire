@@ -427,6 +427,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8649677666527289631, guid: f645b3f351b80b546bf3f4cf8ac23435, type: 3}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
+      propertyPath: smallSnowman
+      value: 
+      objectReference: {fileID: 4060391239946406609, guid: 16ecf011372640a47b6e26b5f2ea022b, type: 3}
+    - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waveCooldown
       value: 5
       objectReference: {fileID: 0}
@@ -436,11 +440,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[0].bossCount
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
+      propertyPath: waves.Array.data[0].smallCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[0].rangedCount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[1].rangedCount
