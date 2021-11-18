@@ -26,7 +26,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     public float playerSpeed = 9.0f;
     private bool attackAvailable = true;
     private bool damageReady = false;
-    private bool downed = false;
+    public bool downed = false;
 
     private CharacterController controller;
     private PlayerInput playerInput;
@@ -216,6 +216,6 @@ public class SplitScreenPlayerController : MonoBehaviour
         //Debug.Log("Attack cooldown started at timestamp: " + Time.time);
         yield return new WaitForSeconds(1);
         //Debug.Log("Attack available at: " + Time.time);
-        attackAvailable = true;
+        if(!downed) attackAvailable = true;
     }
 }

@@ -28,7 +28,6 @@ public class Warmth : MonoBehaviour
     private float warmthRecoveryRate = 0.1f;
     private float warmthLostFrequency = 0.1f;
     private float campfireRecoveryFrequency = 0.1f;
-    private float detectionFrequency = 0.1f;
     private float shareWarmthFrequency = 0.1f;
     private float warmthSharedperMillisecond = 0.1f;
 
