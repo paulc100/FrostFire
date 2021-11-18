@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2533042879045676250}
   - component: {fileID: 2791688041010300487}
   - component: {fileID: 8649677666527289631}
+  - component: {fileID: -5525194551933685187}
   - component: {fileID: -5119612317711598658}
   - component: {fileID: 2533042879045676253}
   - component: {fileID: 8779740223472377231}
@@ -154,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d06091a6b056854dbc08d445026f3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UniqueID: 0
---- !u!114 &-5119612317711598658
+  UniqueID: 5
+--- !u!114 &-5525194551933685187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,6 +164,27 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2533042879045676240}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f5d185fb8dd434db202b4b396a5025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 2533042879045676250}
+  campfire: {fileID: 9066222715457941655, guid: 831ebb7d04fca314fb0997f4c9286ddf, type: 3}
+  sightRadius: 6
+  fightRadius: 2
+  attackDamage: 2
+  atkRate: 1
+  atkPower: 3
+  knockbackDuration: 0.5
+  snowParticle: {fileID: 7070436781391858944, guid: cef4a29c37a237140829570bbba648b0, type: 3}
+--- !u!114 &-5119612317711598658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2533042879045676240}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b36266cdd7e57074f9fb542b1f457a19, type: 3}
   m_Name: 

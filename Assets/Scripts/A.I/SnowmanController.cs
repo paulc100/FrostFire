@@ -37,7 +37,7 @@ public class SnowmanController : MonoBehaviour
         checkForPlayers(transform.position);
     }
     
-    private void Move(Transform target) {
+    protected void Move(Transform target) {
         agent.isStopped = false;
         agent.SetDestination(target.position);
     }
@@ -51,16 +51,16 @@ public class SnowmanController : MonoBehaviour
         //Refer to child class for code
     }
 
-    private void checkForPlayers(Vector3 center) {
+    protected virtual void checkForPlayers(Vector3 center) {
         Collider[] hitColliders = Physics.OverlapSphere(center, sightRadius);
         foreach (var hitCollider in hitColliders)  {
             // checks if collision was a player
-            if (hitCollider.tag == "Player") {
+            if (hitCollider.tag == "Player" && !hitCollider.transform.gameObject.GetComponent<SplitScreenPlayerController>().downed) {
 
                 //If they are close enough to atk, stop and atk. If they are not, move closer to player.
                 if (Vector3.Distance(hitCollider.transform.position, transform.position) <= fightRadius ) {
                     Stop();
-                    isAttacking = true; //for collision class
+                    //isAttacking = true; //for collision class
                     Attack(hitCollider.transform);
                 } else {
                     Move(hitCollider.transform);
@@ -69,7 +69,7 @@ public class SnowmanController : MonoBehaviour
                 return;
             }
         }
-        isAttacking = false;
+        //isAttacking = false;
         Move(campfire.transform);
     }
 }
