@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
 public class SnowmenSpawner : MonoBehaviour
 {
@@ -9,8 +7,12 @@ public class SnowmenSpawner : MonoBehaviour
 
     private Transform[] spawnPoints;
 
+    [Header("Snowmen Types")]
     public RegularSnowmenManager regularSnowman;
     public RangedSnowmenManager rangedSnowman;
+    public BossSnowmanManager bossSnowman;
+    public SmallSnowmenManager smallSnowman;
+
     public static int waveTotalSnowmanCount = 0;
 
     [System.Serializable]
@@ -18,6 +20,8 @@ public class SnowmenSpawner : MonoBehaviour
     {
         public int regularCount;
         public int rangedCount;
+        public int bossCount;
+        public int smallCount;
     }
 
     public Wave[] waves;
@@ -49,12 +53,16 @@ public class SnowmenSpawner : MonoBehaviour
         {
             StartCoroutine(spawnWave(waves[waveNumber], spawnRate));
         } 
-        else if (regularSnowman.GetActiveCount() + rangedSnowman.GetActiveCount() == 0 &&
-            regularIndex + rangedIndex == waves[waveNumber].regularCount + waves[waveNumber].rangedCount)
+        else if (IsSnowmanActiveCountZero() && DoWaveCountsMatchIndexes())
         {
             Debug.Log("Wave complete");
+
+            // Reset indices
             regularIndex = 0;
             rangedIndex = 0;
+            bossIndex = 0;
+            smallIndex = 0;
+
             waveNumber += 1;
             StartCoroutine(startWaveCooldown());
         }
@@ -62,6 +70,8 @@ public class SnowmenSpawner : MonoBehaviour
 
     private int regularIndex;
     private int rangedIndex;
+    private int bossIndex;
+    private int smallIndex;
     private int snowmanID = 0;
 
     IEnumerator spawnWave(Wave wave, int rate)
@@ -70,9 +80,9 @@ public class SnowmenSpawner : MonoBehaviour
         Debug.Log("Wave in progress");
 
         // Update total snowman count for the wave
-        waveTotalSnowmanCount = wave.regularCount + wave.rangedCount;
+        waveTotalSnowmanCount = wave.regularCount + wave.rangedCount + wave.bossCount + wave.smallCount;
 
-        while (regularIndex + rangedIndex < wave.regularCount + wave.rangedCount)
+        while (regularIndex + rangedIndex + bossIndex + smallIndex < wave.regularCount + wave.rangedCount + wave.bossCount + wave.smallCount)
         {
             for (int i = 0; i < spawnPosCount; i++)
             {
@@ -86,6 +96,14 @@ public class SnowmenSpawner : MonoBehaviour
                 else if (rangedIndex < wave.rangedCount && rand == 2)
                 {
                     spawnSnowman("Ranged", spawnPoints[i], waves[waveNumber]);
+                }
+                else if (bossIndex < wave.bossCount)
+                {
+                    spawnSnowman("Boss", spawnPoints[i], waves[waveNumber]);
+                }
+                else if (smallIndex < wave.smallCount)
+                {
+                    spawnSnowman("Small", spawnPoints[i], waves[waveNumber]);
                 }
                 yield return new WaitForSeconds(rate);
             }
@@ -133,5 +151,25 @@ public class SnowmenSpawner : MonoBehaviour
             rangedSnowman.UniqueID = snowmanID;
             Debug.Log("Spawned Ranged Snowman");
         }
+        if (snowmanType == "Boss")
+        {
+            bossIndex += 1;
+            snowmanID += 1;
+            Instantiate(bossSnowman, spawnPositionVec, bossSnowman.transform.rotation);
+            bossSnowman.UniqueID = snowmanID;
+            Debug.Log("Spawned Boss Snowman");
+        }
+        if (snowmanType == "Small")
+        {
+            smallIndex += 1;
+            snowmanID += 1;
+            Instantiate(smallSnowman, spawnPositionVec, smallSnowman.transform.rotation);
+            smallSnowman.UniqueID = snowmanID;
+            Debug.Log("Spawned Small Snowman");
+        }
     }
+
+    private bool IsSnowmanActiveCountZero() => regularSnowman.GetActiveCount() + rangedSnowman.GetActiveCount() + bossSnowman.GetActiveCount() + smallSnowman.GetActiveCount() == 0; 
+
+    private bool DoWaveCountsMatchIndexes() => regularIndex + rangedIndex + bossIndex + smallIndex == waves[waveNumber].regularCount + waves[waveNumber].rangedCount + waves[waveNumber].bossCount + waves[waveNumber].smallCount;
 }

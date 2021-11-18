@@ -12,7 +12,7 @@ public class RegularSnowmanController : SnowmanController
 
     [Header("Effects")]
     public GameObject snowParticle;
-    private Collider currentCollision;
+    //private Collider currentCollision;
 
     /// <summary>
     /// NOTE TO SELF, TRIGGER KNOCK BACK INSIDE ATTACK FUNCTION ONLY WHEN ONTRIGGER HAS HIT PLAYER. 
@@ -21,9 +21,14 @@ public class RegularSnowmanController : SnowmanController
     /// </summary>
     /// <param name="target"></param>
     public override void Attack(Transform target) {
-    
-        if (atkCoolDown <= 0f) {
-            
+        if (atkCoolDown <= 0f)
+        {
+            /////////// added and modified code
+            //Player takes damage
+            target.gameObject.GetComponent<Warmth>().removeWarmth(attackDamage, true);
+            Debug.Log("warmth= " + target.GetComponent<Warmth>().warmth);
+            //////////
+
             //calculate direction
             Vector3 dir = target.transform.position - transform.position;
             dir = -dir;
@@ -37,7 +42,9 @@ public class RegularSnowmanController : SnowmanController
         atkCoolDown -= Time.deltaTime;
     }
 
+    /*
     private void OnTriggerEnter(Collider other) {
+        Debug.Log("Activated");
         if (isAttacking && other.gameObject.tag == "Player") {
             //Player takes damage
             currentCollision = other;
@@ -47,7 +54,7 @@ public class RegularSnowmanController : SnowmanController
             GameObject target = other.gameObject;
             Attack(target.transform);
         }
-    }
+    }*/
 
     private void knockBack(Transform target, Vector3 direction, float length, float overTime) {
         direction = direction.normalized;
