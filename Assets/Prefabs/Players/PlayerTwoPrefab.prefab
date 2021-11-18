@@ -208,9 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e73a02c246183745841efb408996609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stick: {fileID: 0}
-  sword: {fileID: 0}
-  particle: {fileID: 0}
+  stick: {fileID: 2267251303177527209}
+  sword: {fileID: 3697165649279665545}
+  particle: {fileID: 8395152425401455958}
 --- !u!1 &2778898593373669710
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,6 +5353,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6997ed4680c81d64a8d6a255bff68f0d, type: 3}
+--- !u!1 &2267251303177527209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6997ed4680c81d64a8d6a255bff68f0d, type: 3}
+  m_PrefabInstance: {fileID: 1420759091939975928}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4580039051013945560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5418,6 +5423,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c2e1111b1f262c47895f235db2130f2, type: 3}
+--- !u!1 &3697165649279665545 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7c2e1111b1f262c47895f235db2130f2, type: 3}
+  m_PrefabInstance: {fileID: 4580039051013945560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5681171820663025964
 PrefabInstance:
   m_ObjectHideFlags: 0
