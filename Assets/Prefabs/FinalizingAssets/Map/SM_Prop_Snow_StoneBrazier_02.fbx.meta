@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c51c211c564cddf408e9e0de39e32cc6
+guid: 9fe110a870c57e74580ba9fdf6b4df19
 ModelImporter:
   serializedVersion: 21100
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Steel
-    second: {fileID: 2100000, guid: d8131ddc7c8b9dd43909e74c3adc2cc1, type: 2}
+      name: lambert_1
+    second: {fileID: 3644364103861363088, guid: 68256db1f4910154283d2e493dfd43b0, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

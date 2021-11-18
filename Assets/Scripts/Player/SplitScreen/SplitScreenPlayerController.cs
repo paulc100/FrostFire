@@ -192,11 +192,13 @@ public class SplitScreenPlayerController : MonoBehaviour
         {
             playerSpeed = 2f;
             attackAvailable = false;
+            animator.SetBool("Down", true);
         } else
         {
             //Debug.Log("isDowned() ran");
             playerSpeed = playerDefaultSpeed;
             attackAvailable = true;
+            animator.SetBool("Down", false);
         }
     }
 
