@@ -15,10 +15,6 @@ public class PowerupTrigger : MonoBehaviour
     public void Trigger(string name)
     {
 
-        stick = GameObject.Find("Stick");
-        sword = GameObject.Find("SwordModel");
-        particle = GameObject.Find("Particle");
-
         if(name == "sword")
         {
             stick.transform.localScale = disabled;
