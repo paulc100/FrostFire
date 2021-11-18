@@ -45,12 +45,14 @@ public class PowerupAttack: MonoBehaviour
         Debug.Log("Powerup is picked up!");
 
         splitScreenPlayerController.attackPower = Mathf.Clamp((splitScreenPlayerController.attackPower *= 2), 1, 2);
+        player.gameObject.GetComponent<PowerupTrigger>().Trigger("sword");
 
         gameObject.SetActive(false);
 
         yield return new WaitForSeconds(10f);
    
         splitScreenPlayerController.attackPower = Mathf.Clamp((splitScreenPlayerController.attackPower /= 2), 1, 2);
+        player.gameObject.GetComponent<PowerupTrigger>().Trigger("stick");
 
         Destroy(gameObject);
     
