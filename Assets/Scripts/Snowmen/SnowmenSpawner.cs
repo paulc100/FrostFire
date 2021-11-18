@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
 public class SnowmenSpawner : MonoBehaviour
 {
@@ -9,8 +7,11 @@ public class SnowmenSpawner : MonoBehaviour
 
     private Transform[] spawnPoints;
 
+    [Header("Snowmen Types")]
     public RegularSnowmenManager regularSnowman;
     public RangedSnowmenManager rangedSnowman;
+    public BossSnowmanManager bossSnowman;
+
     public static int waveTotalSnowmanCount = 0;
 
     [System.Serializable]
@@ -18,6 +19,7 @@ public class SnowmenSpawner : MonoBehaviour
     {
         public int regularCount;
         public int rangedCount;
+        public int bossCount;
     }
 
     public Wave[] waves;
@@ -49,12 +51,13 @@ public class SnowmenSpawner : MonoBehaviour
         {
             StartCoroutine(spawnWave(waves[waveNumber], spawnRate));
         } 
-        else if (regularSnowman.GetActiveCount() + rangedSnowman.GetActiveCount() == 0 &&
-            regularIndex + rangedIndex == waves[waveNumber].regularCount + waves[waveNumber].rangedCount)
+        else if (regularSnowman.GetActiveCount() + rangedSnowman.GetActiveCount() + bossSnowman.GetActiveCount() == 0 &&
+            regularIndex + rangedIndex + bossIndex == waves[waveNumber].regularCount + waves[waveNumber].rangedCount + waves[waveNumber].bossCount)
         {
             Debug.Log("Wave complete");
             regularIndex = 0;
             rangedIndex = 0;
+            bossIndex = 0;
             waveNumber += 1;
             StartCoroutine(startWaveCooldown());
         }
@@ -62,6 +65,7 @@ public class SnowmenSpawner : MonoBehaviour
 
     private int regularIndex;
     private int rangedIndex;
+    private int bossIndex;
     private int snowmanID = 0;
 
     IEnumerator spawnWave(Wave wave, int rate)
@@ -70,9 +74,9 @@ public class SnowmenSpawner : MonoBehaviour
         Debug.Log("Wave in progress");
 
         // Update total snowman count for the wave
-        waveTotalSnowmanCount = wave.regularCount + wave.rangedCount;
+        waveTotalSnowmanCount = wave.regularCount + wave.rangedCount + wave.bossCount;
 
-        while (regularIndex + rangedIndex < wave.regularCount + wave.rangedCount)
+        while (regularIndex + rangedIndex + bossIndex < wave.regularCount + wave.rangedCount + wave.bossCount)
         {
             for (int i = 0; i < spawnPosCount; i++)
             {
@@ -83,6 +87,10 @@ public class SnowmenSpawner : MonoBehaviour
                 else if (rangedIndex < wave.rangedCount)
                 {
                     spawnSnowman("Ranged", spawnPoints[i], waves[waveNumber]);
+                }
+                else if (bossIndex < wave.bossCount)
+                {
+                    spawnSnowman("Boss", spawnPoints[i], waves[waveNumber]);
                 }
                 yield return new WaitForSeconds(rate);
             }
@@ -129,6 +137,14 @@ public class SnowmenSpawner : MonoBehaviour
             Instantiate(rangedSnowman, spawnPositionVec, rangedSnowman.transform.rotation);
             rangedSnowman.UniqueID = snowmanID;
             Debug.Log("Spawned Ranged Snowman");
+        }
+        if (snowmanType == "Boss")
+        {
+            bossIndex += 1;
+            snowmanID += 1;
+            Instantiate(bossSnowman, spawnPositionVec, bossSnowman.transform.rotation);
+            bossSnowman.UniqueID = snowmanID;
+            Debug.Log("Spawned Boss Snowman");
         }
     }
 }
