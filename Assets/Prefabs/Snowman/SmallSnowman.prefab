@@ -150,6 +150,7 @@ MonoBehaviour:
   sightRadius: 6
   fightRadius: 2
   attackDamage: 0.5
+  animator: {fileID: 954103762564393065}
   atkRate: 1
   atkPower: 3
   knockbackDuration: 0.3
@@ -171,6 +172,7 @@ MonoBehaviour:
   sightRadius: 6
   fightRadius: 2
   attackDamage: 2
+  animator: {fileID: 954103762564393065}
 --- !u!114 &8779740223472377231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -760,5 +762,10 @@ PrefabInstance:
 --- !u!4 &6619592736821375507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7e25113afba5a9c4787a53f145a6d831, type: 3}
+  m_PrefabInstance: {fileID: 6653855113536542200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &954103762564393065 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 7e25113afba5a9c4787a53f145a6d831, type: 3}
   m_PrefabInstance: {fileID: 6653855113536542200}
   m_PrefabAsset: {fileID: 0}
