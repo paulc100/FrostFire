@@ -25,6 +25,8 @@ public class RegularSnowmanController : SnowmanController
         {
             /////////// added and modified code
             //Player takes damage
+            animator.SetTrigger("Attack");
+
             target.gameObject.GetComponent<Warmth>().removeWarmth(attackDamage, true);
             Debug.Log("warmth= " + target.GetComponent<Warmth>().warmth);
             //////////

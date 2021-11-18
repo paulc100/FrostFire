@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3501069269894026460}
   - component: {fileID: 9086304411587744414}
   - component: {fileID: 2611251997345553367}
+  - component: {fileID: 2099936060}
+  - component: {fileID: 2099936059}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -90,6 +92,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2099936060
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915572689446792845}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.005343553, y: 0.0012215019, z: 0.023020636}
+  m_Center: {x: 0, y: 0, z: 0.0076805316}
+--- !u!114 &2099936059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915572689446792845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd1ad06eacc74c9b955b2d3552092fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleRotationSpeed: 50
+  idleBobbingSpeed: 2
+  idleBobbingHeight: 1.1
 --- !u!1 &3501069269859878348
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +208,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.05e-43, y: 33, z: 12, w: 0}
+  m_BoundingSphereOverride: {x: 1.05e-43, y: 4.0058793e-11, z: 12.500046, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -271,7 +301,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.09375, y: NaN, z: 14, w: 0}
+  m_BoundingSphereOverride: {x: 1.05e-43, y: 4.0058793e-11, z: 12.500046, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -364,7 +394,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.775259e+28, y: 33, z: 12, w: 0}
+  m_BoundingSphereOverride: {x: 1.05e-43, y: NaN, z: 12.5, w: 0.00010441785}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -457,7 +487,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.05e-43, y: 18, z: 12, w: 0}
+  m_BoundingSphereOverride: {x: 1.05e-43, y: 4.0058797e-11, z: 8e-44, w: 1.9427337e-28}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

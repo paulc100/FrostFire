@@ -87,7 +87,7 @@ public class SnowmenSpawner : MonoBehaviour
             for (int i = 0; i < spawnPosCount; i++)
             {
                 // Random snowman type
-                var rand = Random.Range(1,3);
+                var rand = Random.Range(1,5);
 
                 if (regularIndex < wave.regularCount && rand == 1)
                 {
@@ -97,11 +97,11 @@ public class SnowmenSpawner : MonoBehaviour
                 {
                     spawnSnowman("Ranged", spawnPoints[i], waves[waveNumber]);
                 }
-                else if (bossIndex < wave.bossCount)
+                else if (bossIndex < wave.bossCount && rand == 3)
                 {
                     spawnSnowman("Boss", spawnPoints[i], waves[waveNumber]);
                 }
-                else if (smallIndex < wave.smallCount)
+                else if (smallIndex < wave.smallCount && rand == 4)
                 {
                     spawnSnowman("Small", spawnPoints[i], waves[waveNumber]);
                 }
@@ -122,16 +122,16 @@ public class SnowmenSpawner : MonoBehaviour
 
         if (spawnPosition.rotation.y == 0 || spawnPosition.rotation.y == 180)
         {
-            float x = spawnPosition.position.x + Random.Range(-65f, 65f);
+            float x = spawnPosition.position.x + Random.Range(-50f, 50f);
             spawnPositionVec[0] = x;
-            float z = spawnPosition.position.z + Random.Range(-1.75f, 1.75f);
+            float z = spawnPosition.position.z + Random.Range(-1.5f, 1.5f);
             spawnPositionVec[2] = z;
         }
         else
         {
-            float z = spawnPosition.position.z + Random.Range(-65f, 65f);
+            float z = spawnPosition.position.z + Random.Range(-50f, 50f);
             spawnPositionVec[2] = z;
-            float x = spawnPosition.position.x + Random.Range(-1.75f, 1.75f);
+            float x = spawnPosition.position.x + Random.Range(-1.5f, 1.5f);
             spawnPositionVec[0] = x;
         }
 

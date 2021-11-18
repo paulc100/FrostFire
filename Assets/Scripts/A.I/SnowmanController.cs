@@ -22,6 +22,8 @@ public class SnowmanController : MonoBehaviour
     private bool isLockedOnPlayer;
     protected bool isAttacking;
 
+    public Animator animator;
+
     // Start is called before the first frame update.
     void Start()
     {
@@ -40,11 +42,13 @@ public class SnowmanController : MonoBehaviour
     protected void Move(Transform target) {
         agent.isStopped = false;
         agent.SetDestination(target.position);
+        animator.SetBool("Moving", true);
     }
 
     private void Stop() {
         agent.isStopped = true;
-        agent.ResetPath();  
+        agent.ResetPath();
+        animator.SetBool("Moving", false);
     }
 
 	public virtual void Attack(Transform target) {

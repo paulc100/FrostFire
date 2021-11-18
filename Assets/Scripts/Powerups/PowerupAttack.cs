@@ -14,6 +14,11 @@ public class PowerupAttack: MonoBehaviour
     private float idleBobbingHeight = 1.1f;
 
     Vector3 bigPlayer = new Vector3(1,1,5);
+
+    [SerializeField]
+    private float timePowerup = 5.0f;
+
+    private Light[] lights;
     
 
     private void Update() {
@@ -42,14 +47,20 @@ public class PowerupAttack: MonoBehaviour
 
         splitScreenPlayerController = player.gameObject.GetComponentInChildren<SplitScreenPlayerController>();
 
-        Debug.Log("Powerup is picked up!");
-
         splitScreenPlayerController.attackPower = Mathf.Clamp((splitScreenPlayerController.attackPower *= 2), 1, 2);
         player.gameObject.GetComponent<PowerupTrigger>().Trigger("sword");
 
-        gameObject.SetActive(false);
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        lights = gameObject.GetComponentsInChildren<Light>();
+        foreach (var light in lights) {
+            light.enabled = false;
+        }
 
-        yield return new WaitForSeconds(10f);
+        FindObjectOfType<AudioManager>().Play("Powerup");
+        FindObjectOfType<PowerupSpawner>().Collected();
+
+        yield return new WaitForSeconds(timePowerup);
    
         splitScreenPlayerController.attackPower = Mathf.Clamp((splitScreenPlayerController.attackPower /= 2), 1, 2);
         player.gameObject.GetComponent<PowerupTrigger>().Trigger("stick");

@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: -5119612317711598658}
   - component: {fileID: 2533042879045676253}
   - component: {fileID: 8779740223472377231}
-  - component: {fileID: 6352237308956830817}
   m_Layer: 8
   m_Name: BossSnowman
   m_TagString: Snowman
@@ -173,6 +172,7 @@ MonoBehaviour:
   sightRadius: 6
   fightRadius: 2
   attackDamage: 2
+  animator: {fileID: 4981853149353049820}
   atkRate: 1
   atkPower: 3
   knockbackDuration: 0.5
@@ -194,6 +194,7 @@ MonoBehaviour:
   sightRadius: 6
   fightRadius: 2
   attackDamage: 2
+  animator: {fileID: 4981853149353049820}
   atkRate: 1
   atkPower: 3
   knockbackDuration: 0.3
@@ -215,6 +216,7 @@ MonoBehaviour:
   sightRadius: 6
   fightRadius: 2
   attackDamage: 2
+  animator: {fileID: 4981853149353049820}
 --- !u!114 &8779740223472377231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,25 +230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthFill: {fileID: 4634143966359877528}
---- !u!95 &6352237308956830817
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2533042879045676240}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2151f3a6d4ab99d4d89bd79b1e880074, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3001485711176216045
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +825,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: fee7758bcce4711438e3ec555c842d62, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
+    - target: {fileID: 5866666021909216657, guid: fee7758bcce4711438e3ec555c842d62, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 48cef94e15b5a3f478b3df59c08260d1, type: 2}
     - target: {fileID: 6030511152607113921, guid: fee7758bcce4711438e3ec555c842d62, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -878,11 +869,15 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5866666021909216657, guid: fee7758bcce4711438e3ec555c842d62, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fee7758bcce4711438e3ec555c842d62, type: 3}
 --- !u!4 &1424041142816908454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fee7758bcce4711438e3ec555c842d62, type: 3}
+  m_PrefabInstance: {fileID: 1461854184182235981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4981853149353049820 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: fee7758bcce4711438e3ec555c842d62, type: 3}
   m_PrefabInstance: {fileID: 1461854184182235981}
   m_PrefabAsset: {fileID: 0}
