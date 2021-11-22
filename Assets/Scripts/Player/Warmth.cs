@@ -22,7 +22,7 @@ public class Warmth : MonoBehaviour
     public bool isDowned = false;
     private bool campfireTimer = false;
     private bool playerTimer = false;
-    private bool warmthShareable = true;
+    public bool canShareWarmth = true;
 
     private float warmthLostRate = 0.02f;
     private float warmthRecoveryRate = 0.1f;
@@ -86,9 +86,9 @@ public class Warmth : MonoBehaviour
 
     public void shareWarmth(List<GameObject> players)
     {
-        if (warmthShareable)
+        if (canShareWarmth)
         {
-            warmthShareable = false;
+            canShareWarmth = false;
             if (!isDowned && warmth > 0)
             {
                 float shareValue = warmthSharedperMillisecond;
@@ -140,6 +140,7 @@ public class Warmth : MonoBehaviour
         {
             warmth = 0;
             isDowned = true;
+            canShareWarmth = false;
             player.isDowned(true);
         }
         else
@@ -160,6 +161,7 @@ public class Warmth : MonoBehaviour
             if(isDowned)
             {
                 isDowned = false;
+                canShareWarmth = true;
                 player.isDowned(false);
             }
             
@@ -168,6 +170,7 @@ public class Warmth : MonoBehaviour
             if (isDowned)
             {
                 isDowned = false;
+                canShareWarmth = true;
                 player.isDowned(false);
             }
         } else
@@ -255,7 +258,7 @@ public class Warmth : MonoBehaviour
     IEnumerator shareWarmthCoolDown()
     {
         yield return new WaitForSeconds(shareWarmthFrequency);
-        warmthShareable = true; ;
+        canShareWarmth = true; ;
     }
 }
 
