@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,23 +11,27 @@ public class CampfireHealthBar : MonoBehaviour
     private Image healthFill = null; 
 
     [SerializeField]
-    private GameEventManager gameState = null;
+    private Campfire campfire;
 
     private float currentHealth;
-    private float healthPercentage;
+    private int healthPercentage;
     private float maxHealth;
 
-    private void Awake() => maxHealth = gameState.collisionsToEndGame;
+    private void Awake()
+    {
+        maxHealth = campfire.fuelCapacity;
+    }
 
     private void Update() => UpdateHealthIndicator();
 
     private void UpdateHealthIndicator()
     {
-        currentHealth = maxHealth - gameState.currentSnowmanCollisions;
+        currentHealth = campfire.remainingFuel;
+        healthPercentage = (int) Math.Floor((currentHealth / maxHealth) * 100);
 
         CalculateHealthBarFill();
 
-        healthText.text = currentHealth.ToString();
+        healthText.text = healthPercentage.ToString() + "%";
     }
 
     private void CalculateHealthBarFill() => healthFill.fillAmount = currentHealth / maxHealth;

@@ -9449,6 +9449,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 72873191951733495, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 78610475837391531, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
       propertyPath: m_Name
       value: Campfire
@@ -9502,6 +9506,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1076212726223049182, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+      propertyPath: campfire
+      value: 
+      objectReference: {fileID: 1309277923}
+    - target: {fileID: 1076212726223049182, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
       propertyPath: gameState
       value: 
       objectReference: {fileID: 1798160763}
@@ -9509,6 +9517,22 @@ PrefabInstance:
       propertyPath: gameState
       value: 
       objectReference: {fileID: 1798160763}
+    - target: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+      propertyPath: fuelCapacity
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+      propertyPath: fuelLossRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+      propertyPath: remainingFuel
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+      propertyPath: fuelLossFrequency
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4926847702096184642, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
       propertyPath: cinemachineVirtualCamera
       value: 
@@ -11402,7 +11426,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: f76548c45c702e344b319c177650cc41, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 3c5bf42c7370e3c4482a7ec5a8035552, type: 2}
 --- !u!4 &835652938
 Transform:
   m_ObjectHideFlags: 0
@@ -19876,6 +19900,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9df7604990966644a9db95a951e8e6a7, type: 3}
   m_PrefabInstance: {fileID: 919898320}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1309277923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+  m_PrefabInstance: {fileID: 531914476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6977c565a25ae6a4e9ef7943db80970e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1311197287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33665,6 +33700,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7446059366808004939, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: campfire
+      value: 
+      objectReference: {fileID: 1309277923}
     - target: {fileID: 7446059366808004939, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: snowmenSpawner
       value: 
