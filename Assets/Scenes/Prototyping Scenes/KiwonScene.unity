@@ -391,7 +391,7 @@ PrefabInstance:
       objectReference: {fileID: -6322919525632863193, guid: 55bcc65327d1ae04ca7cfac8b24cd2cf, type: 3}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[0].bossCount
@@ -399,11 +399,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[2].bossCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[3].bossCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[4].bossCount
@@ -415,7 +415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[1].smallCount
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[2].smallCount
@@ -423,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[3].smallCount
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[4].smallCount
@@ -435,15 +435,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[1].rangedCount
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[2].rangedCount
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[3].rangedCount
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[4].rangedCount
@@ -451,19 +451,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[0].regularCount
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[1].regularCount
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[2].regularCount
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[3].regularCount
-      value: 10
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[4].regularCount
@@ -9508,7 +9508,7 @@ PrefabInstance:
     - target: {fileID: 1076212726223049182, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
       propertyPath: campfire
       value: 
-      objectReference: {fileID: 1309277923}
+      objectReference: {fileID: 531914477}
     - target: {fileID: 1076212726223049182, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
       propertyPath: gameState
       value: 
@@ -9522,16 +9522,8 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
-      propertyPath: fuelLossRate
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
       propertyPath: remainingFuel
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
-      propertyPath: fuelLossFrequency
-      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4926847702096184642, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
       propertyPath: cinemachineVirtualCamera
@@ -9539,6 +9531,17 @@ PrefabInstance:
       objectReference: {fileID: 1689711841}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+--- !u!114 &531914477 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+  m_PrefabInstance: {fileID: 531914476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6977c565a25ae6a4e9ef7943db80970e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &534684082 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6ab223b93c319704ea292ad5fba85a0a, type: 3}
@@ -11426,7 +11429,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3c5bf42c7370e3c4482a7ec5a8035552, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 23cd72a3fa31cab46a18847be8fb0f99, type: 2}
 --- !u!4 &835652938
 Transform:
   m_ObjectHideFlags: 0
@@ -19900,17 +19903,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9df7604990966644a9db95a951e8e6a7, type: 3}
   m_PrefabInstance: {fileID: 919898320}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1309277923 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
-  m_PrefabInstance: {fileID: 531914476}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6977c565a25ae6a4e9ef7943db80970e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1311197287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33624,6 +33616,10 @@ PrefabInstance:
       propertyPath: snowmenSpawner
       value: 
       objectReference: {fileID: 55181194}
+    - target: {fileID: 2070634100528504673, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: BackyardRelease
+      objectReference: {fileID: 0}
     - target: {fileID: 3983242925817748733, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -33632,6 +33628,10 @@ PrefabInstance:
       propertyPath: targetGroup
       value: 
       objectReference: {fileID: 2138734080}
+    - target: {fileID: 5272303360344897285, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: BackyardRelease
+      objectReference: {fileID: 0}
     - target: {fileID: 6851987120956865286, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: sounds.Array.size
       value: 7
@@ -33703,7 +33703,7 @@ PrefabInstance:
     - target: {fileID: 7446059366808004939, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: campfire
       value: 
-      objectReference: {fileID: 1309277923}
+      objectReference: {fileID: 531914477}
     - target: {fileID: 7446059366808004939, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: snowmenSpawner
       value: 
@@ -33728,6 +33728,10 @@ PrefabInstance:
       propertyPath: cinemachineVirtualCamera
       value: 
       objectReference: {fileID: 1689711841}
+    - target: {fileID: 8791542004557422904, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: BackyardRelease
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
 --- !u!114 &1798160763 stripped
