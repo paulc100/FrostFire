@@ -32,8 +32,9 @@ public class SplitScreenPlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private EnemyCollision enemyCollision;
     private Warmth warmth;
-    private List<GameObject> players = new List<GameObject>();
+    private ParticleSystem warmthParticle;
 
+    private List<GameObject> players = new List<GameObject>();
     public Transform cameraTransform;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -52,6 +53,7 @@ public class SplitScreenPlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         enemyCollision = GetComponent<EnemyCollision>();
         warmth = GetComponent<Warmth>();
+        warmthParticle = GetComponent<ParticleSystem>();
 
         moveAction = playerInput.actions["Movement"];
         jumpAction = playerInput.actions["Jump"];
@@ -99,6 +101,9 @@ public class SplitScreenPlayerController : MonoBehaviour
         if (shareAction.ReadValue<float>() == 1 && !downed)
         {
             shareWarmth();
+        } else
+        {
+            warmthParticle.Stop();
         }
 
         if (damageReady == true)
@@ -112,6 +117,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     {
         if (players.Count > 0)
         {
+            warmthParticle.Play();
             warmth.shareWarmth(players);
         }
     }
