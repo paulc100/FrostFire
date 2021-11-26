@@ -1,8 +1,14 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Campfire : MonoBehaviour
 {
+    [SerializeField]
+    private float fuelLossFrequency = 0.1f;
+    [SerializeField]
+    private float fuelLossRate = 0.1f;
+
     [SerializeField]
     private GameEventManager gameState;
     private Renderer campfireRenderer;
@@ -58,11 +64,25 @@ public class Campfire : MonoBehaviour
         }
         foreach (GameObject player in players)
         {
-            if(!newPlayers.Exists(x=>x.GetInstanceID()==player.GetInstanceID()))
+            if (!newPlayers.Exists(x => x.GetInstanceID() == player.GetInstanceID()))
             {
                 player.GetComponent<Warmth>().isAwayCampfire();
             }
         }
         players = newPlayers;
+    }
+
+    private void removeFuel(float lossRate)
+    {
+
+    }
+
+    IEnumerator campfireFuel()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(fuelLossFrequency);
+            removeFuel(fuelLossRate);
+        }
     }
 }

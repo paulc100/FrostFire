@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum WarmthNetGain
+{
+    LOSS = -1,
+    NONE = 0,
+    GAIN = 1
+}
 public class Warmth : MonoBehaviour
 {
     [SerializeField]
@@ -20,9 +26,8 @@ public class Warmth : MonoBehaviour
     private bool isRunning_AwayCampfire = false;
     private bool isRunning_Campfire = false;
     public bool isDowned = false;
-    private bool campfireTimer = false;
-    private bool playerTimer = false;
     public bool canShareWarmth = true;
+
 
     private float warmthLostRate = 0.02f;
     private float warmthRecoveryRate = 0.1f;
@@ -30,6 +35,9 @@ public class Warmth : MonoBehaviour
     private float campfireRecoveryFrequency = 0.1f;
     private float shareWarmthFrequency = 0.1f;
     private float warmthSharedperMillisecond = 0.1f;
+    private WarmthNetGain warmthNet = WarmthNetGain.NONE;
+
+    private float tempWarmthValue;
 
     private Coroutine lastCampfireCoroutine;
 
@@ -37,6 +45,7 @@ public class Warmth : MonoBehaviour
 
     private void Awake()
     {
+        tempWarmthValue = warmth;
         player = GetComponent<SplitScreenPlayerController>();
     }
 
@@ -46,18 +55,6 @@ public class Warmth : MonoBehaviour
     public void isNearCampfire()
     {
         nearCampfire = true;
-        /*
-        if (!nearCampfire)
-        {
-            if (campfireTimer)
-            {
-                StopCoroutine(noCampfire());
-            }
-            nearCampfire = true;
-            //Debug.Log("Near campfire");
-            campfireTimer = true;
-            StartCoroutine(noCampfire());
-        }*/
     }
     public void isAwayCampfire()
     {
@@ -67,17 +64,6 @@ public class Warmth : MonoBehaviour
     public void isNearPlayer()
     {
         nearPlayer = true;
-        /*
-        if (!nearPlayer)
-        {
-            if (playerTimer)
-            {
-                StopCoroutine(noPlayer());
-            }
-            nearPlayer = true;
-            playerTimer = true;
-            StartCoroutine(noPlayer());
-        }*/
     }
     public void isAwayPlayer()
     {
@@ -217,6 +203,16 @@ public class Warmth : MonoBehaviour
                 lastCampfireCoroutine = StartCoroutine(awayFromWarmth());
             }
         }
+        if (warmth - tempWarmthValue == 0)
+        {
+            warmthNet = WarmthNetGain.NONE;
+        } else if (warmth - tempWarmthValue > 0)
+        {
+            warmthNet = WarmthNetGain.GAIN;
+        } else
+        {
+            warmthNet = WarmthNetGain.LOSS;
+        }
     }
 
 
@@ -261,24 +257,3 @@ public class Warmth : MonoBehaviour
         canShareWarmth = true; ;
     }
 }
-
-/*
- *     //it runs 1 second after the campfire confirms proximity
-    IEnumerator noCampfire()
-    {
-        yield return new WaitForSeconds(detectionFrequency);
-        nearCampfire = false;
-        //Debug.Log("Away from campfire");
-
-        campfireTimer = false;
-    }
-
-    //it runs 1 second after the players confirms proximity
-    IEnumerator noPlayer()
-    {
-        yield return new WaitForSeconds(detectionFrequency);
-        nearPlayer = false;
-        //Debug.Log("Away from campfire");
-
-        playerTimer = false;
-    }*/
