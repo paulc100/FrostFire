@@ -7,16 +7,16 @@ public class GameEventManager : MonoBehaviour
     public UnityEvent IsGameOver;
     public UnityEvent IsVictory;
 
-    [Header("Collisions")]
-    public int collisionsToEndGame = 3;
     public int currentSnowmanCollisions = 0;
 
     [SerializeField]
     private SnowmenSpawner snowmenSpawner;
+    [SerializeField]
+    private Campfire campfire;
 
     void Update() 
     {   
-        if (currentSnowmanCollisions >= collisionsToEndGame) 
+        if (campfire.remainingFuel <= 0) 
         {
             GameOver();
         }

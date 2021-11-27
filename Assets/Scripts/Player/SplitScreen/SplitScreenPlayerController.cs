@@ -32,8 +32,9 @@ public class SplitScreenPlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private EnemyCollision enemyCollision;
     private Warmth warmth;
-    private List<GameObject> players = new List<GameObject>();
+    private ParticleSystem warmthParticle;
 
+    private List<GameObject> players = new List<GameObject>();
     public Transform cameraTransform;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -52,6 +53,7 @@ public class SplitScreenPlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         enemyCollision = GetComponent<EnemyCollision>();
         warmth = GetComponent<Warmth>();
+        warmthParticle = GetComponent<ParticleSystem>();
 
         moveAction = playerInput.actions["Movement"];
         jumpAction = playerInput.actions["Jump"];
@@ -64,11 +66,16 @@ public class SplitScreenPlayerController : MonoBehaviour
 
         Collider[] hits = Physics.OverlapSphere(transform.position, playerDetectionRadius);
         List<GameObject> newPlayers = new List<GameObject>();
+        List<GameObject> downedNewPlayers = new List<GameObject>();
         foreach (Collider hit in hits)
         {
             if (hit.tag == "Player" && hit.transform.gameObject.GetInstanceID() != gameObject.GetInstanceID())
             {
                 newPlayers.Add(hit.transform.gameObject);
+                if (hit.transform.gameObject.GetComponent<SplitScreenPlayerController>().downed)
+                {
+                    downedNewPlayers = new List<GameObject>();
+                }
                 if (!players.Contains(hit.transform.gameObject))
                 {
                     hit.transform.gameObject.GetComponent<Warmth>().isNearPlayer();
@@ -82,11 +89,21 @@ public class SplitScreenPlayerController : MonoBehaviour
                 player.GetComponent<Warmth>().isAwayPlayer();
             }
         }
-        players = newPlayers;
+        if (downedNewPlayers.Count > 0)
+        {
+            players = downedNewPlayers;
+        } else
+        {
+            players = newPlayers;
+        }
+        
 
         if (shareAction.ReadValue<float>() == 1 && !downed)
         {
             shareWarmth();
+        } else
+        {
+            warmthParticle.Stop();
         }
 
         if (damageReady == true)
@@ -100,6 +117,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     {
         if (players.Count > 0)
         {
+            warmthParticle.Play();
             warmth.shareWarmth(players);
         }
     }
