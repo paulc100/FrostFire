@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Campfire : MonoBehaviour
 {
@@ -12,21 +13,29 @@ public class Campfire : MonoBehaviour
     [SerializeField]
     private GameEventManager gameState;
 
+    [SerializeField]
+    private UnityEvent OnCampfireHealth_50 = null;
+    [SerializeField]
+    private UnityEvent OnCampfireHealth_25 = null;
+    [SerializeField]
+    private UnityEvent OnCampfireHealth_10 = null;
+
+    private bool canInvokeCampfireHealth_50 = true;
+    private bool canInvokeCampfireHealth_25 = true;
+    private bool canInvokeCampfireHealth_10 = true;
+
     private List<GameObject> players = new List<GameObject>();
-    //private Renderer campfireRenderer;
 
     private float campfireRadius = 10f;
     public float fuelCapacity = 100f;
     public float remainingFuel = 100f;
     private bool campfireOut = false;
 
-
     private void Awake()
     {
         remainingFuel = fuelCapacity;
         Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine(consumeFuel());
-        //campfireRenderer = GetComponent<Renderer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,24 +46,8 @@ public class Campfire : MonoBehaviour
             removeFuel(1);
             Destroy(other.gameObject);
         }
-
-        /*
-        switch (gameState.currentSnowmanCollisions)
-        {
-            case 1:
-                campfireRenderer.material.color = new Color(0.9f, 0.9f, 0.2f);
-                break;
-            case 2:
-                campfireRenderer.material.color = new Color(1.0f, 0.64f, 0f);
-                break;
-            case 3:
-                campfireRenderer.material.color = Color.red;
-                break;
-            default:
-                campfireRenderer.material.color = Color.grey;
-                break;
-        }*/
     }
+
     private void Update()
     {
         if (!campfireOut)
@@ -81,6 +74,8 @@ public class Campfire : MonoBehaviour
             }
             players = newPlayers;
         }
+
+        CheckCampfireAlertThresholds();
     }
 
     private void removeFuel(float fuelLost)
@@ -100,5 +95,34 @@ public class Campfire : MonoBehaviour
             yield return new WaitForSeconds(fuelLossFrequency);
             removeFuel(fuelLossRate);
         }
+    }
+
+    private void CheckCampfireAlertThresholds()
+    {
+        if (remainingFuel < 10 && canInvokeCampfireHealth_10) 
+        {
+            OnCampfireHealth_10?.Invoke();
+            canInvokeCampfireHealth_10 = false;
+        } 
+        else if (remainingFuel < 25 && canInvokeCampfireHealth_25)
+        {
+            OnCampfireHealth_25?.Invoke();
+            canInvokeCampfireHealth_25 = false;
+        }
+        else if (remainingFuel < 50 && canInvokeCampfireHealth_50)
+        {
+            OnCampfireHealth_50?.Invoke();
+            canInvokeCampfireHealth_50 = false;
+        }
+
+        // Check if campfire is raised above thresholds to re-display alerts 
+        if (remainingFuel > 10 && !canInvokeCampfireHealth_10)
+            canInvokeCampfireHealth_10 = true;
+
+        if (remainingFuel > 25 && !canInvokeCampfireHealth_25)
+            canInvokeCampfireHealth_25 = true;
+
+        if (remainingFuel > 50 && !canInvokeCampfireHealth_50)
+            canInvokeCampfireHealth_50 = true;
     }
 }
