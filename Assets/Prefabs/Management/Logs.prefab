@@ -515,7 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Log: {fileID: 4644129189751654128, guid: 668eff865a0cf164aa0be17353566b2b, type: 3}
   spawnRate: 5
-  maxLogs: 0
+  maxLogs: 5
 --- !u!1 &6916947151856795860
 GameObject:
   m_ObjectHideFlags: 0

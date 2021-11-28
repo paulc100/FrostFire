@@ -122,7 +122,7 @@ MonoBehaviour:
   idleRotationSpeed: 50
   idleBobbingSpeed: 2
   idleBobbingHeight: 1.1
-  timePowerup: 20
+  timePowerup: 15
 --- !u!108 &2544559978913079822
 Light:
   m_ObjectHideFlags: 0

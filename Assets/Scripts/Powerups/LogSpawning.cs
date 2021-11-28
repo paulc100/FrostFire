@@ -60,10 +60,11 @@ public class LogSpawning : MonoBehaviour
 
         var randSpawn = Random.Range(0, spawnPoints.Length);
         Vector3 spawnPositionVec = spawnPoints[randSpawn].position;
+        Quaternion spawnPositionRot = spawnPoints[randSpawn].rotation;
 
-        if(spawnedLogs < maxLogs)
+        if (spawnedLogs < maxLogs)
         {
-            Instantiate(Log, spawnPositionVec, Quaternion.identity);
+            Instantiate(Log, spawnPositionVec, spawnPositionRot);
         }
 
         spawnedLogs += 1;

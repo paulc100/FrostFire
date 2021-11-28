@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedPowerup: {fileID: 8600324524654320266, guid: 52276ff94daa48c478dcd6293c5e2a1e, type: 3}
   damagePowerup: {fileID: 1915572689446792845, guid: 034077ade4e45d44c9e6414372f8cbbd, type: 3}
-  spawnRate: 2
+  spawnRate: 20
 --- !u!1 &5053390072706419908
 GameObject:
   m_ObjectHideFlags: 0
