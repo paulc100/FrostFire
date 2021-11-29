@@ -43,20 +43,20 @@ public class SnowmanController : MonoBehaviour
         agent.isStopped = false;
         agent.ResetPath();
         agent.SetDestination(target.position);
-        animator.SetBool("moving", true);
+        animator.SetBool("Moving", true);
     }
     public void Move() {
         agent.isStopped = false;
         agent.ResetPath();
         agent.SetDestination(campfire.transform.position);
-        animator.SetBool("moving", true);
+        animator.SetBool("Moving", true);
 
     }
 
     public void Stop() {
         agent.isStopped = true;
         agent.ResetPath();
-        animator.SetBool("moving", false);
+        animator.SetBool("Moving", false);
 
     }
 
