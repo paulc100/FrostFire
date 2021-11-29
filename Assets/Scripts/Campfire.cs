@@ -6,13 +6,15 @@ using UnityEngine.Events;
 public class Campfire : MonoBehaviour
 {
     [SerializeField]
+    private GameEventManager gameState;
+
+    [Header("Fuel Management")]
+    [SerializeField]
     private float fuelLossFrequency = 0.1f;
     [SerializeField]
     private float fuelLossRate = 0.01f;
 
-    [SerializeField]
-    private GameEventManager gameState;
-
+    [Header("Alert Events")]
     [SerializeField]
     private UnityEvent OnCampfireHealth_50 = null;
     [SerializeField]

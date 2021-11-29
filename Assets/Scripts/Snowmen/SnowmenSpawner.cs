@@ -1,20 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SnowmenSpawner : MonoBehaviour
 {
-    private bool waveInProgress = false;
-
-    private Transform[] spawnPoints;
-
-    [Header("Snowmen Types")]
-    public RegularSnowmenManager regularSnowman;
-    public RangedSnowmenManager rangedSnowman;
-    public BossSnowmanManager bossSnowman;
-    public SmallSnowmenManager smallSnowman;
-
-    public static int waveTotalSnowmanCount = 0;
-
     [System.Serializable]
     public class Wave
     {
@@ -23,6 +12,28 @@ public class SnowmenSpawner : MonoBehaviour
         public int bossCount;
         public int smallCount;
     }
+
+    [System.Serializable]
+    public class WaveCooldownEvent : UnityEvent<int> {}
+
+    private bool waveInProgress = true;
+    private bool isFirstWave = true;
+    private Transform[] spawnPoints;
+    public static int waveTotalSnowmanCount = 0;
+
+    [Header("Snowmen Types")]
+    public RegularSnowmenManager regularSnowman;
+    public RangedSnowmenManager rangedSnowman;
+    public BossSnowmanManager bossSnowman;
+    public SmallSnowmenManager smallSnowman;
+
+    [Header("Alert Events")]
+    [SerializeField]
+    private UnityEvent OnWaveStart = null;
+    [SerializeField]
+    private UnityEvent OnWaveComplete = null;
+    [SerializeField]
+    private WaveCooldownEvent OnWaveCooldown = null;
 
     public Wave[] waves;
     public int waveNumber;
@@ -45,9 +56,10 @@ public class SnowmenSpawner : MonoBehaviour
 
     void Update()
     {
-        if (waveNumber == waves.Length)
+        if (isFirstWave)
         {
-            //Debug.Log("VICTORY");
+            StartCoroutine(startWaveCooldown());
+            isFirstWave = false;
         }
         else if (!waveInProgress)
         {
@@ -56,6 +68,7 @@ public class SnowmenSpawner : MonoBehaviour
         else if (IsSnowmanActiveCountZero() && DoWaveCountsMatchIndexes())
         {
             Debug.Log("Wave complete");
+            OnWaveComplete?.Invoke();
 
             // Reset indices
             regularIndex = 0;
@@ -78,6 +91,7 @@ public class SnowmenSpawner : MonoBehaviour
     {
         waveInProgress = true;
         Debug.Log("Wave in progress");
+        OnWaveStart?.Invoke();
 
         // Update total snowman count for the wave
         waveTotalSnowmanCount = wave.regularCount + wave.rangedCount + wave.bossCount + wave.smallCount;
@@ -112,6 +126,7 @@ public class SnowmenSpawner : MonoBehaviour
 
     IEnumerator startWaveCooldown()
     {
+        OnWaveCooldown?.Invoke(waveCooldown);
         yield return new WaitForSeconds(waveCooldown);
         waveInProgress = false;
     }

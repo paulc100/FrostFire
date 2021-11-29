@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class MainAlertManager : MonoBehaviour
 {
+    [Header("UI")]
     [SerializeField]
     private Text headingText = null;
     [SerializeField]
@@ -12,36 +13,60 @@ public class MainAlertManager : MonoBehaviour
 
     private void Awake() => animator = gameObject.GetComponent<Animator>();
 
+    private void Reset() => animator.Play("MainAlert", -1, 0f);
+
+    private void Play() => animator.Play("MainAlert");
+
     public void DisplayCampfireAlert_50()
     {
-        animator.Play("MainAlert", -1, 0f);
+        Reset();
 
         headingText.text = AlertDatabase.HEADING_CAMPFIRE_50;
         subheadingText.text = AlertDatabase.GenerateRandomSubheadingFromList(AlertDatabase.SUBHEADINGS_CAMPFIRE_ALERTS);
 
         // FindObjectOfType<AudioManager>().Play("Alert");
-        animator.Play("MainAlert");
+        Play();
     }
 
     public void DisplayCampfireAlert_25()
     {
-        animator.Play("MainAlert", -1, 0f);
+        Reset();
 
         headingText.text = AlertDatabase.HEADING_CAMPFIRE_25;
         subheadingText.text = AlertDatabase.GenerateRandomSubheadingFromList(AlertDatabase.SUBHEADINGS_CAMPFIRE_ALERTS);
 
         // FindObjectOfType<AudioManager>().Play("Alert");
-        animator.Play("MainAlert");
+        Play();
     }
 
     public void DisplayCampfireAlert_10()
     {
-        animator.Play("MainAlert", -1, 0f);
+        Reset();
 
         headingText.text = AlertDatabase.HEADING_CAMPFIRE_10;
         subheadingText.text = AlertDatabase.GenerateRandomSubheadingFromList(AlertDatabase.SUBHEADINGS_CAMPFIRE_ALERTS);
 
         // FindObjectOfType<AudioManager>().Play("Alert");
-        animator.Play("MainAlert");
+        Play();
+    }
+
+    public void DisplayWaveAlert_Incoming()
+    {
+        Reset();
+
+        headingText.text = AlertDatabase.HEADING_WAVE_INCOMING;
+        subheadingText.text = AlertDatabase.GenerateRandomSubheadingFromList(AlertDatabase.SUBHEADINGS_WAVE_ALERTS);
+
+        Play();
+    }
+
+    public void DisplayWaveAlert_Complete()
+    {
+        Reset();
+
+        headingText.text = AlertDatabase.HEADING_WAVE_COMPLETE;
+        subheadingText.text = AlertDatabase.GenerateRandomSubheadingFromList(AlertDatabase.SUBHEADINGS_WAVE_ALERTS);
+
+        Play();
     }
 }
