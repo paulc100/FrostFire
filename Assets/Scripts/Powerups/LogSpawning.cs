@@ -64,7 +64,8 @@ public class LogSpawning : MonoBehaviour
 
         if (spawnedLogs < maxLogs)
         {
-            Instantiate(Log, spawnPositionVec, spawnPositionRot);
+            var logGameObject = Instantiate(Log, spawnPositionVec, spawnPositionRot);
+            logGameObject.GetComponentInChildren<RotateUIToCamera>().cinemachineVirtualCamera = CoreCamera.Reference;
         }
 
         spawnedLogs += 1;

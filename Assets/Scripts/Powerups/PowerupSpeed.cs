@@ -53,6 +53,8 @@ public class PowerupSpeed: MonoBehaviour
 
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponentInChildren<Canvas>().enabled = false;
+
         lights = gameObject.GetComponentsInChildren<Light>();
         foreach (var light in lights) {
             light.enabled = false;
@@ -67,6 +69,5 @@ public class PowerupSpeed: MonoBehaviour
         player.gameObject.GetComponent<PowerupTrigger>().Trigger("speedoff");
 
         Destroy(gameObject);
-    
     }
 }
