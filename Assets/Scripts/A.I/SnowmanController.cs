@@ -17,9 +17,6 @@ public class SnowmanController : MonoBehaviour
     public int sightRadius = 6;
     public int fightRadius = 2;
     public float attackDamage = 2;
-
-  
-    private bool isLockedOnPlayer;
     protected bool isAttacking;
 
     public Animator animator;
