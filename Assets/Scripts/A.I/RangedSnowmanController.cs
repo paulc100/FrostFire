@@ -20,7 +20,7 @@ public class RangedSnowmanController : SnowmanController
             atkCoolDown = 1f / throwRate;
         }
 
-        atkCoolDown -= Time.deltaTime;
+        //atkCoolDown -= Time.deltaTime;
         }
 
 	void Start() {
