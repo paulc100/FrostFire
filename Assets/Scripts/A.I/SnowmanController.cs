@@ -41,19 +41,26 @@ public class SnowmanController : MonoBehaviour
     
     public void Move(Transform target) {
         agent.isStopped = false;
+        agent.ResetPath();
         agent.SetDestination(target.position);
+        animator.SetBool("moving", true);
     }
     public void Move() {
         agent.isStopped = false;
+        agent.ResetPath();
         agent.SetDestination(campfire.transform.position);
+        animator.SetBool("moving", true);
+
     }
 
     public void Stop() {
         agent.isStopped = true;
-        agent.ResetPath();  
+        agent.ResetPath();
+        animator.SetBool("moving", false);
+
     }
 
-	public virtual void Attack(Transform target) {
+    public virtual void Attack(Transform target) {
         //Refer to child class for code
     }
 
@@ -63,12 +70,10 @@ public class SnowmanController : MonoBehaviour
             // checks if collision was a player
             if (hitCollider.tag == "Player" && !hitCollider.gameObject.GetComponent<Warmth>().isDowned) {
 
-                //If they are close enough to atk, stop and atk. If they are not, move closer to player.
                 if (Vector3.Distance(hitCollider.transform.position, transform.position) <= fightRadius ) {
                     Stop();
                     //attack phase start
                     isAttacking = true; 
-                    //attack phase
                     Attack(hitCollider.transform);
                 } else {
                     //IF NOT CLOSE ENOUGH WALK CLOSER
