@@ -49,6 +49,7 @@ public class EnemyCollision : MonoBehaviour
                 if (snowmen[0] != null && snowmen[0].GetComponent<Snowman>().damage(attackPower))
                 {
                     snowmen.RemoveAt(0);
+                    StartCoroutine(knockBackCoroutine(snowmen[0], 15000, 0.2f));
                     FindObjectOfType<AudioManager>().Play("SnowmanDeath");
                     FindObjectOfType<AudioManager>().Stop("SnowmanHit");
                 }
@@ -58,5 +59,18 @@ public class EnemyCollision : MonoBehaviour
             }
             
         }
+    }
+
+    IEnumerator knockBackCoroutine(GameObject target, float power, float overTime) {
+        float timeleft = overTime;
+        target.GetComponent<RangedSnowmanController>().Stop();
+        //Knockback Animation
+        while (timeleft > 0) {
+            Vector3 moveDirection = transform.position - target.transform.position;
+            target.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -power);
+            timeleft -= Time.deltaTime;
+            yield return null;
+        }
+        target.GetComponent<RangedSnowmanController>().Move();
     }
 }

@@ -3779,6 +3779,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fe995ebe61f77e747a7f2a5ea5072833, type: 3}
   m_PrefabInstance: {fileID: 207115933}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &417378101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+  m_PrefabInstance: {fileID: 531914476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6977c565a25ae6a4e9ef7943db80970e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &421759429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 12ca96abd9b225e4f9404e9d43e7f615, type: 3}
@@ -11544,7 +11555,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3b298f83e192b5740a254cf617351507, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2e3a855e9b776e4418a6ce4075ec33a2, type: 2}
 --- !u!4 &835652938
 Transform:
   m_ObjectHideFlags: 0
@@ -24066,7 +24077,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.4691781, y: 1}
+    m_SensorSize: {x: 1.6960784, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -34304,6 +34315,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7446059366808004939, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: campfire
+      value: 
+      objectReference: {fileID: 417378101}
     - target: {fileID: 7446059366808004939, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: snowmenSpawner
       value: 

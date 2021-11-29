@@ -9,19 +9,18 @@ public class RangedSnowmanController : SnowmanController
     public GameObject snowballPrefab;
     public Transform throwPoint; 
     public float throwRate = 1f;
-    private float throwCoolDown = 0f;
     private float throwOffSetMax = 2;
     private float throwOffSetMin = -2;
 
     public override void Attack(Transform target) {
 
-        if (throwCoolDown <= 0f) {
+        if (atkCoolDown <= 0f) {
             //<ANIMATION HERE OR IN METHOD BELOW>
             SimulateProjectile(target);
-            throwCoolDown = 1f / throwRate;
+            atkCoolDown = 1f / throwRate;
         }
 
-        throwCoolDown -= Time.deltaTime;
+        atkCoolDown -= Time.deltaTime;
         }
 
 	void Start() {

@@ -17,9 +17,11 @@ public class SnowmanController : MonoBehaviour
     public int sightRadius = 6;
     public int fightRadius = 2;
     public float attackDamage = 2;
-
-    private bool isLockedOnPlayer;
+    protected float atkCoolDown = 0f;
     protected bool isAttacking;
+
+    [Header("Animations")]
+    public Animator animator;
 
     // Start is called before the first frame update.
     void Start()
@@ -34,14 +36,19 @@ public class SnowmanController : MonoBehaviour
     protected void FixedUpdate()
     {
         checkForPlayers(transform.position);
+        atkCoolDown -= Time.deltaTime;
     }
     
-    private void Move(Transform target) {
+    public void Move(Transform target) {
         agent.isStopped = false;
         agent.SetDestination(target.position);
     }
+    public void Move() {
+        agent.isStopped = false;
+        agent.SetDestination(campfire.transform.position);
+    }
 
-    private void Stop() {
+    public void Stop() {
         agent.isStopped = true;
         agent.ResetPath();  
     }
@@ -54,14 +61,13 @@ public class SnowmanController : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(center, sightRadius);
         foreach (var hitCollider in hitColliders)  {
             // checks if collision was a player
-            if (hitCollider.tag == "Player") {
+            if (hitCollider.tag == "Player" && !hitCollider.gameObject.GetComponent<Warmth>().isDowned) {
 
                 //If they are close enough to atk, stop and atk. If they are not, move closer to player.
                 if (Vector3.Distance(hitCollider.transform.position, transform.position) <= fightRadius ) {
                     Stop();
                     //attack phase start
                     isAttacking = true; 
-
                     //attack phase
                     Attack(hitCollider.transform);
                 } else {
