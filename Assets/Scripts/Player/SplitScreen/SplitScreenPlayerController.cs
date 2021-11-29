@@ -27,6 +27,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     private bool attackAvailable = true;
     private bool damageReady = false;
     private bool downed = false;
+    public bool isKnocked = false;
 
     private CharacterController controller;
     private PlayerInput playerInput;
@@ -44,6 +45,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     private InputAction jumpAction;
     private InputAction attackAction;
     private InputAction shareAction;
+   
 
     public Animator animator;
 

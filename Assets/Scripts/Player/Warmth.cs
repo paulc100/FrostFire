@@ -16,7 +16,7 @@ public class Warmth : MonoBehaviour
 
     public bool nearCampfire = false;
     public bool nearPlayer = false;
-    private bool invulnerable = false;
+    public bool invulnerable = false;
     private bool isRunning_AwayCampfire = false;
     private bool isRunning_Campfire = false;
     public bool isDowned = false;
@@ -175,7 +175,7 @@ public class Warmth : MonoBehaviour
         {
             warmth += givenWarmth;
         }
-        Debug.Log(player.name + ": " + warmth);
+        //Debug.Log(player.name + ": " + warmth);
     }
 
     // Update is called once per frame

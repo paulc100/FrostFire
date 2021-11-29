@@ -18,7 +18,6 @@ public class SnowmanController : MonoBehaviour
     public int fightRadius = 2;
     public float attackDamage = 2;
 
-  
     private bool isLockedOnPlayer;
     protected bool isAttacking;
 
@@ -63,8 +62,8 @@ public class SnowmanController : MonoBehaviour
                     isAttacking = true; //for collision class
                     Attack(hitCollider.transform);
                 } else {
+                    isAttacking = false;
                     Move(hitCollider.transform);
-
                 }
                 return;
             }

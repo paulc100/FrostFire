@@ -20,44 +20,92 @@ public class RegularSnowmanController : SnowmanController
     /// AND MAKE SURE ITS SIMULTANEIOUS WITH HEAT LOSS
     /// </summary>
     /// <param name="target"></param>
+
     public override void Attack(Transform target) {
-    
-        if (atkCoolDown <= 0f) {
+
+        
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (isAttacking && other.gameObject.tag == "Player") {
+
+            push(other.transform);
             
-            //calculate direction
-            Vector3 dir = target.transform.position - transform.position;
-            dir = -dir;
+            if (!other.gameObject.GetComponent<SplitScreenPlayerController>().isKnocked) {
+                other.gameObject.GetComponent<SplitScreenPlayerController>().isKnocked = true;
+                other.GetComponent<Warmth>().removeWarmth(attackDamage, true);
+            }
+            
+            //GameObject target = other.gameObject;
+            //Attack(target.transform);
+        }
+    }
 
-            //Attacking Player <ANIMATION NEEDED>
-            knockBack(target, dir, atkPower, knockbackDuration);
+    void push(Transform target) {
+        GameObject player = target.gameObject;
 
-            //reset cooldown
-            atkCoolDown = 1f / atkRate;
+        //Check to see if player is invulnerable
+        if (!player.GetComponent<Warmth>().invulnerable && !player.GetComponent<Warmth>().isDowned) {
+            if (atkCoolDown <= 0f) {
+                //calculate direction
+                Vector3 dir = target.transform.position - transform.position;
+                dir = -dir;
+
+                Debug.Log("KNOCKED BACK STARTED");
+                //Attacking Player <ANIMATION NEEDED>
+                knockBack(target, dir, atkPower, knockbackDuration);
+
+                //reset cooldown
+                atkCoolDown = 1f / atkRate;
+            }
         }
         atkCoolDown -= Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (isAttacking && other.gameObject.tag == "Player") {
-            //Player takes damage
-            currentCollision = other;
-            currentCollision.GetComponent<Warmth>().removeWarmth(attackDamage, true);
-            Debug.Log("warmth= " + other.GetComponent<Warmth>().warmth);
-
-            GameObject target = other.gameObject;
-            Attack(target.transform);
-        }
-    }
-
     private void knockBack(Transform target, Vector3 direction, float length, float overTime) {
-        direction = direction.normalized;
-        Vector3 effectLocation = new Vector3(transform.position.x, 0, transform.position.z); 
+
+        //Attack Particles
+        Vector3 effectLocation = new Vector3(transform.position.x, 0, transform.position.z);
         GameObject effectIns = (GameObject)Instantiate(snowParticle, effectLocation, transform.rotation);
         Destroy(effectIns, 2f);
-        StartCoroutine(knockBackCoroutine(target, direction, length, overTime));
+
+        Debug.Log("KNOCKED BACK STARTED2");
+
+        StartCoroutine(knockBackCoroutine(target, length, overTime));
+
+        //Start knockback coroutine
+        /*direction = direction.normalized;
+        StartCoroutine(knockBackCoroutine(target, direction, length, overTime));*/
     }
 
-    IEnumerator knockBackCoroutine(Transform target, Vector3 direction, float length, float overTime) {
+    IEnumerator knockBackCoroutine(Transform target, float length, float overTime) {
+        Debug.Log("KNOCKED BACK 000000000000");
+        float timeleft = overTime;
+        target.gameObject.GetComponent<CharacterController>().enabled = false;
+        while (timeleft > 0) {
+            Debug.Log("KNOCKED BACK");
+           
+            timeleft -= Time.deltaTime;
+            Vector3 moveDirection = transform.position - target.position;
+            target.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -100f);
+         
+            timeleft -= Time.deltaTime;
+            yield return null;
+        }
+        target.gameObject.GetComponent<CharacterController>().enabled = true;
+        //target.gameObject.GetComponent<SplitScreenPlayerController>().isKnocked = false;
+    }
+
+    private void physicsKnockback(Transform target, Vector3 direction, float length, float overTime) {
+        target.gameObject.GetComponent<CharacterController>().enabled = false;
+        Debug.Log("KNOCKED BACK");
+        Vector3 moveDirection = transform.position - target.position;
+        target.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -500f);
+        target.gameObject.GetComponent<CharacterController>().enabled = true;
+
+    }
+
+/*    IEnumerator knockBackCoroutine(Transform target, Vector3 direction, float length, float overTime) {
         float timeleft = overTime;
         while (timeleft > 0) {
             if (timeleft > Time.deltaTime)
@@ -67,5 +115,6 @@ public class RegularSnowmanController : SnowmanController
             timeleft -= Time.deltaTime;
             yield return null;
         }
-    }
+        target.gameObject.GetComponent<SplitScreenPlayerController>().isKnocked = false;
+    }*/
 }

@@ -10,8 +10,6 @@ public class Snowball : MonoBehaviour
     public float speed = 20.0f;
     public GameObject snowballParticle;
     
-
-
 	void Start() {
     }
 	public void Seek(Vector3 _target, float _attackDamage)
@@ -40,7 +38,8 @@ public class Snowball : MonoBehaviour
             return;
         }
     }
-    private void OnTriggerEnter(Collider other) {   
+    private void OnTriggerEnter(Collider other) {  
+        
         if (other.gameObject.tag == "Player") {
             //Player takes damage
             other.GetComponent<Warmth>().removeWarmth(attackDamage/2, true);
