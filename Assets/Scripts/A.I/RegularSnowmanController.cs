@@ -31,10 +31,7 @@ public class RegularSnowmanController : SnowmanController
 
             push(other.transform);
             
-            if (!other.gameObject.GetComponent<SplitScreenPlayerController>().isKnocked) {
-                other.gameObject.GetComponent<SplitScreenPlayerController>().isKnocked = true;
-                other.GetComponent<Warmth>().removeWarmth(attackDamage, true);
-            }
+            other.GetComponent<Warmth>().removeWarmth(attackDamage, true);
             
             //GameObject target = other.gameObject;
             //Attack(target.transform);

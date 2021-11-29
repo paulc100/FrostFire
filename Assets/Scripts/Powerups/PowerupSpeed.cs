@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PowerupSpeed: MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class PowerupSpeed: MonoBehaviour
     private float idleBobbingSpeed = 2f;
     [SerializeField]
     private float idleBobbingHeight = 1.1f;
+
+    private Light[] lights;
+
+    [SerializeField]
+    private float timePowerup = 5.0f;
 
 
     private void Update() {
@@ -43,12 +49,22 @@ public class PowerupSpeed: MonoBehaviour
         Debug.Log("Powerup is picked up!");
 
         splitScreenPlayerController.playerSpeed = Mathf.Clamp((splitScreenPlayerController.playerSpeed *= 1.5f), 10.0f, 15.0f);
+        player.gameObject.GetComponent<PowerupTrigger>().Trigger("speedon");
 
-        gameObject.SetActive(false);
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        lights = gameObject.GetComponentsInChildren<Light>();
+        foreach (var light in lights) {
+            light.enabled = false;
+        }
 
-        yield return new WaitForSeconds(10f);
+        FindObjectOfType<AudioManager>().Play("Powerup");
+        FindObjectOfType<PowerupSpawner>().Collected();
+
+        yield return new WaitForSeconds(timePowerup);
 
         splitScreenPlayerController.playerSpeed = Mathf.Clamp((splitScreenPlayerController.playerSpeed /= 1.5f), 10.0f, 15.0f);
+        player.gameObject.GetComponent<PowerupTrigger>().Trigger("speedoff");
 
         Destroy(gameObject);
     

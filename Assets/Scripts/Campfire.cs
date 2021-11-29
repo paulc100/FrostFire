@@ -1,19 +1,32 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Campfire : MonoBehaviour
 {
     [SerializeField]
+    private float fuelLossFrequency = 0.1f;
+    [SerializeField]
+    private float fuelLossRate = 0.01f;
+
+    [SerializeField]
     private GameEventManager gameState;
-    private Renderer campfireRenderer;
+
+    private List<GameObject> players = new List<GameObject>();
+    //private Renderer campfireRenderer;
 
     private float campfireRadius = 10f;
-    private List<GameObject> players = new List<GameObject>();
+    public float fuelCapacity = 100f;
+    public float remainingFuel = 100f;
+    private bool campfireOut = false;
+
 
     private void Awake()
     {
+        remainingFuel = fuelCapacity;
         Cursor.lockState = CursorLockMode.Locked;
-        campfireRenderer = GetComponent<Renderer>();
+        StartCoroutine(consumeFuel());
+        //campfireRenderer = GetComponent<Renderer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,10 +34,11 @@ public class Campfire : MonoBehaviour
         if (other.gameObject.tag == "Snowman")
         {
             FindObjectOfType<AudioManager>().Play("CampfireLife");
-            gameState.currentSnowmanCollisions += 1;
+            removeFuel(1);
             Destroy(other.gameObject);
         }
 
+        /*
         switch (gameState.currentSnowmanCollisions)
         {
             case 1:
@@ -39,30 +53,52 @@ public class Campfire : MonoBehaviour
             default:
                 campfireRenderer.material.color = Color.grey;
                 break;
-        }
+        }*/
     }
     private void Update()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, campfireRadius);
-        List<GameObject> newPlayers = new List<GameObject>();
-        foreach (Collider hit in hits)
+        if (!campfireOut)
         {
-            if (hit.tag == "Player")
+            Collider[] hits = Physics.OverlapSphere(transform.position, campfireRadius);
+            List<GameObject> newPlayers = new List<GameObject>();
+            foreach (Collider hit in hits)
             {
-                newPlayers.Add(hit.transform.gameObject);
-                if (!players.Contains(hit.transform.gameObject))
+                if (hit.tag == "Player")
                 {
-                    hit.transform.gameObject.GetComponent<Warmth>().isNearCampfire();
+                    newPlayers.Add(hit.transform.gameObject);
+                    if (!players.Contains(hit.transform.gameObject))
+                    {
+                        hit.transform.gameObject.GetComponent<Warmth>().isNearCampfire();
+                    }
                 }
             }
-        }
-        foreach (GameObject player in players)
-        {
-            if(!newPlayers.Exists(x=>x.GetInstanceID()==player.GetInstanceID()))
+            foreach (GameObject player in players)
             {
-                player.GetComponent<Warmth>().isAwayCampfire();
+                if (!newPlayers.Exists(x => x.GetInstanceID() == player.GetInstanceID()))
+                {
+                    player.GetComponent<Warmth>().isAwayCampfire();
+                }
             }
+            players = newPlayers;
         }
-        players = newPlayers;
+    }
+
+    private void removeFuel(float fuelLost)
+    {
+        remainingFuel -= fuelLost;
+        if (remainingFuel <= 0)
+        {
+            campfireOut = true;
+            remainingFuel = 0;
+        }
+    }
+
+    IEnumerator consumeFuel()
+    {
+        while(!campfireOut)
+        {
+            yield return new WaitForSeconds(fuelLossFrequency);
+            removeFuel(fuelLossRate);
+        }
     }
 }

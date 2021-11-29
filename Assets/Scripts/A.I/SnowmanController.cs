@@ -59,15 +59,20 @@ public class SnowmanController : MonoBehaviour
                 //If they are close enough to atk, stop and atk. If they are not, move closer to player.
                 if (Vector3.Distance(hitCollider.transform.position, transform.position) <= fightRadius ) {
                     Stop();
-                    isAttacking = true; //for collision class
+                    //attack phase start
+                    isAttacking = true; 
+
+                    //attack phase
                     Attack(hitCollider.transform);
                 } else {
+                    //IF NOT CLOSE ENOUGH WALK CLOSER
                     isAttacking = false;
                     Move(hitCollider.transform);
                 }
                 return;
             }
         }
+        //no players in sight radius
         isAttacking = false;
         Move(campfire.transform);
     }

@@ -49,7 +49,6 @@ GameObject:
   - component: {fileID: -9001470923406969404}
   - component: {fileID: 2533042879045676253}
   - component: {fileID: 2606184759844410654}
-  - component: {fileID: 3327106029128304086}
   m_Layer: 8
   m_Name: RangedSnowman
   m_TagString: Snowman
@@ -134,7 +133,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.8
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
@@ -172,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8993c215470aff49a621a89a6d9300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UniqueID: 4
+  UniqueID: 12
 --- !u!114 &5075356112059699371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +203,7 @@ MonoBehaviour:
   sightRadius: 22
   fightRadius: 20
   attackDamage: 2
+  animator: {fileID: 3257606343749108876}
   snowballPrefab: {fileID: 2366906609861919572, guid: 36ef1775e6a8010488eda87137def375, type: 3}
   throwPoint: {fileID: 6369848440814234249}
   throwRate: 0.5
@@ -224,6 +224,7 @@ MonoBehaviour:
   sightRadius: 30
   fightRadius: 25
   attackDamage: 2
+  animator: {fileID: 3257606343749108876}
 --- !u!114 &2606184759844410654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,25 +238,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthFill: {fileID: 6184898444909011426}
---- !u!95 &3327106029128304086
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2533042879045676240}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2151f3a6d4ab99d4d89bd79b1e880074, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3530833541259858287
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +712,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 48cef94e15b5a3f478b3df59c08260d1, type: 2}
     - target: {fileID: 6030511152607113921, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -766,11 +752,15 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5866666021909216657, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
 --- !u!4 &8923173894526099190 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
+  m_PrefabInstance: {fileID: 8962095209860643101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3257606343749108876 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
   m_PrefabInstance: {fileID: 8962095209860643101}
   m_PrefabAsset: {fileID: 0}

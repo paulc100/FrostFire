@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Core Scenes/UI/MainMenu.unity
     guid: 8c6e8c65227cede4cb4e9117968c351b
   - enabled: 1
-    path: Assets/Scenes/Core Scenes/BackyardBeta.unity
+    path: Assets/Scenes/Core Scenes/BackyardRelease.unity
     guid: 684e061961cf058478ed6c2f165fbb97
   m_configObjects: {}
