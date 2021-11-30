@@ -45,6 +45,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     private InputAction jumpAction;
     private InputAction attackAction;
     private InputAction shareAction;
+   
 
     public Animator animator;
 
@@ -235,5 +236,24 @@ public class SplitScreenPlayerController : MonoBehaviour
         yield return new WaitForSeconds(1);
         //Debug.Log("Attack available at: " + Time.time);
         if(!downed) attackAvailable = true;
+    }
+
+    public void flicker() {
+        StartCoroutine(startFlickering());
+    }
+
+    public IEnumerator startFlickering() {
+        Debug.Log("this code ran FLKJDSKFSDKLFJLSK");
+        Renderer ren = gameObject.GetComponent<MeshRenderer>();
+        
+        Animator animator = gameObject.GetComponent<Animator>();
+        animator.enabled = false;
+        ren.enabled = false;
+        for (int i = 0; i < 5; i++) {
+            ren.enabled = !ren.enabled;
+            yield return new WaitForSeconds(1f);
+		}
+        ren.enabled = true;
+        animator.enabled = true;
     }
 }

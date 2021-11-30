@@ -10,8 +10,6 @@ public class Snowball : MonoBehaviour
     public float speed = 20.0f;
     public GameObject snowballParticle;
     
-
-
 	void Start() {
     }
 	public void Seek(Vector3 _target, float _attackDamage)
@@ -28,11 +26,13 @@ public class Snowball : MonoBehaviour
             return;
         }
 
+
         Vector3 dir = target - transform.position;
         float disPerFrame = speed * Time.deltaTime;
 
 
         transform.Translate(dir.normalized * disPerFrame, Space.World);
+        transform.Rotate(-1, -1, 0);
 
         //For player hit only
         if (dir.magnitude <= disPerFrame) {
@@ -40,7 +40,8 @@ public class Snowball : MonoBehaviour
             return;
         }
     }
-    private void OnTriggerEnter(Collider other) {   
+    private void OnTriggerEnter(Collider other) {  
+        
         if (other.gameObject.tag == "Player") {
             //Player takes damage
             other.GetComponent<Warmth>().removeWarmth(attackDamage/2, true);

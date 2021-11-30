@@ -17,63 +17,69 @@ public class SnowmanController : MonoBehaviour
     public int sightRadius = 6;
     public int fightRadius = 2;
     public float attackDamage = 2;
-
-  
-    private bool isLockedOnPlayer;
+    protected float atkCoolDown = 0f;
     protected bool isAttacking;
 
+    [Header("Animations")]
     public Animator animator;
 
     // Start is called before the first frame update.
     void Start()
     {
         isAttacking = false;
-        // Setting target location as campfire.
-        //campfire = GameObject.Find("Campfire").transform;
-        Move(campfire.transform);
+        Move();
     }   
 
     // Update is called once per frame
     protected void FixedUpdate()
     {
-        checkForPlayers(transform.position);
+        checkForPlayers();
+        atkCoolDown -= Time.deltaTime;
     }
     
-    protected void Move(Transform target) {
+    public void Move(Transform target) {
         agent.isStopped = false;
         agent.SetDestination(target.position);
         animator.SetBool("Moving", true);
     }
+    //default move set to "campfire"
+    public void Move() {
+        agent.isStopped = false;
+        agent.SetDestination(campfire.transform.position);
+        animator.SetBool("Moving", true);
 
-    private void Stop() {
+    }
+
+    public void Stop() {
         agent.isStopped = true;
         agent.ResetPath();
         animator.SetBool("Moving", false);
+
     }
 
-	public virtual void Attack(Transform target) {
-        //Refer to child class for code
+    public virtual void Attack(Transform target) {
+        // Refer to child attack
     }
 
-    protected virtual void checkForPlayers(Vector3 center) {
-        Collider[] hitColliders = Physics.OverlapSphere(center, sightRadius);
+    protected void checkForPlayers() {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, sightRadius);
+        
         foreach (var hitCollider in hitColliders)  {
-            // checks if collision was a player
-            if (hitCollider.tag == "Player" && !hitCollider.transform.gameObject.GetComponent<SplitScreenPlayerController>().downed) {
-
-                //If they are close enough to atk, stop and atk. If they are not, move closer to player.
+            // validating target
+            if (hitCollider.tag == "Player" && !hitCollider.gameObject.GetComponent<Warmth>().isDowned) {
+                
                 if (Vector3.Distance(hitCollider.transform.position, transform.position) <= fightRadius ) {
                     Stop();
-                    //isAttacking = true; //for collision class
+                    isAttacking = true;
                     Attack(hitCollider.transform);
                 } else {
+                    isAttacking = false;
                     Move(hitCollider.transform);
-
                 }
                 return;
             }
         }
-        //isAttacking = false;
-        Move(campfire.transform);
+        isAttacking = false;
+        Move();
     }
 }

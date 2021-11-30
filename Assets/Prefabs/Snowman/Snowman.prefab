@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: -6322919525632863193}
   - component: {fileID: 2791688041010300487}
   - component: {fileID: -5119612317711598658}
-  - component: {fileID: 2533042879045676253}
   - component: {fileID: 8779740223472377231}
   m_Layer: 8
   m_Name: Snowman
@@ -139,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57bc3f0773555349aa144fd02097659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UniqueID: 10
+  UniqueID: 9
 --- !u!114 &2791688041010300487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,30 +169,12 @@ MonoBehaviour:
   campfire: {fileID: 78610475837391531, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
   sightRadius: 6
   fightRadius: 2
-  attackDamage: 2
+  attackDamage: 1
   animator: {fileID: 4892889530982305257}
-  atkRate: 1
-  atkPower: 3
-  knockbackDuration: 0.3
+  atkRate: 0.3
+  knockbackPower: 15
+  knockbackDuration: 0.5
   snowParticle: {fileID: 7070436781391858944, guid: cef4a29c37a237140829570bbba648b0, type: 3}
---- !u!114 &2533042879045676253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2533042879045676240}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df1e773ff5dfd24f9b803101ae1d68a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 2533042879045676250}
-  campfire: {fileID: 78610475837391531, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
-  sightRadius: 6
-  fightRadius: 2
-  attackDamage: 2
-  animator: {fileID: 4892889530982305257}
 --- !u!114 &8779740223472377231
 MonoBehaviour:
   m_ObjectHideFlags: 0

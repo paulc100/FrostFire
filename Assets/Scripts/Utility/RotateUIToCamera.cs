@@ -13,7 +13,7 @@ public class RotateUIToCamera : MonoBehaviour
     [HideInInspector]
     public CinemachineVirtualCamera cinemachineVirtualCamera = null;
 
-    void Update()  
+    private void Update()  
     {
         transform.LookAt(transform.position + cinemachineVirtualCamera.transform.rotation * Vector3.forward, cinemachineVirtualCamera.transform.rotation * Vector3.up);        
 
