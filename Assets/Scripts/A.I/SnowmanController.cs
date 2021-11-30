@@ -20,22 +20,20 @@ public class SnowmanController : MonoBehaviour
     protected float atkCoolDown = 0f;
     protected bool isAttacking;
 
-    [Header("Animations")]
-    public Animator animator;
+    //[Header("Animations")]
+    //public Animator animator;
 
     // Start is called before the first frame update.
     void Start()
     {
         isAttacking = false;
-        // Setting target location as campfire.
-        //campfire = GameObject.Find("Campfire").transform;
-        Move(campfire.transform);
+        Move();
     }   
 
     // Update is called once per frame
     protected void FixedUpdate()
     {
-        checkForPlayers(transform.position);
+        checkForPlayers();
         atkCoolDown -= Time.deltaTime;
     }
     
@@ -43,47 +41,46 @@ public class SnowmanController : MonoBehaviour
         agent.isStopped = false;
         agent.ResetPath();
         agent.SetDestination(target.position);
-        animator.SetBool("Moving", true);
+        //animator.SetBool("Moving", true);
     }
+    //default move set to "campfire"
     public void Move() {
         agent.isStopped = false;
         agent.ResetPath();
         agent.SetDestination(campfire.transform.position);
-        animator.SetBool("Moving", true);
+        //animator.SetBool("Moving", true);
 
     }
 
     public void Stop() {
         agent.isStopped = true;
         agent.ResetPath();
-        animator.SetBool("Moving", false);
+        //animator.SetBool("Moving", false);
 
     }
 
     public virtual void Attack(Transform target) {
-        //Refer to child class for code
+        // Refer to child attack
     }
 
-    private void checkForPlayers(Vector3 center) {
-        Collider[] hitColliders = Physics.OverlapSphere(center, sightRadius);
+    protected void checkForPlayers() {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, sightRadius);
+        
         foreach (var hitCollider in hitColliders)  {
-            // checks if collision was a player
+            // validating target
             if (hitCollider.tag == "Player" && !hitCollider.gameObject.GetComponent<Warmth>().isDowned) {
-
+                
                 if (Vector3.Distance(hitCollider.transform.position, transform.position) <= fightRadius ) {
                     Stop();
-                    //attack phase start
-                    isAttacking = true; 
+                    isAttacking = true;
                     Attack(hitCollider.transform);
                 } else {
-                    //IF NOT CLOSE ENOUGH WALK CLOSER
                     isAttacking = false;
                     Move(hitCollider.transform);
                 }
                 return;
             }
         }
-        //no players in sight radius
         isAttacking = false;
         Move(campfire.transform);
     }

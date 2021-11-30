@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RegularSnowmanController : SnowmanController
+public class BossSnowmanController : SnowmanController
 {
     [Header("Attributes")]
     public float atkRate = 0.3f;
     public float knockbackPower = 15f;
     public float knockbackDuration = 0.5f;
+    public float throwRadius = 20f;
 
     [Header("Effects")]
     public GameObject snowParticle;
+    public GameObject snowBallParticle;
 
-    public override void Attack(Transform target) {
+    [Header("Snowball")]
+    public GameObject snowballPrefab;
+    public Transform throwPoint;
+    private float rangedAtkCooldown = 0f;
+    public float throwRate = 5f;
+
+    public new void FixedUpdate() {
+        base.FixedUpdate();
+        rangedAtkCooldown -= Time.deltaTime;
+        checkForSnowballTargets();
+
+    }
+
+	public override void Attack(Transform target) {
         GameObject player = target.gameObject;
         Warmth warmth = player.GetComponent<Warmth>();
 
@@ -22,9 +37,16 @@ public class RegularSnowmanController : SnowmanController
 
             //Do damage if player is not invulnerable
             if (!player.GetComponent<Warmth>().invulnerable) warmth.removeWarmth(attackDamage, true);
-                
-            //reset cooldowns
             atkCoolDown = 1f / atkRate; 
+        }
+    }
+    public void rangedAttack(Transform target) {
+        if (rangedAtkCooldown <= 0f) {
+            //<ANIMATION HERE>
+            SimulateProjectile(target);
+
+            // reset cooldown
+            rangedAtkCooldown = 1f / throwRate;
         }
     }
 
@@ -37,12 +59,11 @@ public class RegularSnowmanController : SnowmanController
         //start of knockback
         StartCoroutine(knockBackCoroutine(target, power, overTime));
     }
-
     IEnumerator knockBackCoroutine(Transform target, float power, float overTime) {
         float timeleft = overTime;
         target.gameObject.GetComponent<CharacterController>().enabled = false;
 
-        // Player knockback
+        //Knockback Animation
         while (timeleft > 0) {
             Vector3 moveDirection = transform.position - target.position;
             target.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -power); 
@@ -52,25 +73,23 @@ public class RegularSnowmanController : SnowmanController
         target.gameObject.GetComponent<CharacterController>().enabled = true;
     }
 
+    void SimulateProjectile(Transform target) {
+        GameObject snowballClone = (GameObject)Instantiate(snowballPrefab, throwPoint.position, throwPoint.rotation);
+        Snowball snowball = snowballClone.GetComponent<Snowball>();
 
-
-
-
-
-
-
-
-/*    OLD TRANSLATE VERSION
- *    IEnumerator knockBackCoroutine(Transform target, Vector3 direction, float length, float overTime) {
-        float timeleft = overTime;
-        while (timeleft > 0) {
-            if (timeleft > Time.deltaTime)
-                target.Translate(direction * Time.deltaTime / overTime * length, target);
-            else
-                target.Translate(direction * timeleft / overTime * length, target);
-            timeleft -= Time.deltaTime;
-            yield return null;
+        if (snowball != null) {
+            snowball.Seek(target.position, attackDamage);
         }
-        target.gameObject.GetComponent<SplitScreenPlayerController>().isKnocked = false;
-    }*/
+    }
+
+    private void checkForSnowballTargets() {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, throwRadius);
+        foreach (var hitCollider in hitColliders) {
+            // validating target
+            if (hitCollider.tag == "Player" && !hitCollider.gameObject.GetComponent<Warmth>().isDowned) {
+                rangedAttack(hitCollider.transform);
+            }
+        }
+    }
 }
+

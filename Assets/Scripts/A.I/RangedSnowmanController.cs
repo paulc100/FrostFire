@@ -5,7 +5,6 @@ using UnityEngine;
 public class RangedSnowmanController : SnowmanController
 {
     [Header("Snowball")]
-
     public GameObject snowballPrefab;
     public Transform throwPoint; 
     public float throwRate = 1f;
@@ -19,12 +18,9 @@ public class RangedSnowmanController : SnowmanController
             SimulateProjectile(target);
             atkCoolDown = 1f / throwRate;
         }
-
-        //atkCoolDown -= Time.deltaTime;
-        }
+    }
 
 	void Start() {
-       //Transform snowball = Instantiate(snowballPrefab.transform) as Transform;
         //Physics.IgnoreCollision(snowball.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
