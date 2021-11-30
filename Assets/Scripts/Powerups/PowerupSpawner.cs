@@ -60,15 +60,21 @@ public class PowerupSpawner : MonoBehaviour
         var randSpawn = Random.Range(0,3);
         Vector3 spawnPositionVec = spawnPoints[randSpawn].position;
 
+        GameObject powerupGameObject;
+
         if (randPowerup == 1)
         {
-            Instantiate(speedPowerup, spawnPositionVec, Quaternion.identity);
+            powerupGameObject = Instantiate(speedPowerup, spawnPositionVec, Quaternion.identity);
+            SetupPowerupUI(powerupGameObject);
         } 
         else if (randPowerup == 2)
         {
-            Instantiate(damagePowerup, spawnPositionVec, Quaternion.identity);
+            powerupGameObject = Instantiate(damagePowerup, spawnPositionVec, Quaternion.identity);
+            SetupPowerupUI(powerupGameObject);
         }
 
         spawned = true;
     }
+
+    private void SetupPowerupUI(GameObject powerupGameObject) =>  powerupGameObject.GetComponentInChildren<RotateUIToCamera>().cinemachineVirtualCamera = CoreCamera.Reference; 
 }
