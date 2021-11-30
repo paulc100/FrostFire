@@ -151,9 +151,9 @@ MonoBehaviour:
   fightRadius: 2
   attackDamage: 0.5
   animator: {fileID: 954103762564393065}
-  atkRate: 1
-  atkPower: 3
-  knockbackDuration: 0.3
+  atkRate: 0.3
+  knockbackPower: 30
+  knockbackDuration: 0.2
   snowParticle: {fileID: 7070436781391858944, guid: cef4a29c37a237140829570bbba648b0, type: 3}
 --- !u!114 &2533042879045676253
 MonoBehaviour:
