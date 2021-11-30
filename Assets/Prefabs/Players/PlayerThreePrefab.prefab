@@ -200,6 +200,7 @@ MonoBehaviour:
   revivePercentage: 0.15
   nearCampfire: 0
   nearPlayer: 0
+  invulnerable: 0
   isDowned: 0
   canShareWarmth: 1
 --- !u!114 &1383535118293002055
@@ -217,7 +218,7 @@ MonoBehaviour:
   stick: {fileID: 1857997215467022343}
   sword: {fileID: 755431747482507979}
   particle: {fileID: 3278239581950310337}
-  log: {fileID: 0}
+  log: {fileID: 1304018393600246211}
 --- !u!198 &629697901239113441
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5338,6 +5339,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42456539603d0b94eaff0d5a6349807f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bobCanvas: 0
+  idleBobbingSpeed: 2
+  idleBobbingHeight: 1.1
   cinemachineVirtualCamera: {fileID: 0}
 --- !u!1 &3935110723001117442
 GameObject:
@@ -5682,14 +5686,14 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 236518f0a47b2424ca7416d4c749751c, type: 3}
   m_PrefabInstance: {fileID: 769601896549594625}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3878404661640777142 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4648576122448020553, guid: 236518f0a47b2424ca7416d4c749751c, type: 3}
-  m_PrefabInstance: {fileID: 769601896549594625}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6934623004396022186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7679365488090603435, guid: 236518f0a47b2424ca7416d4c749751c, type: 3}
+  m_PrefabInstance: {fileID: 769601896549594625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3878404661640777142 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4648576122448020553, guid: 236518f0a47b2424ca7416d4c749751c, type: 3}
   m_PrefabInstance: {fileID: 769601896549594625}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1515891520570299734
@@ -5833,3 +5837,8 @@ PrefabInstance:
     - {fileID: 3379194816862954590, guid: 668eff865a0cf164aa0be17353566b2b, type: 3}
     - {fileID: 635439776972977212, guid: 668eff865a0cf164aa0be17353566b2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 668eff865a0cf164aa0be17353566b2b, type: 3}
+--- !u!1 &1304018393600246211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4644129189751654128, guid: 668eff865a0cf164aa0be17353566b2b, type: 3}
+  m_PrefabInstance: {fileID: 5938997994051716915}
+  m_PrefabAsset: {fileID: 0}

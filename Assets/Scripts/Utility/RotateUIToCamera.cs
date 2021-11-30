@@ -10,8 +10,9 @@ public class RotateUIToCamera : MonoBehaviour
     [SerializeField]
     private float idleBobbingHeight = 1.1f;
 
-    [HideInInspector]
-    public CinemachineVirtualCamera cinemachineVirtualCamera = null;
+    public CinemachineVirtualCamera cinemachineVirtualCamera;
+
+    private void Start() => cinemachineVirtualCamera = CoreCamera.Reference;
 
     private void Update()  
     {

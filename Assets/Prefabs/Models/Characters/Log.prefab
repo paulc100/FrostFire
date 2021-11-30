@@ -5065,10 +5065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89e664ce904deee4793d592f1247be06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleRotationSpeed: 50
-  idleBobbingSpeed: 2
-  idleBobbingHeight: 1.1
-  timePowerup: 5
 --- !u!65 &7339473622802222881
 BoxCollider:
   m_ObjectHideFlags: 0

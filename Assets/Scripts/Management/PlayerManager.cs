@@ -17,8 +17,6 @@ public class PlayerManager : MonoBehaviour
     [Header("Camera Management")]
     [SerializeField]
     private CinemachineTargetGroup targetGroup = null;
-    [SerializeField]
-    private CinemachineVirtualCamera cinemachineVirtualCamera = null;
 
     private static List<Transform> spawnPoints = new List<Transform>();
     private int nextSpawnIndex = 0;
@@ -55,13 +53,7 @@ public class PlayerManager : MonoBehaviour
         nextSpawnIndex++;
     }
 
-    private void SetupPlayerCameras(GameObject playerInstance)
-    {
-        targetGroup.AddMember(playerInstance.transform, 1, 2);
-
-        // Configures player indicators to rotate to camera on spawn
-        playerInstance.GetComponentInChildren<RotateUIToCamera>().cinemachineVirtualCamera = cinemachineVirtualCamera;
-    }
+    private void SetupPlayerCameras(GameObject playerInstance) => targetGroup.AddMember(playerInstance.transform, 1, 2);
 
     public void OnPlayerJoined(PlayerInput playerInput) 
     {

@@ -65,16 +65,12 @@ public class PowerupSpawner : MonoBehaviour
         if (randPowerup == 1)
         {
             powerupGameObject = Instantiate(speedPowerup, spawnPositionVec, Quaternion.identity);
-            SetupPowerupUI(powerupGameObject);
         } 
         else if (randPowerup == 2)
         {
             powerupGameObject = Instantiate(damagePowerup, spawnPositionVec, Quaternion.identity);
-            SetupPowerupUI(powerupGameObject);
         }
 
         spawned = true;
     }
-
-    private void SetupPowerupUI(GameObject powerupGameObject) =>  powerupGameObject.GetComponentInChildren<RotateUIToCamera>().cinemachineVirtualCamera = CoreCamera.Reference; 
 }

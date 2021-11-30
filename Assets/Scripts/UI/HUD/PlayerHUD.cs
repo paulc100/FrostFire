@@ -66,7 +66,7 @@ public class PlayerHUD : MonoBehaviour
 
     private void CheckWarmthStatus()
     {
-        if (playerWarmthReference.nearCampfire)
+        if (playerWarmthReference.isReceivingWarmthFromAnotherPlayer || playerWarmthReference.nearCampfire)
         {
             plusWarmth.SetActive(true);
         }
