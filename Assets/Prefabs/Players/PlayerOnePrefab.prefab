@@ -216,6 +216,7 @@ MonoBehaviour:
   revivePercentage: 0.15
   nearCampfire: 0
   nearPlayer: 0
+  invulnerable: 0
   isDowned: 0
   canShareWarmth: 1
 --- !u!198 &3295591081681454998
@@ -5199,6 +5200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42456539603d0b94eaff0d5a6349807f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bobCanvas: 0
+  idleBobbingSpeed: 2
+  idleBobbingHeight: 1.1
   cinemachineVirtualCamera: {fileID: 0}
 --- !u!1 &3935110723001117442
 GameObject:

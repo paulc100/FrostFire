@@ -105,10 +105,12 @@ public class SplitScreenPlayerController : MonoBehaviour
         if (shareAction.ReadValue<float>() == 1 && !downed)
         {
             shareWarmth();
-        } else
+        }
+        else
         {
             warmthParticle.Stop();
         }
+
 
         if (damageReady == true)
         {
@@ -123,6 +125,13 @@ public class SplitScreenPlayerController : MonoBehaviour
         {
             warmthParticle.Play();
             warmth.shareWarmth(players);
+
+            shareAction.canceled += ctx => {
+                foreach(GameObject player in players)
+                {
+                    player.GetComponent<Warmth>().isReceivingWarmthFromAnotherPlayer = false;
+                }
+            };
         }
     }
 

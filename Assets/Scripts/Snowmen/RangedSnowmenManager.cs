@@ -9,7 +9,6 @@ public class RangedSnowmenManager : MonoBehaviour
     private void OnEnable() 
     {
         _count++;
-        gameObject.GetComponentInChildren<RotateUIToCamera>().cinemachineVirtualCamera = CoreCamera.Reference;
     }
 
     private void OnDestroy() 

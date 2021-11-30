@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1015e8ae8c9517b48b1e5490707005ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Log: {fileID: 4644129189751654128, guid: 668eff865a0cf164aa0be17353566b2b, type: 3}
+  Log: {fileID: 4644129189751654128, guid: 16965bae609f0cc41b3e6d5c0590a2e1, type: 3}
   spawnRate: 5
   maxLogs: 5
 --- !u!1 &6916947151856795860
