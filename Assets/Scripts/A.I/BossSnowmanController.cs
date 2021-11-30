@@ -63,10 +63,10 @@ public class BossSnowmanController : SnowmanController
     IEnumerator knockBackCoroutine(Transform target, float power, float overTime) {
         float timeleft = overTime;
         target.gameObject.GetComponent<CharacterController>().enabled = false;
+        Vector3 moveDirection = transform.position - target.position;
 
         //Knockback Animation
         while (timeleft > 0) {
-            Vector3 moveDirection = transform.position - target.position;
             target.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -power); 
             timeleft -= Time.deltaTime;
             yield return null;
