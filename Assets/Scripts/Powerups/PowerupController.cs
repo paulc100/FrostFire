@@ -1,18 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PowerupController : MonoBehaviour
 {
-    public GameObject powerupPrefab;
-
-    public List<Powerup> powerups;
-
-    public Dictionary<Powerup, float> activePowerups = new Dictionary<Powerup, float>();
-
     private List<Powerup> keys = new List<Powerup>();
 
-    // Update is called once per frame
+    public GameObject powerupPrefab;
+    public List<Powerup> powerups;
+    public Dictionary<Powerup, float> activePowerups = new Dictionary<Powerup, float>();
+
     void Update()
     {
         HandleActivePowerups();

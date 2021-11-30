@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 89e664ce904deee4793d592f1247be06
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - stick: {fileID: 919132149155446097, guid: 6997ed4680c81d64a8d6a255bff68f0d, type: 3}
+  - sword: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -28,6 +28,9 @@ public class SplitScreenPlayerController : MonoBehaviour
     private bool damageReady = false;
     public bool downed = false;
 
+    public bool carryingLog;
+    public bool checkcarry;
+
     private CharacterController controller;
     private PlayerInput playerInput;
     private EnemyCollision enemyCollision;
@@ -45,6 +48,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     private InputAction jumpAction;
     private InputAction attackAction;
     private InputAction shareAction;
+   
 
     public Animator animator;
 
@@ -101,10 +105,12 @@ public class SplitScreenPlayerController : MonoBehaviour
         if (shareAction.ReadValue<float>() == 1 && !downed)
         {
             shareWarmth();
-        } else
+        }
+        else
         {
             warmthParticle.Stop();
         }
+
 
         if (damageReady == true)
         {
@@ -119,6 +125,13 @@ public class SplitScreenPlayerController : MonoBehaviour
         {
             warmthParticle.Play();
             warmth.shareWarmth(players);
+
+            shareAction.canceled += ctx => {
+                foreach(GameObject player in players)
+                {
+                    player.GetComponent<Warmth>().isReceivingWarmthFromAnotherPlayer = false;
+                }
+            };
         }
     }
 
@@ -158,6 +171,26 @@ public class SplitScreenPlayerController : MonoBehaviour
         {
             animator.SetTrigger("Jump");
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
+        }
+
+        // Carrying logs
+        if (carryingLog != checkcarry)
+        {
+            checkcarry = carryingLog;
+
+            if (carryingLog == true)
+            {
+                animator.SetBool("Carrying", true);
+                GetComponent<PowerupTrigger>().Trigger("logon");
+                playerSpeed = 6f;
+                attackAvailable = false;
+            } else
+            {
+                animator.SetBool("Carrying", false);
+                GetComponent<PowerupTrigger>().Trigger("logoff");
+                playerSpeed = playerDefaultSpeed;
+                attackAvailable = true;
+            }
         }
 
         //gravity
@@ -220,6 +253,25 @@ public class SplitScreenPlayerController : MonoBehaviour
         }
     }
 
+    //when player is revived, function is called
+    public void isCarrying(bool status)
+    {
+        downed = status;
+        if (downed)
+        {
+            playerSpeed = 2f;
+            attackAvailable = false;
+            animator.SetBool("Down", true);
+        }
+        else
+        {
+            //Debug.Log("isDowned() ran");
+            playerSpeed = playerDefaultSpeed;
+            attackAvailable = true;
+            animator.SetBool("Down", false);
+        }
+    }
+
     //cooldown damage
     IEnumerator damageCoroutine()
     {
@@ -235,5 +287,24 @@ public class SplitScreenPlayerController : MonoBehaviour
         yield return new WaitForSeconds(1);
         //Debug.Log("Attack available at: " + Time.time);
         if(!downed) attackAvailable = true;
+    }
+
+    public void flicker() {
+        StartCoroutine(startFlickering());
+    }
+
+    public IEnumerator startFlickering() {
+        Debug.Log("this code ran FLKJDSKFSDKLFJLSK");
+        Renderer ren = gameObject.GetComponent<MeshRenderer>();
+        
+        Animator animator = gameObject.GetComponent<Animator>();
+        animator.enabled = false;
+        ren.enabled = false;
+        for (int i = 0; i < 5; i++) {
+            ren.enabled = !ren.enabled;
+            yield return new WaitForSeconds(1f);
+		}
+        ren.enabled = true;
+        animator.enabled = true;
     }
 }

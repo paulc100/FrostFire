@@ -60,13 +60,15 @@ public class PowerupSpawner : MonoBehaviour
         var randSpawn = Random.Range(0,3);
         Vector3 spawnPositionVec = spawnPoints[randSpawn].position;
 
+        GameObject powerupGameObject;
+
         if (randPowerup == 1)
         {
-            Instantiate(speedPowerup, spawnPositionVec, Quaternion.identity);
+            powerupGameObject = Instantiate(speedPowerup, spawnPositionVec, Quaternion.identity);
         } 
         else if (randPowerup == 2)
         {
-            Instantiate(damagePowerup, spawnPositionVec, Quaternion.identity);
+            powerupGameObject = Instantiate(damagePowerup, spawnPositionVec, Quaternion.identity);
         }
 
         spawned = true;

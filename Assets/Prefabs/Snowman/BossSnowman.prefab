@@ -15,8 +15,7 @@ GameObject:
   - component: {fileID: 2533042879045676250}
   - component: {fileID: 2791688041010300487}
   - component: {fileID: 8649677666527289631}
-  - component: {fileID: -5119612317711598658}
-  - component: {fileID: 2533042879045676253}
+  - component: {fileID: 2356215377843703007}
   - component: {fileID: 8779740223472377231}
   m_Layer: 8
   m_Name: BossSnowman
@@ -38,6 +37,7 @@ Transform:
   m_Children:
   - {fileID: 1989939262651527884}
   - {fileID: 1424041142816908454}
+  - {fileID: 6216574274909846873}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d06091a6b056854dbc08d445026f3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UniqueID: 5
---- !u!114 &-5119612317711598658
+  UniqueID: 1
+--- !u!114 &2356215377843703007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,37 +163,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 2533042879045676240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b36266cdd7e57074f9fb542b1f457a19, type: 3}
+  m_Script: {fileID: 11500000, guid: e100d98fe2ab1704b8fc2f8e84be7d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2533042879045676250}
-  campfire: {fileID: 78610475837391531, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
+  campfire: {fileID: 9066222715457941655, guid: 831ebb7d04fca314fb0997f4c9286ddf, type: 3}
   sightRadius: 6
   fightRadius: 2
   attackDamage: 2
   animator: {fileID: 4981853149353049820}
-  atkRate: 1
-  atkPower: 3
-  knockbackDuration: 0.3
+  atkRate: 0.3
+  knockbackPower: 60
+  knockbackDuration: 0.2
+  throwRadius: 30
   snowParticle: {fileID: 7070436781391858944, guid: cef4a29c37a237140829570bbba648b0, type: 3}
---- !u!114 &2533042879045676253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2533042879045676240}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df1e773ff5dfd24f9b803101ae1d68a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 2533042879045676250}
-  campfire: {fileID: 78610475837391531, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
-  sightRadius: 6
-  fightRadius: 2
-  attackDamage: 2
-  animator: {fileID: 4981853149353049820}
+  snowBallParticle: {fileID: 7070436781391858944, guid: c3cb776a62e77cf46a6667d8e34c1cf3, type: 3}
+  snowballPrefab: {fileID: 2366906609861919572, guid: c09421b8581f967478b1a2534696730f, type: 3}
+  throwPoint: {fileID: 6216574274909846873}
+  throwRate: 0.3
+  snowballDamage: 10
 --- !u!114 &8779740223472377231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,6 +393,36 @@ MonoBehaviour:
   m_EffectColor: {r: 0.0627451, g: 0.0627451, b: 0.0627451, a: 0.78431374}
   m_EffectDistance: {x: 0.2, y: -0.2}
   m_UseGraphicAlpha: 1
+--- !u!1 &6382195515748010918
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6216574274909846873}
+  m_Layer: 0
+  m_Name: ThrowPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6216574274909846873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382195515748010918}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.17372131, y: 2.86, z: 1.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2533042879045676252}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8719499595933571321
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,6 +537,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42456539603d0b94eaff0d5a6349807f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bobCanvas: 0
+  idleBobbingSpeed: 2
+  idleBobbingHeight: 1.1
   cinemachineVirtualCamera: {fileID: 0}
 --- !u!1 &8938514371375255345
 GameObject:

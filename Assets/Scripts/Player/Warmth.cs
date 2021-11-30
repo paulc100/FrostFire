@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum WarmthNetGain
+public enum WarmthNetGain
 {
     LOSS = -1,
     NONE = 0,
@@ -22,11 +22,13 @@ public class Warmth : MonoBehaviour
 
     public bool nearCampfire = false;
     public bool nearPlayer = false;
-    private bool invulnerable = false;
+    public bool invulnerable = false;
     private bool isRunning_AwayCampfire = false;
     private bool isRunning_Campfire = false;
     public bool isDowned = false;
+    public bool isReceivingWarmthFromAnotherPlayer = false;
     public bool canShareWarmth = true;
+    public WarmthNetGain warmthNet = WarmthNetGain.NONE;
 
 
     private float warmthLostRate = 0.02f;
@@ -35,9 +37,8 @@ public class Warmth : MonoBehaviour
     private float campfireRecoveryFrequency = 0.1f;
     private float shareWarmthFrequency = 0.1f;
     private float warmthSharedperMillisecond = 0.1f;
-    private WarmthNetGain warmthNet = WarmthNetGain.NONE;
 
-    private float tempWarmthValue;
+    private float previousFrameWarmth;
 
     private Coroutine lastCampfireCoroutine;
 
@@ -45,7 +46,6 @@ public class Warmth : MonoBehaviour
 
     private void Awake()
     {
-        tempWarmthValue = warmth;
         player = GetComponent<SplitScreenPlayerController>();
     }
 
@@ -87,7 +87,9 @@ public class Warmth : MonoBehaviour
                 foreach (GameObject player in players)
                 {
                     player.GetComponent<Warmth>().addWarmth(shareValue / players.Count);
+                    player.GetComponent<Warmth>().isReceivingWarmthFromAnotherPlayer = true;
                 }
+
                 removeWarmth(shareValue, false);
             }
             StartCoroutine(shareWarmthCoolDown());
@@ -109,6 +111,9 @@ public class Warmth : MonoBehaviour
                 warmthSubtraction(damage);
                 invulnerable = true;
                 StartCoroutine(invulnerabilityCD());
+                Debug.Log("first Check");
+                //player.flicker();
+
             }
         } else
         {
@@ -163,7 +168,7 @@ public class Warmth : MonoBehaviour
         {
             warmth += givenWarmth;
         }
-        Debug.Log(player.name + ": " + warmth);
+        //Debug.Log(player.name + ": " + warmth);
     }
 
     // Update is called once per frame
@@ -203,16 +208,21 @@ public class Warmth : MonoBehaviour
                 lastCampfireCoroutine = StartCoroutine(awayFromWarmth());
             }
         }
-        if (warmth - tempWarmthValue == 0)
+
+        if (warmth - previousFrameWarmth == 0)
         {
             warmthNet = WarmthNetGain.NONE;
-        } else if (warmth - tempWarmthValue > 0)
+        } 
+        else if (warmth - previousFrameWarmth > 0 || isReceivingWarmthFromAnotherPlayer)
         {
             warmthNet = WarmthNetGain.GAIN;
-        } else
+        } 
+        else
         {
             warmthNet = WarmthNetGain.LOSS;
         }
+
+        previousFrameWarmth = warmth;
     }
 
 
@@ -254,6 +264,6 @@ public class Warmth : MonoBehaviour
     IEnumerator shareWarmthCoolDown()
     {
         yield return new WaitForSeconds(shareWarmthFrequency);
-        canShareWarmth = true; ;
+        canShareWarmth = true;
     }
 }

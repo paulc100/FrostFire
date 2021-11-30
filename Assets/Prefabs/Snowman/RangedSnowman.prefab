@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 1179752097035188921}
   - component: {fileID: 5075356112059699371}
   - component: {fileID: -9001470923406969404}
-  - component: {fileID: 2533042879045676253}
   - component: {fileID: 2606184759844410654}
   m_Layer: 8
   m_Name: RangedSnowman
@@ -207,24 +206,6 @@ MonoBehaviour:
   snowballPrefab: {fileID: 2366906609861919572, guid: 36ef1775e6a8010488eda87137def375, type: 3}
   throwPoint: {fileID: 6369848440814234249}
   throwRate: 0.5
---- !u!114 &2533042879045676253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2533042879045676240}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df1e773ff5dfd24f9b803101ae1d68a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 2533042879045676250}
-  campfire: {fileID: 0}
-  sightRadius: 30
-  fightRadius: 25
-  attackDamage: 2
-  animator: {fileID: 3257606343749108876}
 --- !u!114 &2606184759844410654
 MonoBehaviour:
   m_ObjectHideFlags: 0
