@@ -1,19 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Campfire : MonoBehaviour
 {
+    [SerializeField]
+    private GameEventManager gameState;
+
+    [Header("Fuel Management")]
     [SerializeField]
     private float fuelLossFrequency = 0.1f;
     [SerializeField]
     private float fuelLossRate = 0.01f;
 
+    [Header("Alert Events")]
     [SerializeField]
-    private GameEventManager gameState;
+    private UnityEvent OnCampfireHealth_50 = null;
+    [SerializeField]
+    private UnityEvent OnCampfireHealth_25 = null;
+    [SerializeField]
+    private UnityEvent OnCampfireHealth_10 = null;
+
+    private bool canInvokeCampfireHealth_50 = true;
+    private bool canInvokeCampfireHealth_25 = true;
+    private bool canInvokeCampfireHealth_10 = true;
 
     private List<GameObject> players = new List<GameObject>();
-    //private Renderer campfireRenderer;
 
     private float campfireRadius = 10f;
     public float fuelCapacity = 100f;
@@ -28,7 +41,6 @@ public class Campfire : MonoBehaviour
         remainingFuel = fuelCapacity;
         Cursor.lockState = CursorLockMode.Locked;
         StartCoroutine(consumeFuel());
-        //campfireRenderer = GetComponent<Renderer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,6 +78,7 @@ public class Campfire : MonoBehaviour
                 break;
         }*/
     }
+
     private void Update()
     {
         if (!campfireOut)
@@ -92,6 +105,8 @@ public class Campfire : MonoBehaviour
             }
             players = newPlayers;
         }
+
+        CheckCampfireAlertThresholds();
     }
 
     private void addFuel(float fuelAdded)
@@ -123,5 +138,34 @@ public class Campfire : MonoBehaviour
             yield return new WaitForSeconds(fuelLossFrequency);
             removeFuel(fuelLossRate);
         }
+    }
+
+    private void CheckCampfireAlertThresholds()
+    {
+        if (remainingFuel < 10 && canInvokeCampfireHealth_10) 
+        {
+            OnCampfireHealth_10?.Invoke();
+            canInvokeCampfireHealth_10 = false;
+        } 
+        else if (remainingFuel < 25 && canInvokeCampfireHealth_25)
+        {
+            OnCampfireHealth_25?.Invoke();
+            canInvokeCampfireHealth_25 = false;
+        }
+        else if (remainingFuel < 50 && canInvokeCampfireHealth_50)
+        {
+            OnCampfireHealth_50?.Invoke();
+            canInvokeCampfireHealth_50 = false;
+        }
+
+        // Check if campfire is raised above thresholds to re-display alerts 
+        if (remainingFuel > 10 && !canInvokeCampfireHealth_10)
+            canInvokeCampfireHealth_10 = true;
+
+        if (remainingFuel > 25 && !canInvokeCampfireHealth_25)
+            canInvokeCampfireHealth_25 = true;
+
+        if (remainingFuel > 50 && !canInvokeCampfireHealth_50)
+            canInvokeCampfireHealth_50 = true;
     }
 }

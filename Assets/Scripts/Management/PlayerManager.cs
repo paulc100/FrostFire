@@ -6,6 +6,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
+    [Header("Snowman Management")]
+    [SerializeField]
+    private SnowmenSpawner snowmenSpawner = null;
+
     [Header("UI Management")]
     [SerializeField]
     [Tooltip("Required to disable and enable player controllers when the game is paused")]
@@ -76,5 +80,9 @@ public class PlayerManager : MonoBehaviour
 
         // Switch to next character for next player to load in
         characterSwitcher.SwitchNextSpawnCharacter();
+
+        // Start the snowmen spawner if the first player spawned in
+        if (!snowmenSpawner.gameObject.activeInHierarchy)    
+            snowmenSpawner.gameObject.SetActive(true);
     }
 }
