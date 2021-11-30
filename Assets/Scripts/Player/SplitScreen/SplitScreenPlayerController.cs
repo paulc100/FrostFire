@@ -28,6 +28,9 @@ public class SplitScreenPlayerController : MonoBehaviour
     private bool damageReady = false;
     public bool downed = false;
 
+    public bool carryingLog;
+    public bool checkcarry;
+
     private CharacterController controller;
     private PlayerInput playerInput;
     private EnemyCollision enemyCollision;
@@ -160,6 +163,26 @@ public class SplitScreenPlayerController : MonoBehaviour
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -2.0f * gravityValue);
         }
 
+        // Carrying logs
+        if (carryingLog != checkcarry)
+        {
+            checkcarry = carryingLog;
+
+            if (carryingLog == true)
+            {
+                animator.SetBool("Carrying", true);
+                GetComponent<PowerupTrigger>().Trigger("logon");
+                playerSpeed = 6f;
+                attackAvailable = false;
+            } else
+            {
+                animator.SetBool("Carrying", false);
+                GetComponent<PowerupTrigger>().Trigger("logoff");
+                playerSpeed = playerDefaultSpeed;
+                attackAvailable = true;
+            }
+        }
+
         //gravity
         playerVelocity.y += gravityValue * Time.deltaTime;
         //controller
@@ -212,6 +235,25 @@ public class SplitScreenPlayerController : MonoBehaviour
             attackAvailable = false;
             animator.SetBool("Down", true);
         } else
+        {
+            //Debug.Log("isDowned() ran");
+            playerSpeed = playerDefaultSpeed;
+            attackAvailable = true;
+            animator.SetBool("Down", false);
+        }
+    }
+
+    //when player is revived, function is called
+    public void isCarrying(bool status)
+    {
+        downed = status;
+        if (downed)
+        {
+            playerSpeed = 2f;
+            attackAvailable = false;
+            animator.SetBool("Down", true);
+        }
+        else
         {
             //Debug.Log("isDowned() ran");
             playerSpeed = playerDefaultSpeed;

@@ -18,8 +18,10 @@ public class Campfire : MonoBehaviour
     private float campfireRadius = 10f;
     public float fuelCapacity = 100f;
     public float remainingFuel = 100f;
+    public float logFuel = 5f;
     private bool campfireOut = false;
 
+    private SplitScreenPlayerController splitScreenPlayerController;
 
     private void Awake()
     {
@@ -37,7 +39,16 @@ public class Campfire : MonoBehaviour
             removeFuel(1);
             Destroy(other.gameObject);
         }
+        if (other.gameObject.tag == "Player")
+        {
+            splitScreenPlayerController = other.gameObject.GetComponentInChildren<SplitScreenPlayerController>();
 
+            if(splitScreenPlayerController.carryingLog == true)
+            {
+                addFuel(logFuel);
+                splitScreenPlayerController.carryingLog = false;
+            }
+        }
         /*
         switch (gameState.currentSnowmanCollisions)
         {
@@ -80,6 +91,18 @@ public class Campfire : MonoBehaviour
                 }
             }
             players = newPlayers;
+        }
+    }
+
+    private void addFuel(float fuelAdded)
+    {
+        if(remainingFuel <= fuelCapacity - fuelAdded)
+        {
+            remainingFuel += fuelAdded;
+        }
+        else
+        {
+            remainingFuel = 99.9f;
         }
     }
 
