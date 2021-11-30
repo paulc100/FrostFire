@@ -12,7 +12,9 @@ public class AlertDatabase
     {
         "Gather some wood!",
         "Did anyone bring marshmallows?",
-        "Ouch."
+        "Ouch.",
+        "Is everyone doing okay?",
+        "It could be worse, right?",
     };
 
     // Wave Alerts
@@ -22,8 +24,10 @@ public class AlertDatabase
     public static List<string> SUBHEADINGS_WAVE_ALERTS = new List<string> 
     {
         "Get the gang together!",
-        "Avengers assemble!",
-        "Why did the snowman cross the road?"
+        "Avengers, assemble!",
+        "Why did the snowman cross the road?",
+        "Go team!",
+        "Will they ever stop coming?",
     };
 
     // Player Alerts
