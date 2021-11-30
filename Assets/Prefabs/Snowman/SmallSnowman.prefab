@@ -151,9 +151,9 @@ MonoBehaviour:
   fightRadius: 2
   attackDamage: 0.5
   animator: {fileID: 954103762564393065}
-  atkRate: 1
-  atkPower: 3
-  knockbackDuration: 0.3
+  atkRate: 0.3
+  knockbackPower: 40
+  knockbackDuration: 0.2
   snowParticle: {fileID: 7070436781391858944, guid: cef4a29c37a237140829570bbba648b0, type: 3}
 --- !u!114 &2533042879045676253
 MonoBehaviour:
@@ -438,6 +438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42456539603d0b94eaff0d5a6349807f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bobCanvas: 0
+  idleBobbingSpeed: 2
+  idleBobbingHeight: 1.1
   cinemachineVirtualCamera: {fileID: 0}
 --- !u!1 &8938514371375255345
 GameObject:

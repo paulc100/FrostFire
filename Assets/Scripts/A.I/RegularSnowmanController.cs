@@ -41,15 +41,16 @@ public class RegularSnowmanController : SnowmanController
     IEnumerator knockBackCoroutine(Transform target, float power, float overTime) {
         float timeleft = overTime;
         target.gameObject.GetComponent<CharacterController>().enabled = false;
-
+        Vector3 moveDirection = transform.position - target.position;
         // Player knockback
         while (timeleft > 0) {
-            Vector3 moveDirection = transform.position - target.position;
+            
             target.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -power); 
             timeleft -= Time.deltaTime;
             yield return null;
         }
         target.gameObject.GetComponent<CharacterController>().enabled = true;
+
     }
 
 
@@ -60,17 +61,17 @@ public class RegularSnowmanController : SnowmanController
 
 
 
-/*    OLD TRANSLATE VERSION
- *    IEnumerator knockBackCoroutine(Transform target, Vector3 direction, float length, float overTime) {
-        float timeleft = overTime;
-        while (timeleft > 0) {
-            if (timeleft > Time.deltaTime)
-                target.Translate(direction * Time.deltaTime / overTime * length, target);
-            else
-                target.Translate(direction * timeleft / overTime * length, target);
-            timeleft -= Time.deltaTime;
-            yield return null;
-        }
-        target.gameObject.GetComponent<SplitScreenPlayerController>().isKnocked = false;
-    }*/
+    /*    OLD TRANSLATE VERSION
+     *    IEnumerator knockBackCoroutine(Transform target, Vector3 direction, float length, float overTime) {
+            float timeleft = overTime;
+            while (timeleft > 0) {
+                if (timeleft > Time.deltaTime)
+                    target.Translate(direction * Time.deltaTime / overTime * length, target);
+                else
+                    target.Translate(direction * timeleft / overTime * length, target);
+                timeleft -= Time.deltaTime;
+                yield return null;
+            }
+            target.gameObject.GetComponent<SplitScreenPlayerController>().isKnocked = false;
+        }*/
 }
