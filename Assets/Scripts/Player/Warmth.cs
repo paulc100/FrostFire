@@ -112,7 +112,7 @@ public class Warmth : MonoBehaviour
                 invulnerable = true;
                 StartCoroutine(invulnerabilityCD());
                 Debug.Log("first Check");
-                //player.flicker();
+                player.flicker();
 
             }
         } else

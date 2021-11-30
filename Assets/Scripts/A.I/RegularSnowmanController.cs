@@ -51,6 +51,7 @@ public class RegularSnowmanController : SnowmanController
             yield return null;
         }
         target.gameObject.GetComponent<CharacterController>().enabled = true;
+        yield return null;
 
     }
 

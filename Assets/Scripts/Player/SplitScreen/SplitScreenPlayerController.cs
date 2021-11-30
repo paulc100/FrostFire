@@ -298,16 +298,14 @@ public class SplitScreenPlayerController : MonoBehaviour
 
     public IEnumerator startFlickering() {
         Debug.Log("this code ran FLKJDSKFSDKLFJLSK");
-        Renderer ren = gameObject.GetComponent<MeshRenderer>();
-        
-        Animator animator = gameObject.GetComponent<Animator>();
-        animator.enabled = false;
-        ren.enabled = false;
-        for (int i = 0; i < 5; i++) {
-            ren.enabled = !ren.enabled;
-            yield return new WaitForSeconds(1f);
+        Renderer ren = gameObject.GetComponentInParent<Renderer>();
+
+        //ren.enabled = false;
+        for (int i = 0; i < 10; i++) {
+            //ren.enabled = !ren.enabled;
+            yield return new WaitForSeconds(0.5f);
 		}
         ren.enabled = true;
-        animator.enabled = true;
+        yield return null;
     }
-}
+} 
