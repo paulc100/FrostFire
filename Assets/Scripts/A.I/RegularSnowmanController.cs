@@ -17,7 +17,7 @@ public class RegularSnowmanController : SnowmanController
         Warmth warmth = player.GetComponent<Warmth>();
 
         if (isAttacking && !warmth.isDowned && atkCoolDown <= 0f) {
-            //animator.SetTrigger("Attack");
+            animator.SetTrigger("Attack");
             knockBack(target, knockbackPower, knockbackDuration);
 
             //Do damage if player is not invulnerable

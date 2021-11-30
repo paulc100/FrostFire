@@ -26,11 +26,13 @@ public class Snowball : MonoBehaviour
             return;
         }
 
+
         Vector3 dir = target - transform.position;
         float disPerFrame = speed * Time.deltaTime;
 
 
         transform.Translate(dir.normalized * disPerFrame, Space.World);
+        transform.Rotate(-1, -1, 0);
 
         //For player hit only
         if (dir.magnitude <= disPerFrame) {

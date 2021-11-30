@@ -170,9 +170,9 @@ MonoBehaviour:
   sightRadius: 6
   fightRadius: 2
   attackDamage: 1
-  animator: {fileID: 5866666021909216657, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
+  animator: {fileID: 4892889530982305257}
   atkRate: 0.3
-  atkPower: 15
+  knockbackPower: 15
   knockbackDuration: 0.5
   snowParticle: {fileID: 7070436781391858944, guid: cef4a29c37a237140829570bbba648b0, type: 3}
 --- !u!114 &8779740223472377231
@@ -708,5 +708,10 @@ PrefabInstance:
 --- !u!4 &1515221367770863507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
+  m_PrefabInstance: {fileID: 1336896957694423160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4892889530982305257 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 25877cc8dc0641941b4a74d66001b228, type: 3}
   m_PrefabInstance: {fileID: 1336896957694423160}
   m_PrefabAsset: {fileID: 0}

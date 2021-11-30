@@ -18,7 +18,8 @@ public class BossSnowmanController : SnowmanController
     public GameObject snowballPrefab;
     public Transform throwPoint;
     private float rangedAtkCooldown = 0f;
-    public float throwRate = 5f;
+    public float throwRate = 0.1f;
+    public float snowballDamage = 10;
 
     public new void FixedUpdate() {
         base.FixedUpdate();
@@ -32,7 +33,7 @@ public class BossSnowmanController : SnowmanController
         Warmth warmth = player.GetComponent<Warmth>();
 
         if (isAttacking && !warmth.isDowned && atkCoolDown <= 0f) {
-            //animator.SetTrigger("Attack");
+            animator.SetTrigger("Attack");
             knockBack(target, knockbackPower, knockbackDuration);
 
             //Do damage if player is not invulnerable
@@ -76,9 +77,10 @@ public class BossSnowmanController : SnowmanController
     void SimulateProjectile(Transform target) {
         GameObject snowballClone = (GameObject)Instantiate(snowballPrefab, throwPoint.position, throwPoint.rotation);
         Snowball snowball = snowballClone.GetComponent<Snowball>();
+        snowball.snowballParticle = snowBallParticle;
 
         if (snowball != null) {
-            snowball.Seek(target.position, attackDamage);
+            snowball.Seek(target.position, snowballDamage);
         }
     }
 
@@ -86,7 +88,8 @@ public class BossSnowmanController : SnowmanController
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, throwRadius);
         foreach (var hitCollider in hitColliders) {
             // validating target
-            if (hitCollider.tag == "Player" && !hitCollider.gameObject.GetComponent<Warmth>().isDowned) {
+            float dis = Vector3.Distance(hitCollider.transform.position, transform.position);
+            if (hitCollider.tag == "Player" && !hitCollider.gameObject.GetComponent<Warmth>().isDowned && dis > fightRadius) {
                 rangedAttack(hitCollider.transform);
             }
         }

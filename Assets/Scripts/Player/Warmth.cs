@@ -109,6 +109,9 @@ public class Warmth : MonoBehaviour
                 warmthSubtraction(damage);
                 invulnerable = true;
                 StartCoroutine(invulnerabilityCD());
+                Debug.Log("first Check");
+                //player.flicker();
+
             }
         } else
         {
