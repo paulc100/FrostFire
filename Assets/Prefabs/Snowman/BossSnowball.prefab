@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8207542784021177127}
   - component: {fileID: -5511471308240198987}
   m_Layer: 9
-  m_Name: Snowball
+  m_Name: BossSnowball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2366906609861919572}
   m_LocalRotation: {x: -0.000075944605, y: 0.7631845, z: 0.00008969588, w: 0.64618075}
   m_LocalPosition: {x: -67088.77, y: -9134.985, z: -403464.6}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9377668d552f5ff47bd1cb38fe3e3468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 10
   snowballParticle: {fileID: 7070436781391858944, guid: bf2aa33b1e6804148b073a4e180b9288, type: 3}
 --- !u!65 &-5511471308240198987
 BoxCollider:
