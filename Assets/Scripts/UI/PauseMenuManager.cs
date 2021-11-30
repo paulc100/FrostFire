@@ -66,44 +66,4 @@ public class PauseMenuManager : MonoBehaviour
 
         Time.timeScale = 1;
     }
-
-    public void ShowGameOverMenu() 
-    {
-        gameOverMenu.SetActive(true);
-        gameOverMenuSelectedButton.gameObject.SetActive(true);
-        gameOverMenuSelectedButton.Select();
-        isGameOverMenuUp = true;
-
-        DisableControllerAndCamera();
-    }
-
-    public void ShowVictoryMenu() 
-    {
-        victoryMenu.SetActive(true);
-        victoryMenuSelectedButton.gameObject.SetActive(true);
-        victoryMenuSelectedButton.Select();
-        isVictoryMenuUp = true;
-
-        DisableControllerAndCamera();
-    }
-
-    private void DisableControllerAndCamera() 
-    {
-        foreach(SplitScreenPlayerController playerController in playerControllers) 
-        {
-            playerController.OnDisable();
-        }
-
-        targetGroup.enabled = false;
-    }
-
-    private void EnableControllerAndCamera() 
-    {
-        foreach(SplitScreenPlayerController playerController in playerControllers) 
-        {
-            playerController.OnEnable();
-        }
-
-        targetGroup.enabled = true;
-    }
 }

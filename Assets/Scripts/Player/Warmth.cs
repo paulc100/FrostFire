@@ -10,6 +10,13 @@ public enum WarmthNetGain
 }
 public class Warmth : MonoBehaviour
 {
+    [Header("Particles")]
+    [SerializeField]
+    private ParticleSystem healingParticles;
+    [SerializeField]
+    private ParticleSystem minusParticles;
+    [Space]
+
     [SerializeField]
     public float warmth = 10f;
     [SerializeField]
@@ -37,7 +44,6 @@ public class Warmth : MonoBehaviour
     private float campfireRecoveryFrequency = 0.1f;
     private float shareWarmthFrequency = 0.1f;
     private float warmthSharedperMillisecond = 0.1f;
-
     private float previousFrameWarmth;
 
     private Coroutine lastCampfireCoroutine;
@@ -223,6 +229,9 @@ public class Warmth : MonoBehaviour
         }
 
         previousFrameWarmth = warmth;
+
+        // Player warmth particle logic
+        CheckHealingParticles();
     }
 
 
@@ -265,5 +274,33 @@ public class Warmth : MonoBehaviour
     {
         yield return new WaitForSeconds(shareWarmthFrequency);
         canShareWarmth = true;
+    }
+
+    private void CheckHealingParticles()
+    {
+        healingParticles.transform.position = player.transform.position;
+        minusParticles.transform.position = player.transform.position;
+
+        if (isReceivingWarmthFromAnotherPlayer || nearCampfire) 
+        {
+            if (!healingParticles.isPlaying)
+                healingParticles.Play();
+        }
+        else
+        {
+            if (healingParticles.isPlaying)
+                healingParticles.Stop();
+        }
+
+        if (!isReceivingWarmthFromAnotherPlayer && isRunning_AwayCampfire) 
+        {
+            if (!minusParticles.isPlaying)
+                minusParticles.Play();
+        }
+        else
+        {
+            if (minusParticles.isPlaying)
+                minusParticles.Stop();
+        }
     }
 }
