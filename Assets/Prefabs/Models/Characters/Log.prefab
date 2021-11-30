@@ -205,6 +205,8 @@ GameObject:
   - component: {fileID: 6589820223720007461}
   - component: {fileID: 635439776972977212}
   - component: {fileID: 3379194816862954590}
+  - component: {fileID: 334063131687129413}
+  - component: {fileID: 7339473622802222881}
   m_Layer: 0
   m_Name: Log
   m_TagString: Untagged
@@ -5051,3 +5053,32 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &334063131687129413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644129189751654128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e664ce904deee4793d592f1247be06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleRotationSpeed: 50
+  idleBobbingSpeed: 2
+  idleBobbingHeight: 1.1
+  timePowerup: 5
+--- !u!65 &7339473622802222881
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644129189751654128}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0387659, y: 0.42510834, z: 0.42193323}
+  m_Center: {x: 0.017411709, y: 0.17642008, z: 0.0396455}
