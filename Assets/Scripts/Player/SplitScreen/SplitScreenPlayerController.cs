@@ -117,6 +117,9 @@ public class SplitScreenPlayerController : MonoBehaviour
             enemyCollision.killSnowman(attackPower);
             damageReady = false;
         }
+
+        if (!gameObject.GetComponent<Warmth>().invulnerable)
+            GetComponent<CharacterController>().enabled = true;
     }
 
     private void shareWarmth()

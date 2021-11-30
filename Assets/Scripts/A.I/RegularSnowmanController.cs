@@ -45,7 +45,8 @@ public class RegularSnowmanController : SnowmanController
         // Player knockback
         while (timeleft > 0) {
             
-            target.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -power); 
+            target.gameObject.GetComponent<Rigidbody>().AddForce(moveDirection.normalized * -power);
+            //target.gameObject.GetComponent<Rigidbody>().velocity = (moveDirection.normalized * -power);
             timeleft -= Time.deltaTime;
             yield return null;
         }
