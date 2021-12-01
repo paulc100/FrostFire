@@ -24,7 +24,8 @@ public class MainAlertManager : MonoBehaviour
         headingText.text = AlertDatabase.HEADING_CAMPFIRE_50;
         subheadingText.text = AlertDatabase.GenerateRandomSubheadingFromList(AlertDatabase.SUBHEADINGS_CAMPFIRE_ALERTS);
 
-        // FindObjectOfType<AudioManager>().Play("Alert");
+        FindObjectOfType<AudioManager>().Play("Alert");
+
         Play();
     }
 
@@ -35,7 +36,8 @@ public class MainAlertManager : MonoBehaviour
         headingText.text = AlertDatabase.HEADING_CAMPFIRE_25;
         subheadingText.text = AlertDatabase.GenerateRandomSubheadingFromList(AlertDatabase.SUBHEADINGS_CAMPFIRE_ALERTS);
 
-        // FindObjectOfType<AudioManager>().Play("Alert");
+        FindObjectOfType<AudioManager>().Play("Alert");
+
         Play();
     }
 
@@ -46,7 +48,8 @@ public class MainAlertManager : MonoBehaviour
         headingText.text = AlertDatabase.HEADING_CAMPFIRE_10;
         subheadingText.text = AlertDatabase.GenerateRandomSubheadingFromList(AlertDatabase.SUBHEADINGS_CAMPFIRE_ALERTS);
 
-        // FindObjectOfType<AudioManager>().Play("Alert");
+        FindObjectOfType<AudioManager>().Play("Alert");
+
         Play();
     }
 
@@ -57,6 +60,8 @@ public class MainAlertManager : MonoBehaviour
         headingText.text = AlertDatabase.HEADING_WAVE_INCOMING;
         subheadingText.text = AlertDatabase.GenerateRandomSubheadingFromList(AlertDatabase.SUBHEADINGS_WAVE_ALERTS);
 
+        FindObjectOfType<AudioManager>().Play("WaveIncoming");
+
         Play();
     }
 
@@ -66,6 +71,8 @@ public class MainAlertManager : MonoBehaviour
 
         headingText.text = AlertDatabase.HEADING_WAVE_COMPLETE;
         subheadingText.text = AlertDatabase.GenerateRandomSubheadingFromList(AlertDatabase.SUBHEADINGS_WAVE_ALERTS);
+
+        FindObjectOfType<AudioManager>().Play("WaveComplete");
 
         Play();
     }
