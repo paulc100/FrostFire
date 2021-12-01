@@ -119,6 +119,9 @@ public class SplitScreenPlayerController : MonoBehaviour
 
         // TODO: Refactor this, but move the particle system with the player
         healingParticleSystem.transform.position = transform.position;
+
+        if (!gameObject.GetComponent<Warmth>().invulnerable)
+            GetComponent<CharacterController>().enabled = true;
     }
 
     private void shareWarmth()
