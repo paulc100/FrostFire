@@ -18,6 +18,9 @@ public class SplitScreenPlayerController : MonoBehaviour
     private float rotationSpeed = 1000f;
     [SerializeField]
     private float playerDetectionRadius = 5f;
+    [SerializeField]
+    private GameObject healingParticleSystem;
+    private HealingParticle warmthParticles;
 
     [HideInInspector]
     public int pid;
@@ -35,7 +38,6 @@ public class SplitScreenPlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private EnemyCollision enemyCollision;
     private Warmth warmth;
-    private ParticleSystem warmthParticle;
 
     private List<GameObject> players = new List<GameObject>();
     public Transform cameraTransform;
@@ -57,7 +59,8 @@ public class SplitScreenPlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         enemyCollision = GetComponent<EnemyCollision>();
         warmth = GetComponent<Warmth>();
-        warmthParticle = GetComponent<ParticleSystem>();
+
+        warmthParticles = healingParticleSystem.GetComponent<HealingParticle>();
 
         moveAction = playerInput.actions["Movement"];
         jumpAction = playerInput.actions["Jump"];
@@ -106,10 +109,6 @@ public class SplitScreenPlayerController : MonoBehaviour
         {
             shareWarmth();
         }
-        else
-        {
-            warmthParticle.Stop();
-        }
 
 
         if (damageReady == true)
@@ -118,24 +117,31 @@ public class SplitScreenPlayerController : MonoBehaviour
             damageReady = false;
         }
 
+        // TODO: Refactor this, but move the particle system with the player
+        healingParticleSystem.transform.position = transform.position;
+
         if (!gameObject.GetComponent<Warmth>().invulnerable)
             GetComponent<CharacterController>().enabled = true;
     }
 
     private void shareWarmth()
     {
+        warmthParticles.PlayParticles();
+
         if (players.Count > 0)
-        {
-            warmthParticle.Play();
             warmth.shareWarmth(players);
 
-            shareAction.canceled += ctx => {
+        shareAction.canceled += ctx => {
+            warmthParticles.StopParticles();
+
+            if (players.Count > 0)
+            {
                 foreach(GameObject player in players)
                 {
                     player.GetComponent<Warmth>().isReceivingWarmthFromAnotherPlayer = false;
                 }
-            };
-        }
+            }
+        };
     }
 
     //Player movement
