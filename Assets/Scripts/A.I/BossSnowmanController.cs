@@ -72,6 +72,7 @@ public class BossSnowmanController : SnowmanController
             yield return null;
         }
         target.gameObject.GetComponent<CharacterController>().enabled = true;
+        yield return null;
     }
 
     void SimulateProjectile(Transform target) {

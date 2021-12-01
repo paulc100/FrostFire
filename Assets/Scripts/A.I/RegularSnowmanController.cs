@@ -56,13 +56,6 @@ public class RegularSnowmanController : SnowmanController
     }
 
 
-
-
-
-
-
-
-
     /*    OLD TRANSLATE VERSION
      *    IEnumerator knockBackCoroutine(Transform target, Vector3 direction, float length, float overTime) {
             float timeleft = overTime;

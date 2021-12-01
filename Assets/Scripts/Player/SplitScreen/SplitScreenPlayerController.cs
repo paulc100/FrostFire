@@ -30,6 +30,7 @@ public class SplitScreenPlayerController : MonoBehaviour
 
     public bool carryingLog;
     public bool checkcarry;
+    public bool blink = false;
 
     private CharacterController controller;
     private PlayerInput playerInput;
@@ -43,6 +44,7 @@ public class SplitScreenPlayerController : MonoBehaviour
     private bool groundedPlayer;
     private float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
+    public float blinkStartTime = 0;
 
     private InputAction moveAction;
     private InputAction jumpAction;
@@ -51,6 +53,7 @@ public class SplitScreenPlayerController : MonoBehaviour
    
 
     public Animator animator;
+    public GameObject model;
 
     private void Awake() {
         controller = GetComponent<CharacterController>();
@@ -118,8 +121,13 @@ public class SplitScreenPlayerController : MonoBehaviour
             damageReady = false;
         }
 
-        if (!gameObject.GetComponent<Warmth>().invulnerable)
+        if (!gameObject.GetComponent<Warmth>().invulnerable) {
             GetComponent<CharacterController>().enabled = true;
+		}
+
+        if (blink) {
+            startBlink();
+		}
     }
 
     private void shareWarmth()
@@ -292,20 +300,15 @@ public class SplitScreenPlayerController : MonoBehaviour
         if(!downed) attackAvailable = true;
     }
 
-    public void flicker() {
-        StartCoroutine(startFlickering());
-    }
-
-    public IEnumerator startFlickering() {
-        Debug.Log("this code ran FLKJDSKFSDKLFJLSK");
-        Renderer ren = gameObject.GetComponentInParent<Renderer>();
-
-        //ren.enabled = false;
-        for (int i = 0; i < 10; i++) {
-            //ren.enabled = !ren.enabled;
-            yield return new WaitForSeconds(0.5f);
+    public void startBlink() {
+        float time = Time.time * 10;
+        if (gameObject.GetComponent<Warmth>().invulnerable) {
+            Debug.Log("the player should be blinking");
+            bool oddeven = Mathf.FloorToInt(time) % 2 == 0;
+            model.SetActive(oddeven);
+        } else {
+            model.SetActive(true);
+            blink = false;
 		}
-        ren.enabled = true;
-        yield return null;
     }
 } 

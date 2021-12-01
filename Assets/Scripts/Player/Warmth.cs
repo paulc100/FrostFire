@@ -112,7 +112,8 @@ public class Warmth : MonoBehaviour
                 invulnerable = true;
                 StartCoroutine(invulnerabilityCD());
                 Debug.Log("first Check");
-                player.flicker();
+                player.blink = true;
+                player.blinkStartTime = Time.time * 10;
 
             }
         } else

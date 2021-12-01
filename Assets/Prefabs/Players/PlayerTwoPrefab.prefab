@@ -307,8 +307,11 @@ MonoBehaviour:
   downed: 0
   carryingLog: 0
   checkcarry: 0
+  blink: 0
   cameraTransform: {fileID: 0}
+  blinkStartTime: 0
   animator: {fileID: 2286990792731167933}
+  model: {fileID: 4762269059269594237}
 --- !u!114 &2444572102853945285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +344,9 @@ MonoBehaviour:
   nearPlayer: 0
   invulnerable: 0
   isDowned: 0
+  isReceivingWarmthFromAnotherPlayer: 0
   canShareWarmth: 1
+  warmthNet: 0
 --- !u!114 &4134989738096729701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5760,6 +5765,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3fd7f4b18ff4ee14ea8385dd4f49f985, type: 3}
+      propertyPath: m_TagString
+      value: Model
+      objectReference: {fileID: 0}
     - target: {fileID: 2167859532812503047, guid: 3fd7f4b18ff4ee14ea8385dd4f49f985, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -5822,6 +5831,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd7f4b18ff4ee14ea8385dd4f49f985, type: 3}
+--- !u!1 &4762269059269594237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3fd7f4b18ff4ee14ea8385dd4f49f985, type: 3}
+  m_PrefabInstance: {fileID: 5681171820663025964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5286428639572350663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3fd7f4b18ff4ee14ea8385dd4f49f985, type: 3}
