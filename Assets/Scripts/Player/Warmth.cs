@@ -41,7 +41,7 @@ public class Warmth : MonoBehaviour
     private float warmthLostRate = 0.02f;
     private float warmthRecoveryRate = 0.1f;
     private float warmthLostFrequency = 0.1f;
-    private float campfireRecoveryFrequency = 0.1f;
+    private float campfireRecoveryFrequency = 0.2f;
     private float shareWarmthFrequency = 0.1f;
     private float warmthSharedperMillisecond = 0.1f;
     private float previousFrameWarmth;
@@ -292,7 +292,7 @@ public class Warmth : MonoBehaviour
                 healingParticles.Stop();
         }
 
-        if (!isReceivingWarmthFromAnotherPlayer && isRunning_AwayCampfire) 
+        if (!isReceivingWarmthFromAnotherPlayer && !nearCampfire) 
         {
             if (!minusParticles.isPlaying)
                 minusParticles.Play();
