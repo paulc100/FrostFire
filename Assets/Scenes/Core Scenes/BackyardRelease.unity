@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16018,7 +16018,7 @@ PrefabInstance:
       objectReference: {fileID: 4060391239946406609, guid: 16ecf011372640a47b6e26b5f2ea022b, type: 3}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waveCooldown
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: regularSnowman
@@ -16054,11 +16054,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[2].smallCount
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[3].smallCount
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[4].smallCount
@@ -16070,7 +16070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[1].rangedCount
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[2].rangedCount
@@ -16078,7 +16078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[3].rangedCount
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[4].rangedCount
@@ -16090,15 +16090,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[1].regularCount
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
-      propertyPath: waves.Array.data[2].regularCount
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
+      propertyPath: waves.Array.data[2].regularCount
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[3].regularCount
-      value: 10
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 62558687572879308, guid: ef2c9cf453a5cf040bfd45b6dbb307f6, type: 3}
       propertyPath: waves.Array.data[4].regularCount
@@ -16844,7 +16844,7 @@ PrefabInstance:
       objectReference: {fileID: 20507301}
     - target: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
       propertyPath: logFuel
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
       propertyPath: gameState
@@ -16856,7 +16856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
       propertyPath: fuelLossRate
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1741947321919464918, guid: 0c37271596a58d1468655bac7fba6a62, type: 3}
       propertyPath: remainingFuel
@@ -17517,7 +17517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6851987120956865286, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: sounds.Array.size
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6851987120956865286, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: sounds.Array.data[6].clip
@@ -17534,6 +17534,22 @@ PrefabInstance:
     - target: {fileID: 6851987120956865286, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: sounds.Array.data[7].name
       value: Alert
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851987120956865286, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: aab82a477ed3c0549a3b77e9846bd114, type: 3}
+    - target: {fileID: 6851987120956865286, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: sounds.Array.data[8].name
+      value: WaveComplete
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851987120956865286, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: sounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e26ab5cf388d9974194793de9822fc04, type: 3}
+    - target: {fileID: 6851987120956865286, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
+      propertyPath: sounds.Array.data[9].name
+      value: WaveIncoming
       objectReference: {fileID: 0}
     - target: {fileID: 6851987120956865286, guid: d02f7f13c8e4f4a41bee38e79587a99f, type: 3}
       propertyPath: sounds.Array.data[6].pitch

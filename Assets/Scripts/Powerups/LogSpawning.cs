@@ -65,9 +65,8 @@ public class LogSpawning : MonoBehaviour
         if (spawnedLogs < maxLogs)
         {
             Instantiate(Log, spawnPositionVec, spawnPositionRot);
+            spawnedLogs += 1;
         }
-
-        spawnedLogs += 1;
 
         StartCoroutine(Cooldown());
     }
