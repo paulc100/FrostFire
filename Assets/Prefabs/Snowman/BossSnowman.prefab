@@ -115,7 +115,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5000001
-  m_Speed: 1.5
+  m_Speed: 1.25
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -172,8 +172,8 @@ MonoBehaviour:
   fightRadius: 2
   attackDamage: 2
   animator: {fileID: 4981853149353049820}
-  atkRate: 0.3
-  knockbackPower: 60
+  atkRate: 0.5
+  knockbackPower: 80
   knockbackDuration: 0.2
   throwRadius: 30
   snowParticle: {fileID: 7070436781391858944, guid: cef4a29c37a237140829570bbba648b0, type: 3}
@@ -181,7 +181,7 @@ MonoBehaviour:
   snowballPrefab: {fileID: 2366906609861919572, guid: c09421b8581f967478b1a2534696730f, type: 3}
   throwPoint: {fileID: 6216574274909846873}
   throwRate: 0.3
-  snowballDamage: 10
+  snowballDamage: 15
 --- !u!114 &8779740223472377231
 MonoBehaviour:
   m_ObjectHideFlags: 0

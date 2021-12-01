@@ -48,7 +48,22 @@ public class Campfire : MonoBehaviour
         if (other.gameObject.tag == "Snowman")
         {
             FindObjectOfType<AudioManager>().Play("CampfireLife");
-            removeFuel(1);
+            if (other.gameObject.name.Contains("Snowman")) {
+                removeFuel(5);
+            }
+            else if (other.gameObject.name.Contains("RangedSnowman"))
+            {
+                removeFuel(5);
+            }
+            else if (other.gameObject.name.Contains("SmallSnowman"))
+            {
+                removeFuel(2.5f);
+            }
+            else if (other.gameObject.name.Contains("BossSnowman"))
+            {
+                removeFuel(25);
+            }
+            FindObjectOfType<AudioManager>().Play("CampfireLife");
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "Player")

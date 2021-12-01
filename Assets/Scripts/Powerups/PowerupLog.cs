@@ -13,6 +13,8 @@ public class PowerupLog: MonoBehaviour
 
             if (splitScreenPlayerController.carryingLog == false)
             {
+                FindObjectOfType<LogSpawning>().Collected();
+
                 splitScreenPlayerController.carryingLog = true;
 
                 Destroy(gameObject);

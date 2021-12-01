@@ -14,7 +14,7 @@ public class LogSpawning : MonoBehaviour
     private Transform[] spawnPoints;
     private int spawnPosCount;
 
-    private int spawnedLogs;
+    public int spawnedLogs;
 
     [SerializeField]
     public int maxLogs;

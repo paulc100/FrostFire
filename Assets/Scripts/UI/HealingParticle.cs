@@ -24,10 +24,4 @@ public class HealingParticle : MonoBehaviour
                 particleSystem.Stop();
         }
     }
-
-    private void OnTriggerEnter(Collider col)
-    {
-        if (col.tag == "Player")
-            // FindObjectOfType<AudioManager>().Play("Powerup");
-    }
 }
