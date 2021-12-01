@@ -80,3 +80,27 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Powerup
+    clip: {fileID: 8300000, guid: e8692a1339a91554cbac4828168991b9, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Alert
+    clip: {fileID: 8300000, guid: 2aa6a80b87cdfd34a8a8876bd3cd59d9, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WaveIncoming
+    clip: {fileID: 8300000, guid: e26ab5cf388d9974194793de9822fc04, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WaveComplete
+    clip: {fileID: 8300000, guid: aab82a477ed3c0549a3b77e9846bd114, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

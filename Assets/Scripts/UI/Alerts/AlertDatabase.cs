@@ -15,6 +15,7 @@ public class AlertDatabase
         "Ouch.",
         "Is everyone doing okay?",
         "It could be worse, right?",
+        "Uh, you probably shouldn't let that happen",
     };
 
     // Wave Alerts
@@ -28,6 +29,7 @@ public class AlertDatabase
         "Why did the snowman cross the road?",
         "Go team!",
         "Will they ever stop coming?",
+        "Defend the fire!",
     };
 
     // Player Alerts
