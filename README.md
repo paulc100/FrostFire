@@ -1,5 +1,6 @@
 # FrostFire
-Gameplay Instructions
+**Gameplay Instructions**
+
 - In the game's build folder, double click 'FrostFire.exe' to open the game.
 - Click 'Play' to begin the game.
 - To enter a player, press enter on the keyboard and/or press 'select' on the controller.
